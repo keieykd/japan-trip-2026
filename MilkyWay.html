@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>合歡山 × 清境 觀星賞花｜兩天一夜行程</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* 莫蘭迪色系 */
+    --bg:#EAE4DA;            /* 暖米底 */
+    --bg-2:#E1D9CC;          /* 較深米 */
+    --card:#F5F1EA;          /* 卡片底 */
+    --card-soft:#EFE9DF;     /* 卡片次階 */
+    --line:#D3C9B9;          /* 分隔線 */
+    --sage:#7E9080;          /* 鼠尾草綠（Day1） */
+    --sage-deep:#5F7264;
+    --blue:#849AA0;          /* 灰藍（Day2） */
+    --blue-deep:#5E767C;
+    --clay:#B07F69;          /* 陶土（重點/提醒） */
+    --clay-deep:#8E5F4B;
+    --mauve:#A98E91;         /* 灰紫 */
+    /* 深色字體（依需求） */
+    --ink:#2F2B26;           /* 主文字（深） */
+    --ink-2:#4D453B;         /* 次文字（仍偏深） */
+    --ink-3:#6A6055;         /* 輔助 */
+    --shadow:0 10px 30px rgba(60,52,40,.10),0 2px 8px rgba(60,52,40,.06);
+    --radius:18px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:"Noto Sans TC",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    background-image:
+      radial-gradient(1200px 600px at 80% -10%, rgba(126,144,128,.18), transparent 60%),
+      radial-gradient(900px 500px at -10% 20%, rgba(176,127,105,.12), transparent 55%);
+    line-height:1.75;
+    letter-spacing:.01em;
+    overflow-x:hidden;
+  }
+  /* 紙張顆粒感 */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:0 18px 80px}
+
+  /* ===== Header ===== */
+  header{padding:46px 4px 30px;text-align:center;position:relative}
+  .kicker{
+    font-family:"Fraunces",serif;font-style:italic;font-size:15px;
+    letter-spacing:.18em;color:var(--clay-deep);text-transform:uppercase;
+  }
+  h1{
+    font-family:"Noto Serif TC",serif;font-weight:700;color:var(--ink);
+    font-size:clamp(28px,7.6vw,46px);line-height:1.18;margin:10px 0 6px;
+    letter-spacing:.02em;
+  }
+  .subtitle{font-family:"Noto Serif TC",serif;color:var(--sage-deep);font-size:clamp(15px,4vw,19px);font-weight:500}
+  .meta-row{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:8px 10px;margin-top:18px;
+  }
+  .chip{
+    background:var(--card);border:1px solid var(--line);border-radius:999px;
+    padding:6px 14px;font-size:13px;color:var(--ink-2);box-shadow:var(--shadow);
+  }
+  .chip b{color:var(--clay-deep);font-weight:700}
+  .ridge{display:block;width:100%;height:54px;margin:22px 0 4px;color:var(--sage)}
+
+  /* ===== 重點橫幅 ===== */
+  .alert{
+    background:linear-gradient(180deg,#F3EBE3,#EFE4D8);
+    border:1px solid var(--line);border-left:5px solid var(--clay);
+    border-radius:var(--radius);padding:18px 18px 16px;box-shadow:var(--shadow);
+    margin-bottom:30px;
+  }
+  .alert h3{
+    font-family:"Noto Serif TC",serif;color:var(--clay-deep);font-size:16px;
+    display:flex;align-items:center;gap:8px;margin-bottom:8px;letter-spacing:.03em;
+  }
+  .alert ul{list-style:none;display:grid;gap:7px}
+  .alert li{position:relative;padding-left:18px;font-size:14.5px;color:var(--ink-2)}
+  .alert li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;border-radius:50%;background:var(--clay)}
+  .alert li b{color:var(--ink)}
+
+  /* ===== 區段標題 ===== */
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin:38px 0 18px}
+  .sec-num{font-family:"Fraunces",serif;font-style:italic;font-size:30px;color:var(--clay);line-height:1}
+  .sec-head h2{font-family:"Noto Serif TC",serif;font-size:clamp(20px,5.4vw,26px);color:var(--ink);font-weight:700;letter-spacing:.02em}
+  .sec-head .en{font-family:"Fraunces",serif;font-style:italic;color:var(--ink-3);font-size:14px;margin-left:auto;white-space:nowrap}
+
+  /* ===== 行程卡 / 時間軸 ===== */
+  .day{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden;margin-bottom:26px;
+  }
+  .day-top{padding:18px 20px;color:#fff;position:relative;overflow:hidden}
+  .day1 .day-top{background:linear-gradient(120deg,var(--sage),var(--sage-deep))}
+  .day2 .day-top{background:linear-gradient(120deg,var(--blue),var(--blue-deep))}
+  .day-top .d-label{font-family:"Fraunces",serif;font-style:italic;font-size:14px;letter-spacing:.16em;opacity:.92}
+  .day-top .d-title{font-family:"Noto Serif TC",serif;font-size:21px;font-weight:700;margin-top:3px;letter-spacing:.03em}
+  .day-top .d-sub{font-size:13px;opacity:.95;margin-top:4px}
+  .day-top svg{position:absolute;right:-6px;bottom:-12px;width:150px;opacity:.18}
+
+  .timeline{padding:8px 20px 20px}
+  .tl{position:relative;padding:16px 0 16px 92px;border-bottom:1px dashed var(--line)}
+  .tl:last-child{border-bottom:none}
+  .tl .time{
+    position:absolute;left:0;top:18px;width:54px;text-align:right;line-height:1.25;
+    font-family:"Fraunces",serif;font-weight:600;font-size:16px;color:var(--ink);
+  }
+  .tl .time small{display:block;font-family:"Noto Sans TC";font-size:10px;color:var(--ink-3);letter-spacing:.05em;font-weight:500}
+  .tl::before{content:"";position:absolute;left:64px;top:22px;width:12px;height:12px;border-radius:50%;background:var(--card);border:2.5px solid var(--sage);z-index:1}
+  .day2 .tl::before{border-color:var(--blue)}
+  .tl::after{content:"";position:absolute;left:69px;top:36px;bottom:-16px;width:2px;background:var(--line)}
+  .tl:last-child::after{display:none}
+  .tl h4{font-family:"Noto Serif TC",serif;font-size:16px;color:var(--ink);font-weight:600;margin-bottom:3px}
+  .tl p{font-size:14px;color:var(--ink-2)}
+  .tl .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;padding:2px 9px;border-radius:999px;margin-top:6px;margin-right:6px}
+  .tag-star{background:#2F2B26;color:#F3E9C9}
+  .tag-go{background:#E4EADF;color:var(--sage-deep);border:1px solid #cdd8c8}
+  .tag-eat{background:#F1E4DC;color:var(--clay-deep);border:1px solid #e3cdbf}
+  .tag-tip{background:#E6E1D6;color:var(--ink-2);border:1px solid var(--line)}
+  .tag-warn{background:#F0DED6;color:var(--clay-deep);border:1px solid #e6c3b3}
+
+  /* ===== 通用卡片 ===== */
+  .grid{display:grid;gap:16px}
+  @media(min-width:620px){.grid.two{grid-template-columns:1fr 1fr}}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 18px 16px;box-shadow:var(--shadow);
+  }
+  .card.plan-a{border-top:4px solid var(--sage)}
+  .card.plan-b{border-top:4px solid var(--blue)}
+  .card.plan-c{border-top:4px solid var(--mauve)}
+  .card h3{font-family:"Noto Serif TC",serif;font-size:16.5px;color:var(--ink);margin-bottom:4px;font-weight:600;display:flex;align-items:center;gap:8px}
+  .card .lead{font-size:12.5px;color:var(--ink-3);margin-bottom:10px;letter-spacing:.04em}
+  .card ul{list-style:none;display:grid;gap:8px}
+  .card li{position:relative;padding-left:18px;font-size:14px;color:var(--ink-2)}
+  .card li::before{content:"";position:absolute;left:2px;top:10px;width:6px;height:6px;border-radius:50%;background:var(--sage)}
+  .plan-b li::before,.card.blue li::before{background:var(--blue)}
+  .plan-c li::before{background:var(--mauve)}
+  .card li b{color:var(--ink)}
+
+  /* 拍攝設定 / 規格表 */
+  .spec{display:grid;gap:0}
+  .spec div{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px}
+  .spec div:last-child{border-bottom:none}
+  .spec .k{color:var(--ink-3);white-space:nowrap}
+  .spec .v{color:var(--ink);font-weight:600;text-align:right}
+  .spec .v .num{font-family:"Fraunces",serif;font-style:italic}
+
+  /* 裝備標籤雲 */
+  .pills{display:flex;flex-wrap:wrap;gap:8px}
+  .pills span{background:var(--card-soft);border:1px solid var(--line);border-radius:10px;padding:7px 12px;font-size:13px;color:var(--ink-2)}
+  .pills span b{color:var(--clay-deep)}
+
+  /* 快速資訊 */
+  .facts{display:grid;gap:12px}
+  @media(min-width:620px){.facts{grid-template-columns:1fr 1fr}}
+  .fact{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow)}
+  .fact .lab{font-family:"Fraunces",serif;font-style:italic;font-size:12px;letter-spacing:.12em;color:var(--clay-deep);text-transform:uppercase}
+  .fact .big{font-family:"Noto Serif TC",serif;font-size:18px;color:var(--ink);font-weight:600;margin-top:2px}
+  .fact .small{font-size:12.5px;color:var(--ink-3);margin-top:2px}
+
+  .resources{margin-top:14px;display:grid;gap:9px}
+  .resources a, .resources div{
+    display:flex;align-items:center;gap:10px;background:var(--card-soft);
+    border:1px solid var(--line);border-radius:12px;padding:11px 14px;font-size:14px;
+    color:var(--ink);text-decoration:none;transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .resources a:hover{transform:translateX(3px);box-shadow:var(--shadow)}
+  .resources .dot{width:9px;height:9px;border-radius:50%;background:var(--sage);flex:none}
+
+  .note{font-size:12.5px;color:var(--ink-3);margin-top:10px;line-height:1.7}
+
+  footer{text-align:center;margin-top:46px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-3);font-size:12.5px}
+  footer .f-title{font-family:"Noto Serif TC",serif;color:var(--sage-deep);font-size:15px;margin-bottom:6px}
+
+  /* ===== 載入動畫 ===== */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  .reveal{opacity:0;animation:fadeUp .7s cubic-bezier(.22,.61,.36,1) forwards}
+  header{animation:fadeUp .8s ease forwards}
+  .a1{animation-delay:.05s}.a2{animation-delay:.12s}.a3{animation-delay:.19s}
+  .a4{animation-delay:.26s}.a5{animation-delay:.33s}.a6{animation-delay:.40s}
+  .a7{animation-delay:.47s}.a8{animation-delay:.54s}.a9{animation-delay:.61s}
+  @media(prefers-reduced-motion:reduce){.reveal{animation:none;opacity:1}header{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="kicker">Hehuanshan · Cingjing · Sun Moon Lake</div>
+    <h1>合歡山觀星賞花<br>兩天一夜</h1>
+    <div class="subtitle">2026 / 6 / 13（六）– 6 / 14（日）</div>
+    <div class="meta-row">
+      <span class="chip">住宿 · <b>清境繽紛農場 Iris Farmhouse</b></span>
+      <span class="chip">人數 · <b>2 人</b></span>
+      <span class="chip">主題 · <b>銀河 × 高山杜鵑 × 日月潭</b></span>
+      <span class="chip">免費取消至 · <b>6/12</b></span>
+    </div>
+    <svg class="ridge" viewBox="0 0 800 120" fill="none" preserveAspectRatio="none">
+      <path d="M0 110 L120 60 L210 92 L320 30 L430 80 L520 44 L640 96 L720 58 L800 100 L800 120 L0 120 Z" fill="currentColor" opacity=".22"/>
+      <path d="M0 118 L150 78 L260 104 L380 56 L500 98 L600 70 L720 110 L800 84 L800 120 L0 120 Z" fill="currentColor" opacity=".4"/>
+    </svg>
+  </header>
+
+  <!-- ===== 重點橫幅 ===== -->
+  <div class="alert reveal a1">
+    <h3>◆ 出發前先記住這三件事</h3>
+    <ul>
+      <li><b>翠峰管制（最關鍵）：</b>台14甲 18K 翠峰，6/13、6/14「假日上午 6–11 點」高乘載，<b>2 人禁止上山</b>。對策：上午在清境玩，<b>過 11:00 再上合歡山</b>；下山不受限。</li>
+      <li><b>月相天時極佳：</b>6/15 才是新月，<b>6/13 整夜幾乎無月光</b>，是全月最暗、最適合拍銀河的夜晚。</li>
+      <li><b>日月潭遊湖末班：</b>船班約 09:00–16:30、全程約 1.5 小時，Day 2 要<b>趕在末班前</b>登船。</li>
+    </ul>
+  </div>
+
+  <!-- ===== DAY 1 ===== -->
+  <div class="sec-head reveal a2">
+    <span class="sec-num">01</span>
+    <h2>Day 1｜賞花 × 夕陽 × 銀河</h2>
+    <span class="en">6/13 Sat</span>
+  </div>
+
+  <div class="day day1 reveal a2">
+    <div class="day-top">
+      <div class="d-label">DAY ONE</div>
+      <div class="d-title">中和 → 清境 → 合歡山昆陽</div>
+      <div class="d-sub">早出發避車潮 · 上午玩山下 · 午後上山看夕陽與銀河</div>
+      <svg viewBox="0 0 200 120" fill="#fff"><path d="M0 120 L50 50 L80 80 L120 30 L160 70 L200 40 L200 120Z"/></svg>
+    </div>
+    <div class="timeline">
+      <div class="tl"><div class="time">07:00</div><h4>中和出發</h4><p>國3 → 國6 → 埔里，約 2.5 小時。早點走避開花季週六車潮。</p><span class="tag tag-go">移動</span></div>
+      <div class="tl"><div class="time">09:30</div><h4>埔里：加油＋補給</h4><p>高山沿途無加油站，務必在埔里<b>加滿油</b>；超商補水、暖暖包、預備乾糧。</p><span class="tag tag-go">補給</span></div>
+      <div class="tl"><div class="time">10:50</div><h4>抵清境，先寄放行李</h4><p>到 Iris Farmhouse 寄放行李（房間 15:00 才好，行李通常可先放，出發前先跟民宿確認）。</p><span class="tag tag-tip">先確認</span></div>
+      <div class="tl"><div class="time">11:00</div><h4>清境農場 · 青青草原</h4><p>購票入園，餵瓦萊黑鼻羊、走逛草原。<b>馬術秀 10:45 / 15:45</b> 於觀山牧區，時間搭得上可順看。</p><span class="tag tag-tip">門票另計</span></div>
+      <div class="tl"><div class="time">12:00</div><h4>清境午餐</h4><p>魯媽媽雲南擺夷料理 或 雲南十八怪景觀餐廳。</p><span class="tag tag-eat">用餐</span></div>
+      <div class="tl"><div class="time">13:15</div><h4>清境高空（天空）步道</h4><p>海拔約 1700–2000m 的景觀步道，輕鬆散步、賞群山。</p></div>
+      <div class="tl"><div class="time">14:15</div><h4>最後補給：7-11 富嘉門市</h4><p>買<b>保溫便當／泡麵＋裝滿保溫瓶熱水</b>當山上晚餐，再加水、暖暖包。</p><span class="tag tag-eat">晚餐打包</span></div>
+      <div class="tl"><div class="time">15:00</div><h4>回民宿 Check-in、養精神</h4><p>進房休息、補水。<b>上山前充分休息有助對抗高山症</b>。</p></div>
+      <div class="tl"><div class="time">15:45</div><h4>開車上合歡山</h4><p>過翠峰（台14甲 18K）—— <b>已過 11:00，2 人通行無限制 ✓</b>。</p><span class="tag tag-go">上山</span></div>
+      <div class="tl"><div class="time">16:40</div><h4>石門山步道</h4><p>海拔 3237m，來回約 1 小時、坡度平緩，全台最親民百岳之一；東坡有殘存玉山杜鵑與夏季高山花。</p><span class="tag tag-go">健行</span></div>
+      <div class="tl"><div class="time">17:45</div><h4>下到昆陽停車場卡位</h4><p>海拔約 3070m，朝南開闊，是今晚的主場（夕陽＋銀河）。停車收費、停妥後關大燈。</p></div>
+      <div class="tl"><div class="time">18:45<small>日落</small></div><h4>昆陽看夕陽、雲海＋晚餐</h4><p>邊看夕照雲海，邊吃自備保溫熱食。天黑前先架好腳架、構好圖。</p><span class="tag tag-eat">晚餐</span></div>
+      <div class="tl"><div class="time">20:10<small>全黑</small></div><h4>天文暮光結束，銀河登場</h4><p>銀河中心於東南→南方升起，正對昆陽開闊視野；無月光，條件絕佳。</p><span class="tag tag-star">★ 銀河</span></div>
+      <div class="tl"><div class="time">20:15<br><small>22:30</small></div><h4>昆陽拍銀河</h4><p>用 11mm F1.8 拍縱向銀河（設定見下方拍攝指南）。注意保暖、補水，別久站不動。</p><span class="tag tag-star">★ 重頭戲</span></div>
+      <div class="tl"><div class="time">22:45</div><h4>下山</h4><p>夜間山路慢行、注意起霧與落石。</p><span class="tag tag-warn">夜路慢行</span></div>
+      <div class="tl"><div class="time">23:30</div><h4>回 Iris Farmhouse 休息</h4><p><b>出發前先跟民宿告知會晚歸</b>，確認大門與進房方式。</p><span class="tag tag-tip">先告知晚歸</span></div>
+    </div>
+  </div>
+
+  <!-- ===== DAY 2 ===== -->
+  <div class="sec-head reveal a3">
+    <span class="sec-num">02</span>
+    <h2>Day 2｜綿羊秀 × 日月潭</h2>
+    <span class="en">6/14 Sun</span>
+  </div>
+
+  <div class="day day2 reveal a3">
+    <div class="day-top">
+      <div class="d-label">DAY TWO</div>
+      <div class="d-title">清境 → 日月潭 → 中和</div>
+      <div class="d-sub">莊園日出 · 綿羊秀 · 日月潭騎車＋遊湖 · 傍晚返北</div>
+      <svg viewBox="0 0 200 120" fill="#fff"><path d="M0 120 C40 80 70 95 100 70 C140 95 170 78 200 92 L200 120Z"/></svg>
+    </div>
+    <div class="timeline">
+      <div class="tl"><div class="time">05:50<small>自由</small></div><h4>陽台看日出、雲海</h4><p>想拍日出雲海可早起；不勉強，睡飽也行。</p></div>
+      <div class="tl"><div class="time">07:30</div><h4>民宿早餐</h4><p>悠閒享用，補足體力。</p><span class="tag tag-eat">早餐</span></div>
+      <div class="tl"><div class="time">08:45</div><h4>退房、行李上車</h4><p>先 check-out，把行李上車再去看秀。</p></div>
+      <div class="tl"><div class="time">09:30</div><h4>青青草原 · 綿羊秀</h4><p>例假日 09:30／14:30 各一場、約 30 分鐘，亞洲少見的剃毛秀＋牧羊犬趕羊（週三除外）。</p><span class="tag tag-star">招牌表演</span></div>
+      <div class="tl"><div class="time">10:15</div><h4>出發前往日月潭</h4><p>清境 → 日月潭約 1 小時。<b>下山方向往埔里，完全避開翠峰管制 ✓</b></p><span class="tag tag-go">移動</span></div>
+      <div class="tl"><div class="time">11:15</div><h4>日月潭 · 水社午餐</h4><p>水社碼頭、名勝街商圈用餐，順逛水社遊客中心。</p><span class="tag tag-eat">用餐</span></div>
+      <div class="tl"><div class="time">12:30</div><h4>搭遊湖船（先搶末班前）</h4><p>水社碼頭購一日券 NT$300，逆時針 水社→玄光寺→伊達邵→水社，全程約 1.5 小時，可中途下船。<b>務必趕在末班（約 16:30）前登船</b>。</p><span class="tag tag-star">遊湖</span></div>
+      <div class="tl"><div class="time">14:15</div><h4>向山段自行車道</h4><p>水社租車（單車／電輔車皆可），騎平緩的向山段：水社壩 → 永結同心橋 → 向山遊客中心，湖景絕佳、好騎好拍。</p><span class="tag tag-star">騎車</span></div>
+      <div class="tl"><div class="time">16:15</div><h4>還車、出發返北</h4><p>日月潭 → 中和約 3 小時。</p><span class="tag tag-go">回程</span></div>
+      <div class="tl"><div class="time">19:30<small>約</small></div><h4>抵中和</h4><p>隔天 6/15（一）為上班日，今晚早點休息。</p></div>
+    </div>
+  </div>
+
+  <p class="note reveal a3" style="margin:-6px 2px 0">＊節奏提醒：Day 2 較滿。若當天疲累，<b>遊湖船與騎車可二擇一</b>（遊湖較省力、騎車較自由），或省略 09:30 綿羊秀提早出發，都能讓行程更輕鬆、更早到家。</p>
+
+  <!-- ===== 天氣備案 ===== -->
+  <div class="sec-head reveal a4">
+    <span class="sec-num">03</span>
+    <h2>天氣備案（三層）</h2>
+    <span class="en">Plan B</span>
+  </div>
+  <div class="grid reveal a4">
+    <div class="card plan-a">
+      <h3>A · 6/13 夜間山上多雲／下雨</h3>
+      <div class="lead">銀河最大的變數是雲量</div>
+      <ul>
+        <li>上山前<b>務必看公路局合歡山即時影像＋氣象署雲量</b>；山上整片雲或下雨就<b>別夜衝</b>，留在清境。</li>
+        <li>民宿約 1700m、低光害，<b>雲縫透空也能看星</b>；全雲就泡茶、休息，當作度假。</li>
+        <li>常見「清境有雲、合歡山在雲海之上」或相反 → 即時影像是關鍵判斷。</li>
+        <li>局部雲時可改拍<b>車軌／雲隙星空</b>。</li>
+      </ul>
+    </div>
+    <div class="card plan-b blue">
+      <h3>B · 白天下雨（室內／低海拔）</h3>
+      <div class="lead">把戶外換成室內景點</div>
+      <ul>
+        <li><b>清境：</b>紙箱王 Carton King、小瑞士花園（含水舞、部分遮蔽）。</li>
+        <li><b>埔里：</b>埔里酒廠、中台禪寺、紙教堂 Paper Dome、妮娜／18度C 巧克力工房。</li>
+        <li><b>日月潭：</b>向山遊客中心（建築＋咖啡）、遊湖船（有遮蔭）、纜車（看當天營運）。</li>
+      </ul>
+    </div>
+    <div class="card plan-c">
+      <h3>C · 整趟遇雨／銀河槓龜</h3>
+      <div class="lead">行程依然成立</div>
+      <ul>
+        <li>仍有：莊園度假＋綿羊秀馬術秀＋日月潭＋埔里美食，轉成兩人放鬆小旅行。</li>
+        <li><b>6/12 12:00 前可免費取消</b>；若出發前 2–3 天預報極差，可在期限內評估改期。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== 銀河拍攝指南 ===== -->
+  <div class="sec-head reveal a5">
+    <span class="sec-num">04</span>
+    <h2>銀河拍攝指南</h2>
+    <span class="en">a6700 + 11mm</span>
+  </div>
+  <div class="grid two reveal a5">
+    <div class="card">
+      <h3>★ 推薦設定（銀河）</h3>
+      <div class="lead">Sony a6700 ＋ Sony 11mm F1.8（最適合）</div>
+      <div class="spec">
+        <div><span class="k">鏡頭</span><span class="v">11mm F1.8（廣角大光圈）</span></div>
+        <div><span class="k">光圈</span><span class="v"><span class="num">f/1.8 – 2.8</span></span></div>
+        <div><span class="k">快門</span><span class="v"><span class="num">13 – 20 秒</span></span></div>
+        <div><span class="k">ISO</span><span class="v"><span class="num">3200 – 6400</span></span></div>
+        <div><span class="k">對焦</span><span class="v">手動 · 放大亮星合焦至無限遠</span></div>
+        <div><span class="k">檔案</span><span class="v">RAW</span></div>
+        <div><span class="k">白平衡</span><span class="v"><span class="num">3800 – 4200K</span></span></div>
+      </div>
+      <p class="note">上腳架時<b>關閉鏡頭防手震</b>；用 2 秒延遲或遙控快門避免震動。低溫電池掉電快，<b>多帶電池並貼身保溫</b>。</p>
+    </div>
+    <div class="card blue">
+      <h3>構圖與備案</h3>
+      <ul>
+        <li>昆陽朝南開闊，把<b>銀河中心（東南→南）</b>放進畫面，前景用山稜剪影或車軌。</li>
+        <li>Sigma 18-50 F2.8 可拍局部銀河／星野特寫。</li>
+        <li><b>陰天備案 — 車軌：</b>f/8、ISO 100、單張長曝或多張（各 30 秒）後製堆疊。</li>
+        <li>用紅光頭燈保護暗視覺，也尊重他人拍攝。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== 裝備清單 ===== -->
+  <div class="sec-head reveal a6">
+    <span class="sec-num">05</span>
+    <h2>裝備＆補給清單</h2>
+    <span class="en">Packing</span>
+  </div>
+  <div class="grid two reveal a6">
+    <div class="card">
+      <h3>保暖（3000m 夜間可低於 10°C）</h3>
+      <div class="pills">
+        <span>防風<b>厚外套／羽絨</b></span><span>發熱衣</span><span>毛帽</span><span>手套</span><span>圍巾</span><span>長褲</span><span><b>暖暖包</b></span>
+      </div>
+    </div>
+    <div class="card blue">
+      <h3>拍攝＆其他</h3>
+      <div class="pills">
+        <span><b>腳架</b></span><span>備用電池×多</span><span>記憶卡</span><span>紅光頭燈</span><span>行動電源</span><span><b>保溫瓶熱水</b></span><span>保溫便當／泡麵</span><span>熱飲</span><span>防蚊液（清境）</span><span>雨具（梅雨季）</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 安全與管制 ===== -->
+  <div class="sec-head reveal a7">
+    <span class="sec-num">06</span>
+    <h2>高山安全＆交通管制</h2>
+    <span class="en">Safety</span>
+  </div>
+  <div class="grid two reveal a7">
+    <div class="card plan-c">
+      <h3>高山症（昆陽 3070m）</h3>
+      <ul>
+        <li><b>下午慢慢上山</b>比半夜衝好（本行程已採用）。</li>
+        <li>多補水、勿劇烈活動、<b>勿飲酒</b>、放慢腳步。</li>
+        <li>出現<b>頭痛／噁心／喘不過氣</b>就立即下降。</li>
+        <li>易高反者可<b>提前就醫評估丹木斯（Diamox，須處方）</b>。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>翠峰管制（再次強調）</h3>
+      <ul>
+        <li>管制點：<b>台14甲 18K 翠峰</b>。</li>
+        <li>6/13、6/14 <b>假日上午 6–11 點高乘載，2 人禁止上山</b>。</li>
+        <li>對策：<b>午後或 11:00 後再過翠峰</b>；下山不受限。</li>
+        <li>避免拖到 <b>6/15（一）崇越盃武嶺賽</b>清晨的單車車流。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== 快速資訊 ===== -->
+  <div class="sec-head reveal a8">
+    <span class="sec-num">07</span>
+    <h2>快速資訊</h2>
+    <span class="en">At a glance</span>
+  </div>
+  <div class="facts reveal a8">
+    <div class="fact"><div class="lab">Sunset · 日落</div><div class="big">約 18:45</div><div class="small">天文全黑約 20:10 後，銀河最佳</div></div>
+    <div class="fact"><div class="lab">Moon · 月相</div><div class="big">新月前夜</div><div class="small">6/15 新月 → 6/13 整夜幾乎無月光</div></div>
+    <div class="fact"><div class="lab">綿羊秀 / 馬術秀</div><div class="big">9:30 · 14:30<span style="font-size:13px;color:var(--ink-3)"> ／ </span>10:45 · 15:45</div><div class="small">綿羊秀限例假日（週三除外）；馬術秀每日</div></div>
+    <div class="fact"><div class="lab">日月潭遊湖</div><div class="big">NT$300 一日券</div><div class="small">船班約 09:00–16:30、全程約 1.5 小時</div></div>
+  </div>
+
+  <div class="card reveal a9" style="margin-top:16px">
+    <h3>出發前必查資源</h3>
+    <div class="resources">
+      <a href="https://www.cwa.gov.tw/V8/C/" target="_blank" rel="noopener"><span class="dot"></span>中央氣象署 — 出發前 3 天查合歡山雲量／鄉鎮預報</a>
+      <a href="https://168.thb.gov.tw/" target="_blank" rel="noopener"><span class="dot" style="background:var(--blue)"></span>公路局即時影像（CCTV）— 上山前看鳶峰／昆陽／武嶺路況雲況</a>
+      <div><span class="dot" style="background:var(--clay)"></span>公路局「1968」App — 查台14甲是否施工或封路</div>
+    </div>
+    <p class="note">＊本行程時間為建議值，請依當天天氣、體力與現場狀況彈性調整；高山活動以安全為優先。日落與天文暮光為天文推估，遊湖船班與表演時間請以官方公告為準。</p>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="reveal a9">
+    <div class="f-title">祝你與 Fafa 玩得盡興、銀河滿天 ✦</div>
+    合歡山 × 清境 × 日月潭｜2026 / 6 / 13 – 6 / 14｜兩天一夜
+  </footer>
+
+</div>
+</body>
+</html>
