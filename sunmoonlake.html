@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <!--
-  檔案：sml-trip.html
-  用途：Eason 與 Fafa 以「高鐵（台北上下車）＋台灣好行」前往日月潭伊達邵「原宿旅店」之三天兩夜行程表
+  檔案：日月潭中秋三天兩夜行程.html
+  用途：Eason 與 Fafa 自南勢角自駕前往日月潭伊達邵「原宿旅店」之三天兩夜行程表
   日期：2026/09/25（五）入住 ～ 2026/09/27（日）退房（適逢中秋＋教師節四天連假）
-  交通：高鐵台北 → 高鐵台中 → 台灣好行日月潭線(6670) → 水社 → 遊湖巴士/船 → 伊達邵
-  設計：沿用原莫蘭迪版型（低彩度配色、深色文字、邵族山林湖水與中秋滿月主題）
-  本次更新：台北直達車班次、套票購買全流程、咖啡廳、先放行李再旅遊、移除九族、埔里改回程順遊、行程加滿
-  說明：單一 HTML 檔，樣式與互動皆內嵌，可直接以瀏覽器開啟，亦適合手機閱讀
+  設計：莫蘭迪低彩度配色、深色文字、邵族山林湖水與中秋滿月為主題
+  說明：本檔為單一 HTML 檔，所有樣式與互動皆內嵌，可直接以瀏覽器開啟，亦適合手機閱讀
 -->
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>日月潭・中秋三天兩夜｜高鐵（台北）＋台灣好行</title>
+  <title>日月潭・中秋三天兩夜｜伊達邵原宿旅店</title>
 
   <!-- 以行內 script 為 <html> 加上 js 類別，作為漸進增強的判斷依據（無 JS 時內容仍完整可見） -->
   <script>document.documentElement.classList.add("js");</script>
@@ -129,7 +127,7 @@
       margin-top: 14px;
     }
 
-    /* Hero 下方的關鍵事實列 */
+    /* Hero 下方的關鍵事實列（民宿、日期、人數） */
     .facts {
       display: flex;
       flex-wrap: wrap;
@@ -160,7 +158,7 @@
       font-size: 15.5px;
     }
 
-    /* ===== 重點提醒框 ===== */
+    /* ===== 連假交通與出發建議：重點提醒框 ===== */
     .alert {
       background: var(--warn-bg);
       border: 1px solid var(--warn-edge);
@@ -168,9 +166,7 @@
       border-radius: var(--radius);
       padding: 24px 24px 22px;
       box-shadow: var(--shadow);
-      margin-bottom: 20px;
     }
-    .alert:last-child { margin-bottom: 0; }
     .alert h3 {
       font-size: 19px;
       color: #6E4B2E;
@@ -194,26 +190,6 @@
     }
     .alert ul { margin: 14px 0 0; padding-left: 20px; color: #5A4632; font-size: 14.5px; }
     .alert li { margin: 7px 0; }
-
-    /* 班次小卡：在提醒框內呈現推薦高鐵車次 */
-    .trains { margin-top: 16px; display: grid; gap: 10px; }
-    .train {
-      background: rgba(243,237,228,.7);
-      border: 1px solid rgba(172,126,92,.45);
-      border-radius: 10px;
-      padding: 10px 14px;
-      display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px;
-    }
-    .train .no {
-      font-family: "Noto Serif TC", serif; font-weight: 900;
-      color: #6E4B2E; font-size: 16px; letter-spacing: .04em;
-    }
-    .train .rt { color: #5A4632; font-size: 15px; font-weight: 500; }
-    .train .tag {
-      font-size: 11px; font-weight: 700; letter-spacing: .08em;
-      color: #6E4B2E; background: #E4D2BD; padding: 2px 8px; border-radius: 6px;
-    }
-    .train .why { color: #7A6650; font-size: 13px; width: 100%; }
 
     /* ===== 行程：左側時間軸（day spine）。此處為真實序列，故採編號節點 ===== */
     .day {
@@ -291,7 +267,7 @@
     .slot h4 { font-size: 18px; margin-top: 4px; }
     .slot .desc { color: var(--ink-soft); font-size: 15px; margin-top: 8px; }
 
-    /* 替代方案／其他選擇 */
+    /* 替代方案／其他選擇：以標籤 + 清單呈現，回應「每個地方多個選擇」需求 */
     .alts {
       margin-top: 14px;
       background: var(--surface-2);
@@ -324,26 +300,18 @@
     .alts li b { color: var(--ink); font-weight: 700; }
     .alts li .meta { color: var(--ink-faint); font-size: 12.5px; }
 
-    /* 用餐標記 */
+    /* 用餐標記：用陶土色小標籤標出「午餐／晚餐／點心」 */
     .meal-tag {
       display: inline-block;
-      font-size: 11px; font-weight: 700; letter-spacing: .12em;
-      color: #6E4B2E; background: #E4D2BD;
-      padding: 3px 9px; border-radius: 6px; margin-right: 8px; vertical-align: middle;
-    }
-    /* 咖啡標記 */
-    .cafe-tag {
-      display: inline-block;
-      font-size: 11px; font-weight: 700; letter-spacing: .12em;
-      color: #5A4632; background: #DCCBB5;
-      padding: 3px 9px; border-radius: 6px; margin-right: 8px; vertical-align: middle;
-    }
-    /* 交通標記 */
-    .move-tag {
-      display: inline-block;
-      font-size: 11px; font-weight: 700; letter-spacing: .12em;
-      color: #2F4751; background: #CBD8DC;
-      padding: 3px 9px; border-radius: 6px; margin-right: 8px; vertical-align: middle;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      color: #6E4B2E;
+      background: #E4D2BD;
+      padding: 3px 9px;
+      border-radius: 6px;
+      margin-right: 8px;
+      vertical-align: middle;
     }
 
     /* ===== 注意事項：兩欄卡片 ===== */
@@ -425,7 +393,7 @@
       <div class="eyebrow reveal">Sun Moon Lake · Mid-Autumn</div>
       <h1 class="reveal">
         月映日月潭
-        <span class="sub">伊達邵・原宿旅店　三天兩夜　／　高鐵（台北）× 台灣好行・免開車免停車</span>
+        <span class="sub">伊達邵・原宿旅店　三天兩夜自駕　／　南勢角 ⇄ 日月潭</span>
       </h1>
 
       <div class="facts reveal">
@@ -442,12 +410,12 @@
           <div class="v">原宿旅店<small>（伊達邵）</small></div>
         </div>
         <div class="fact">
-          <div class="k">交通</div>
-          <div class="v">高鐵台北<small> ＋ </small>台灣好行</div>
+          <div class="k">人數</div>
+          <div class="v">2 人<small>　自駕</small></div>
         </div>
         <div class="fact">
           <div class="k">行程主題</div>
-          <div class="v">在地美食 × 遊湖 × 咖啡</div>
+          <div class="v">在地美食 × 遊湖</div>
         </div>
       </div>
     </div>
@@ -455,46 +423,24 @@
 
   <main>
 
-    <!-- ============ 搭乘建議 × 票券購買 ============ -->
+    <!-- ============ 出發建議 × 連假交通 ============ -->
     <section style="background: var(--surface-2);">
       <div class="wrap">
         <div class="section-head reveal">
           <div class="label">Before you go</div>
-          <h2>搭乘建議與票券購買</h2>
-          <p class="lead">9/25～9/28 為中秋＋教師節四天連假。改搭高鐵＋台灣好行可完全避開國道塞車與停車，但票券與座位要提早備好。以下含建議車次與套票購買全流程。</p>
+          <h2>出發建議與連假交通</h2>
+          <p class="lead">9/25～9/28 為中秋＋教師節四天連假，日月潭、國道6號、埔里與伊達邵一帶人潮車潮都會明顯增加，行前請務必把交通與訂位先處理好。</p>
         </div>
 
-        <!-- 提醒框 1：高鐵班次建議 -->
         <div class="alert reveal">
-          <h3><span class="dot"></span>高鐵台北上下車・推薦直達車次（限停板橋，約 49 分到台中）</h3>
-          <p>家到進閘口只要 40 分鐘，去程抓「出門 → 進閘口 → 上車」的節奏即可。以下為平日時刻，連假常會加開班次，請以高鐵 App 實際公告與餘票為準。</p>
-          <div class="trains">
-            <div class="train">
-              <span class="no">0207</span><span class="rt">台北 08:31 → 台中 09:20</span><span class="tag">主推</span>
-              <span class="why">約 07:45 出門、08:11 前進閘口；抵台中接 ~09:40 台灣好行，水社約 11:00，當天最從容。</span>
-            </div>
-            <div class="train">
-              <span class="no">0109</span><span class="rt">台北 07:31 → 台中 08:20</span><span class="tag">想早點到</span>
-              <span class="why">早鳥版，水社約 10:00 就能開逛；但要早起，發發要評估。</span>
-            </div>
-            <div class="train">
-              <span class="no">0117</span><span class="rt">台北 09:31 → 台中 10:20</span><span class="tag">想晚點起</span>
-              <span class="why">睡飽版，水社約 12:00，下午行程稍緊湊但仍可行。</span>
-            </div>
-          </div>
-          <span class="pill">高鐵連假超搶手，乘車日前 28 天開賣，第一時間就要訂去回程</span>
-        </div>
-
-        <!-- 提醒框 2：台灣好行套票購買全流程 -->
-        <div class="alert reveal">
-          <h3><span class="dot"></span>台灣好行套票：哪裡買、何時買、怎麼買、多少錢</h3>
-          <p><b>強烈建議買套票</b>，一票把整趟湖區交通與纜車、遊湖船全包了，比單買省又免現場排隊買票。</p>
+          <h3><span class="dot"></span>建議 5:50 起床、6:30 從南勢角出發</h3>
+          <p>入住是下午 3 點以後，不必拚清晨；但連假首日（週五）國道3轉國道6往埔里這段，上午 7 點起就會明顯壅塞。抓在 6:30 出發是塞車與睡眠的平衡點：約 9:30～10:30 抵達埔里吃早午餐，中午前後進日月潭，還能保留完整下午遊湖、傍晚剛好 3 點 check in。</p>
+          <span class="pill">底線：最晚 7:00 出發，再晚下午行程會被壓縮</span>
           <ul>
-            <li><b>多少錢</b>：套票多種組合，常見含「遊湖船券＋纜車來回券＋遊湖巴士一日券＋水社／向山／車埕單程車票」，依組合約 <b>NT$460 起</b>；含特製 IC 儲值卡的款式約 NT$840–1150。單買台灣好行「高鐵台中 ⇄ 日月潭」來回約 NT$330。實際以官方公告為準。</li>
-            <li><b>哪裡買</b>：線上 → 台灣好行官網「南投假期」、KKday、Klook、7-11 ibon；現場 → 高鐵台中站 1 樓第 5 出口南投客運櫃台（07:30–18:00）、台中干城站、日月潭站、清境旅行社。</li>
-            <li><b>何時買</b>：套票隨時可買、隨買隨用（限效期內）。<b>台灣好行座位不保證</b>，連假務必先到南投客運／南投假期官網<b>預約去回程座位（最多提前 15 天）</b>。</li>
-            <li><b>怎麼買</b>：線上下單取得 QR Code → 到高鐵台中站 1 樓第 5 出口櫃台出示、兌換實體票 → 依序排隊上車；套票內含的纜車、遊湖船、巴士券到各站現場使用。</li>
-            <li><b>第一天行李</b>：先到伊達邵民宿寄放（15:00 前），輕裝玩湖區，下午再正式入住。</li>
+            <li><b>路線</b>：國道3 南下 → 霧峰系統接國道6 → 愛蘭（埔里）下交流道 → 台14 / 台21 → 日月潭水社 → 伊達邵（全程約 200 公里）。</li>
+            <li><b>車況</b>：連假平日車程約 3.5～4.5 小時（含塞車）。出發前用 Google Maps 或「高速公路1968」App 看即時路況，必要時改走台14線替代。</li>
+            <li><b>前一晚先備妥</b>：行李、加滿油、ETC 餘額、手機離線地圖、保溫瓶；當天起床直接上車。</li>
+            <li><b>回程（9/27 日）</b>：國道北上於下午至傍晚易塞，連假尾聲（9/28 一）最嚴重。建議早上玩、午後提早北返，或刻意延到晚間離峰再走。</li>
           </ul>
         </div>
       </div>
@@ -505,14 +451,12 @@
       <div class="wrap">
         <div class="section-head reveal">
           <div class="label">Itinerary</div>
-          <h2>三天行程（加滿版・每站皆附替代方案）</h2>
-          <p class="lead">主行程為建議路線，每個時段下方的「其他選擇」可依天氣、體力、人潮與班次彈性替換或刪減。湖區移動以遊湖巴士（6669）、遊湖船與纜車為主，皆從伊達邵步行可達或直接搭乘。埔里安排在回程順遊。</p>
+          <h2>三天行程（緊湊版・每站皆附替代方案）</h2>
+          <p class="lead">主行程為建議路線，每個時段下方的「其他選擇」可依當天天氣、體力、人潮與排隊狀況彈性替換。</p>
           <div class="legend">
             <span><i class="sw" style="background:var(--clay)"></i>主行程節點</span>
-            <span><i class="sw" style="background:var(--sage)"></i>替代／加碼</span>
-            <span><i class="sw" style="background:#E4D2BD"></i>用餐</span>
-            <span><i class="sw" style="background:#DCCBB5"></i>咖啡</span>
-            <span><i class="sw" style="background:#CBD8DC"></i>交通</span>
+            <span><i class="sw" style="background:var(--sage)"></i>替代／加碼景點</span>
+            <span><i class="sw" style="background:#E4D2BD"></i>用餐建議</span>
           </div>
         </div>
 
@@ -521,140 +465,85 @@
           <div class="day-head">
             <div class="day-no"><div class="n">1</div><div class="t">DAY</div></div>
             <div class="day-title">
-              <h3>高鐵南下・進湖放行李・賞月</h3>
+              <h3>南下進湖・傍晚賞月</h3>
               <div class="date">9/25（五）・中秋當晚</div>
-              <span class="focus">重點：台北→台中→水社→伊達邵放行李 → 午餐 → 纜車／咖啡 → 入住 → 夕陽 → 賞月</span>
+              <span class="focus">重點：埔里早午餐 → 向山＋水社 → 入住伊達邵 → 老街晚餐 → 賞月</span>
             </div>
           </div>
 
           <div class="slot">
-            <div class="time">07:45</div>
-            <h4><span class="move-tag">捷運＋高鐵</span>南勢角 → 台北車站 → 高鐵台中</h4>
-            <p class="desc">南勢角搭捷運（中和新蘆線）到台北車站轉高鐵。家到進閘口約 40 分鐘，抓 07:45 出門接 0207 車次（台北 08:31 → 台中 09:20）。</p>
-            <div class="alts">
-              <div class="alts-label">車次選擇</div>
-              <ul>
-                <li><b>0207</b> 台北 08:31 → 台中 09:20（主推，最從容）。</li>
-                <li><b>0109</b> 台北 07:31 → 台中 08:20（早鳥，水社 10:00 開逛）。</li>
-                <li><b>0117</b> 台北 09:31 → 台中 10:20（睡飽版，水社約 12:00）。</li>
-                <li><span class="meta">以上平日時刻，連假可能加開，請以高鐵 App 確認；皆為限停板橋的直達車。</span></li>
-              </ul>
-            </div>
+            <div class="time">06:30</div>
+            <h4>南勢角出發</h4>
+            <p class="desc">國道3 → 國道6，往埔里方向。途中若想休息，可停國道6號「國姓服務區」上洗手間、補咖啡。</p>
           </div>
 
           <div class="slot">
-            <div class="time">09:20 – 10:00</div>
-            <h4><span class="move-tag">轉乘</span>高鐵台中站 → 台灣好行日月潭線</h4>
-            <p class="desc">出站到 1 樓第 5 出口南投客運服務櫃台（07:30–18:00），憑 QR 兌換套票實體票、排隊上車。事先在官網預約座位最保險。</p>
-            <div class="alts">
-              <div class="alts-label">班次選擇</div>
-              <ul>
-                <li><b>6670B 直達</b>：最快到水社。</li>
-                <li><b>6670F 延駛向山</b>：可直接坐到向山行政中心。</li>
-                <li><span class="meta">高鐵台中發車約一小時一班；假日時刻以南投客運官網為準。</span></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="slot">
-            <div class="time">10:00 – 11:20</div>
-            <h4><span class="move-tag">台灣好行</span>車行高鐵台中 → 日月潭水社（約 80 分）</h4>
-            <p class="desc">沿途經草屯、埔里，可上車補眠或看風景。埔里景點與午餐安排在回程，去程直達水社最省時。</p>
+            <div class="time">09:30 – 10:40</div>
+            <h4><span class="meal-tag">早午餐</span>埔里・在地小吃補給</h4>
+            <p class="desc">進日月潭前先在埔里吃飽。埔里是清境、日月潭的中繼站，在地小吃選擇多、價格實在。</p>
             <div class="alts">
               <div class="alts-label">其他選擇</div>
               <ul>
-                <li><b>直達水社</b>（推薦）：先進湖放行李、開始玩。</li>
-                <li><b>埔里中途下車</b>：若搭早鳥車次、時間很充裕才考慮，否則留到回程。</li>
+                <li><b>蘇媽媽湯圓</b>：招牌鹹湯圓、肉燥飯。<span class="meta">中山路三段118號／約 11:00 起／週三公休（連假通常營業，仍建議先確認）</span></li>
+                <li><b>振松記米粉</b>：芋頭米粉湯、紹興醉雞，埔里酒廠旁。<span class="meta">中山路三段215號／週三公休</span></li>
+                <li><b>橫濱拉麵</b>：日式豚骨拉麵，有自己的停車場。<span class="meta">不接受訂位、現場抽號</span></li>
+                <li><b>胡國雄古早麵</b>：90 年擔仔麵老店、黑白切。<span class="meta">仁愛路319號／10:00–20:00</span></li>
               </ul>
             </div>
           </div>
 
           <div class="slot">
-            <div class="time">11:20 – 12:00</div>
-            <h4><span class="move-tag">船 / 巴士</span>水社 → 伊達邵</h4>
-            <p class="desc">抵達水社後直接前往伊達邵：搭遊湖船（約 20 分、湖景最美）或遊湖巴士 6669（直達、不怕暈船）。套票皆已含。</p>
-            <div class="alts">
-              <div class="alts-label">選擇</div>
-              <ul>
-                <li><b>遊湖船</b>：第一眼就看到最美湖景，行李不多時推薦。</li>
-                <li><b>遊湖巴士 6669</b>：穩定直達，行李較多時較輕鬆。</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="slot">
-            <div class="time">12:00</div>
-            <h4>原宿旅店・先放行李</h4>
-            <p class="desc">先到民宿寄放行李（15:00 前先寄放、輕裝玩；15:00 後正式入住）。卸下行李後整個下午都能輕鬆走跳。</p>
-            <div class="alts">
-              <div class="alts-label">提醒</div>
-              <ul>
-                <li>抵達前先用電話／訊息告知民宿，確認可否提早寄放行李。</li>
-                <li>民宿<b>不可攜帶寵物</b>；安靜時段約 22:00–08:00；入住帶證件與信用卡。</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="slot">
-            <div class="time">12:15 – 13:30</div>
-            <h4><span class="meal-tag">午餐</span>伊達邵・邵族風味料理</h4>
-            <p class="desc">放好行李就近在伊達邵吃午餐，補足體力。連假人多，熱門店建議先訂位或提早入座。</p>
-            <div class="alts">
-              <div class="alts-label">餐廳選擇</div>
-              <ul>
-                <li><b>麓司岸 Lusihan</b>：邵族主廚（曾任五星飯店）、招牌飯飯雞翅、竹筒飯、百菇湯、陶盤山豬肉，Google 約 4.5★。<span class="meta">小份和菜約 NT$1000／2–3 人</span></li>
-                <li><b>春華飯店</b>：在地 40 年合菜，清蒸總統魚、酥炸野薑花、岩烤山豬肉。<span class="meta">中正路258號</span></li>
-                <li><b>潭鮮美食料理</b>：總統魚、鹿肉、鹹酥潭蝦，平實。<span class="meta">明德街32-1號／09:00–20:30</span></li>
-                <li><b>邊走邊吃</b>：劉家總統魚羹＋總統魚酥捲＋年記香菇高麗菜包，快速解決留體力玩。</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="slot">
-            <div class="time">13:30 – 15:00</div>
-            <h4>伊達邵周邊・纜車或湖景咖啡</h4>
-            <p class="desc">伊達邵步行可達的精華：纜車站（步行約 10 分，套票含來回）、親水步道、逐鹿市集。下午太陽大時，躲進湖景咖啡也很愜意。</p>
+            <div class="time">11:30 – 13:30</div>
+            <h4>向山遊客中心 + 環湖自行車道（向山段）</h4>
+            <p class="desc">進湖第一站。向山遊客中心由日本建築師團紀彥設計的清水模建築，「無邊際水池」與懸臂式觀景台是必拍點，且<b>附免費停車場</b>。腳力許可可在此租電輔車，騎被 CNN 選為全球十大最美的「向山段」自行車道（約 3.4 公里，平緩、有跨湖水上車道）到水社來回。</p>
             <div class="alts">
               <div class="alts-label">其他選擇</div>
               <ul>
-                <li><span class="move-tag">纜車</span><b>日月潭纜車</b>：米其林三星級湖景，伊達邵端來回賞景；連假發號碼牌、早點到。</li>
-                <li><span class="cafe-tag">咖啡</span><b>伊達邵遊客中心 2 樓咖啡</b>：直面湖景、半露天，步行可達、輕鬆休息。</li>
-                <li><b>逐鹿市集</b>：邵族歌舞表演、紀念品。</li>
-                <li><b>親水步道散步</b>：拍纜車站日式鳥居與山景。</li>
+                <li><b>水社碼頭與水社壩</b>：環湖公路上 180 度湖景，散步、買杯日月潭紅茶。</li>
+                <li><b>不騎車版</b>：向山只散步看建築與水池（停留約 1 小時），把體力留到傍晚老街。</li>
+                <li><b>租車店</b>：向山美利達休閒廣場、向山「非租不可」（全電輔車）、水社 OPENBIKE（水社商場3F）。<span class="meta">電輔車約 NT$250–300／台，多為不限時或 2 小時方案，需押證件</span></li>
+                <li><b>天氣不佳備案</b>：直接到伊達邵周邊，提早等候 check in。</li>
               </ul>
             </div>
           </div>
 
           <div class="slot">
             <div class="time">15:00</div>
-            <h4>正式入住・休息</h4>
-            <p class="desc">回民宿正式入住、梳洗，傍晚再出門看夕陽，步調舒服。</p>
+            <h4>入住原宿旅店（伊達邵）</h4>
+            <p class="desc">邵族族人經營、以貓頭鷹為吉祥物的民宿，附免費停車。放行李、稍作休息，車就停民宿不再移動，傍晚步行逛伊達邵即可。</p>
+            <div class="alts">
+              <div class="alts-label">提醒</div>
+              <ul>
+                <li>原宿旅店<b>不可攜帶寵物</b>；安靜時段約 22:00–08:00。</li>
+                <li>入住請帶身分證件與信用卡；建議先用電話或訊息告知預計抵達時間。</li>
+              </ul>
+            </div>
           </div>
 
           <div class="slot">
-            <div class="time">16:30 – 18:00</div>
-            <h4>伊達邵碼頭夕陽・老街散步</h4>
-            <p class="desc">伊達邵碼頭是日月潭看夕陽最浪漫的點之一，黃昏木棧道灑滿金光，遊艇靜泊，畫面像明信片。</p>
+            <div class="time">16:00 – 18:00</div>
+            <h4>伊達邵碼頭・親水步道・逐鹿市集</h4>
+            <p class="desc">伊達邵碼頭是日月潭看夕陽最浪漫的點之一，黃昏木棧道灑滿金光。逐鹿市集可看邵族歌舞表演、挑紀念品。纜車站就在步行約 10 分鐘處，可先去拍站外日式鳥居。</p>
             <div class="alts">
-              <div class="alts-label">邊逛邊吃</div>
+              <div class="alts-label">其他選擇</div>
               <ul>
-                <li><b>杜啦白鰻棍</b>（烤小米麻糬，煉乳人氣）、<b>東東豆干刈包</b>、<b>劉山哥馬告山豬肉</b>。</li>
-                <li><b>小米麻糬、小米酒冰淇淋</b>：逐鹿市集周邊攤位，邵族特色甜點。</li>
+                <li><b>伊達邵纜車站</b>：傍晚拍鳥居與山景（纜車末班較早，搭乘安排於 Day 2）。</li>
+                <li><b>老街邊走邊吃</b>：先以小吃墊胃，正式晚餐留到 18:00 後。</li>
               </ul>
             </div>
           </div>
 
           <div class="slot">
             <div class="time">18:00 – 19:30</div>
-            <h4><span class="meal-tag">晚餐</span>伊達邵・坐下來好好吃</h4>
-            <p class="desc">老街店家多在 20:00 前後打烊，連假務必提早或先訂位。和午餐錯開口味。</p>
+            <h4><span class="meal-tag">晚餐</span>伊達邵・邵族風味料理</h4>
+            <p class="desc">老街店家大多 20:00 前後打烊，<b>連假務必提早入座或先訂位</b>。想吃好坐下來吃，推薦邵族合菜。</p>
             <div class="alts">
               <div class="alts-label">餐廳選擇</div>
               <ul>
+                <li><b>麓司岸 Lusihan</b>：邵族主廚（曾任五星飯店）、招牌飯飯雞翅、竹筒飯、百菇湯、陶盤山豬肉，Google 約 4.5★。<span class="meta">小份和菜約 NT$1000／2–3 人</span></li>
+                <li><b>春華飯店</b>：在地 40 年合菜，清蒸總統魚、酥炸野薑花、岩烤山豬肉。<span class="meta">中正路258號</span></li>
+                <li><b>潭鮮美食料理</b>：總統魚、鹿肉、鹹酥潭蝦，價格平實。<span class="meta">明德街32-1號／09:00–20:30</span></li>
                 <li><b>支臘小館</b>：在地老店，奇力魚、總統魚（7-11 伊達邵店隔壁）。</li>
-                <li><b>邵族頭目袁家美食</b>：山羌肉、甘蔗筍、竹筒飯。<span class="meta">義勇街97-1號／週三公休</span></li>
-                <li><b>蒸開心複合式餐飲</b>：手工蔥肉絲瓜湯包。<span class="meta">文化街105號／週二、三公休</span></li>
-                <li><b>午餐沒選到的那家</b>：麓司岸／春華／潭鮮擇一。</li>
               </ul>
             </div>
           </div>
@@ -662,12 +551,12 @@
           <div class="slot">
             <div class="time">19:30 起</div>
             <h4>中秋賞月・伊達邵碼頭</h4>
-            <p class="desc">9/25 為中秋當晚。湖面開闊、光害低，碼頭與親水步道就是現成賞月點，邊散步邊吃宵夜小吃收尾。</p>
+            <p class="desc">9/25 為中秋當晚。湖面開闊、光害低，碼頭與親水步道就是現成賞月點，邊散步邊吃小吃收尾。</p>
             <div class="alts">
-              <div class="alts-label">賞月選擇</div>
+              <div class="alts-label">賞月／宵夜選擇</div>
               <ul>
-                <li><b>伊達邵碼頭、親水步道</b>：步行可達、最方便。</li>
-                <li><b>民宿頂樓／戶外區</b>：如有，安靜看月最舒服。</li>
+                <li><b>慈恩塔</b>：地勢高、視野遼闊（夜間步道照明有限，需帶手電筒、注意安全與開放時間）。</li>
+                <li><b>老街小吃</b>：杜啦白鰻棍（烤小米麻糬，煉乳口味人氣）、年記香菇高麗菜包、東東豆干刈包、劉山哥馬告山豬肉。<span class="meta">部分攤位 19:00–20:00 陸續收攤，要吃趁早</span></li>
               </ul>
             </div>
           </div>
@@ -678,36 +567,35 @@
           <div class="day-head">
             <div class="day-no"><div class="n">2</div><div class="t">DAY</div></div>
             <div class="day-title">
-              <h3>遊湖整日・湖光山色・咖啡</h3>
+              <h3>遊湖整日・湖光山色</h3>
               <div class="date">9/26（六）</div>
-              <span class="focus">重點：遊湖船 → 向山或環湖巴士景點 → 咖啡 → 傍晚晚餐</span>
+              <span class="focus">重點：上午遊湖船 → 中午用餐 → 下午纜車或環湖景點 → 傍晚晚餐</span>
             </div>
           </div>
 
           <div class="slot">
             <div class="time">07:00 – 08:30</div>
-            <h4>（選配）晨景・茶園日出</h4>
-            <p class="desc">想看晨霧與茶園日出可早起一趟；發發想補眠就跳過，改民宿悠閒早餐。</p>
+            <h4>（選配）貓囒山步道晨景・茶園日出</h4>
+            <p class="desc">想看晨霧與茶園日出的話早起一趟；發發若想補眠，這段可直接跳過，改民宿悠閒早餐。</p>
             <div class="alts">
               <div class="alts-label">其他選擇</div>
               <ul>
-                <li><b>民宿早餐＋睡飽</b>：把精神留給整天遊湖（推薦）。</li>
-                <li><b>貓囒山步道</b>：茶園與晨景，步行可達。</li>
-                <li><b>伊達邵親水步道晨走</b>：人少、光線柔和。</li>
+                <li><b>民宿早餐＋睡飽</b>：把精神留給整天遊湖（推薦這個，符合不早起的步調）。</li>
+                <li><b>伊達邵親水步道晨走</b>：人少、光線柔和，適合拍照。</li>
               </ul>
             </div>
           </div>
 
           <div class="slot">
             <div class="time">09:30 – 12:00</div>
-            <h4><span class="move-tag">遊湖船</span>伊達邵 → 玄光寺 → 水社</h4>
-            <p class="desc">從伊達邵碼頭上船最方便，套票船券一日內三碼頭不限次數上下船。玄光寺站務必下船吃一顆「阿婆／金盆阿嬤香菇茶葉蛋」、走青龍山步道看涵碧秀水。</p>
+            <h4>日月潭遊湖船（伊達邵 → 玄光寺 → 水社）</h4>
+            <p class="desc">就住伊達邵，從伊達邵碼頭上船最方便。環湖券一日內三碼頭不限次數上下船、繞一圈回原碼頭。玄光寺站務必下船吃一顆「阿婆／金盆阿嬤香菇茶葉蛋」、走青龍山步道看涵碧秀水。</p>
             <div class="alts">
-              <div class="alts-label">玩法與替代</div>
+              <div class="alts-label">票價與替代</div>
               <ul>
-                <li><b>純遊湖放空</b>：不下船繞一圈約 50–70 分鐘。</li>
-                <li><b>玄光寺＋玄奘寺</b>：青龍山步道續走上玄奘寺參拜。</li>
-                <li><b>水社碼頭</b>：水社商圈、涵碧步道散步。</li>
+                <li><b>船票</b>：環湖券現場約 NT$300／人（含責任險），約 45 分一班、連假加開；<span class="meta">實際以碼頭現場公告為準</span></li>
+                <li><b>替代玩法</b>：改騎自行車向山段（若 Day 1 沒騎）；或搭船僅單純遊湖一圈放空（約 50 分鐘不下船）。</li>
+                <li><b>玄光寺</b>：阿婆茶葉蛋、青龍山步道，可續走至玄奘寺。</li>
               </ul>
             </div>
           </div>
@@ -715,78 +603,58 @@
           <div class="slot">
             <div class="time">12:00 – 13:30</div>
             <h4><span class="meal-tag">午餐</span>水社或伊達邵商圈</h4>
-            <p class="desc">依遊湖節奏在水社或回伊達邵用餐皆可。</p>
+            <p class="desc">依遊湖節奏，在水社碼頭商圈或回伊達邵用餐皆可。</p>
             <div class="alts">
               <div class="alts-label">選擇</div>
               <ul>
-                <li><b>水社商圈</b>：簡餐、紅茶冰品，接下午行程方便。</li>
-                <li><b>雲品酒店「雲月舫」</b>：270 度湖景景觀餐廳（價位較高，建議訂位）。</li>
-                <li><b>伊達邵小吃</b>：回老街續吃沒吃到的。</li>
+                <li><b>伊達邵小吃巡禮</b>：劉家總統魚羹、總統魚酥捲、飯飯雞翅，邊走邊吃。</li>
+                <li><b>水社商圈</b>：簡餐、紅茶冰品，方便接下午行程。</li>
+                <li><b>景觀餐廳</b>：雲品酒店頂樓「雲月舫」270 度湖景（價位較高，建議先訂位）。</li>
               </ul>
             </div>
           </div>
 
           <div class="slot">
-            <div class="time">13:30 – 15:30</div>
-            <h4>下午主線：向山 或 環湖巴士景點（擇一）</h4>
-            <p class="desc">兩條動線擇一，避免巴士來回奔波。</p>
+            <div class="time">13:30 – 16:00</div>
+            <h4>日月潭纜車（伊達邵端搭乘）</h4>
+            <p class="desc">纜車站離民宿步行約 10 分鐘。全長 1.877 公里、米其林綠色指南三星級湖景，可從伊達邵端來回賞景，不一定要進九族。連假人潮多會發號碼牌，建議早點到。</p>
             <div class="alts">
-              <div class="alts-label">主線 A・西側＋向山</div>
+              <div class="alts-label">時間・票價・替代</div>
               <ul>
-                <li><span class="move-tag">接駁</span>用套票「水社-向山」接駁或台灣好行 6670F 到<b>向山遊客中心</b>（團紀彥清水模、無邊際水池、懸臂觀景台）。<span class="meta">遊湖巴士 6669 不到向山</span></li>
-                <li><b>向山自行車道</b>：租電輔車騎全球十大最美車道（約 3.4 公里、跨湖水上車道）。</li>
-                <li><span class="cafe-tag">咖啡</span><b>向山・惠蓀咖啡</b>：遊客中心內，落地窗看湖。</li>
-              </ul>
-            </div>
-            <div class="alts">
-              <div class="alts-label">主線 B・東側環湖巴士</div>
-              <ul>
-                <li><span class="move-tag">6669</span><b>文武廟</b>：北方宮殿式建築、後殿眺湖。</li>
-                <li><b>慈恩塔</b>：居高俯瞰拉魯島、玄光寺、涵碧半島。</li>
-                <li><b>水蛙頭、松柏崙步道</b>：沿線湖畔小步道。</li>
+                <li><b>假日營運</b>約 10:00–16:30、售票至 16:00；<b>留意末班纜車時間</b>，每月第一個週三保養停機（9/26 非該日）。</li>
+                <li><b>票價</b>：來回全票約 NT$380／人、停車約 NT$150／車；<span class="meta">以官網與現場為準</span></li>
+                <li><b>加碼</b>：時間足夠且想玩遊樂設施，可搭纜車到「九族文化村」玩半日（九族門票含纜車）。</li>
+                <li><b>環湖開車替代</b>：不搭纜車則開車訪文武廟、慈恩塔（見下一格）。</li>
               </ul>
             </div>
           </div>
 
           <div class="slot">
-            <div class="time">15:30 – 17:00</div>
-            <h4><span class="cafe-tag">咖啡</span>湖區咖啡時光</h4>
-            <p class="desc">下午找家有特色的咖啡廳坐坐，是大眾運輸版最舒服的安排。</p>
+            <div class="time">16:00 – 17:30</div>
+            <h4>環湖景點：文武廟 / 慈恩塔（擇一或順遊）</h4>
+            <p class="desc">開車環湖補景點。文武廟是北方宮殿式建築、後殿可眺湖；慈恩塔居高臨下，可俯瞰拉魯島、玄光寺與涵碧半島。</p>
             <div class="alts">
-              <div class="alts-label">咖啡廳選擇</div>
+              <div class="alts-label">其他選擇</div>
               <ul>
-                <li><b>蠻荒咖啡 Desolate Coffee</b>：純白木造玻璃屋、IG 名店，台灣好行「中明站」下車步行約 5 分。<span class="meta">無訂位需候位／約 10:00–18:00</span></li>
-                <li><b>鹿篙咖啡莊園</b>：魚池鹿篙山間茶園秘境、在地咖啡豆與紅茶、乳酪燒。<span class="meta">較偏遠，需包車或計程車</span></li>
-                <li><b>Hohocha 喝喝茶</b>：紅茶廠，奉茶＋紅玉茶葉蛋、DIY、好拍。</li>
-                <li><b>伊達邵遊客中心 2F 咖啡</b>：回伊達邵後的湖景輕食咖啡，步行可達。</li>
+                <li><b>日月老茶廠 / Hohocha 喝喝茶</b>：紅茶體驗與伴手禮（魚池往埔里方向）。</li>
+                <li><b>鹿篙咖啡莊園</b>：茶園景觀咖啡（人多需候位）。</li>
+                <li><b>純休息</b>：回民宿小憩，傍晚再逛老街，步調放鬆。</li>
               </ul>
             </div>
-          </div>
-
-          <div class="slot">
-            <div class="time">17:00 – 18:00</div>
-            <h4><span class="move-tag">巴士／船</span>回伊達邵</h4>
-            <p class="desc">傍晚搭遊湖巴士或船回伊達邵。<b>務必看好末班車與末班船時間</b>，以免回不來。</p>
           </div>
 
           <div class="slot">
             <div class="time">18:00 – 19:30</div>
             <h4><span class="meal-tag">晚餐</span>第二晚・換家吃</h4>
-            <p class="desc">把第一天沒吃到的口袋名單補完。</p>
+            <p class="desc">和第一晚錯開口味。想清爽吃湖鮮就點奇力魚、總統魚；想原民風味就續攻沒吃到的合菜或石板烤肉。</p>
             <div class="alts">
               <div class="alts-label">餐廳選擇</div>
               <ul>
-                <li><b>麓司岸／春華／潭鮮</b>：邵族合菜，坐下來慢慢吃。</li>
+                <li><b>邵族頭目袁家美食</b>：山羌肉、甘蔗筍、竹筒飯、奇力魚。<span class="meta">義勇街97-1號／週三公休</span></li>
                 <li><b>劉山哥石板烤肉</b>：馬告山豬肉＋香腸，邊走邊吃。</li>
-                <li><b>支臘小館</b>：奇力魚、總統魚。</li>
+                <li><b>蒸開心複合式餐飲</b>：手工蔥肉絲瓜湯包等。<span class="meta">文化街105號／週二、三公休</span></li>
               </ul>
             </div>
-          </div>
-
-          <div class="slot">
-            <div class="time">19:30 起</div>
-            <h4>（選配）老街夜晚・碼頭散步</h4>
-            <p class="desc">逛逛沒收攤的小吃、買隔天車上吃的伴手禮，碼頭吹風看夜景收尾。</p>
           </div>
         </article>
 
@@ -795,22 +663,22 @@
           <div class="day-head">
             <div class="day-no"><div class="n">3</div><div class="t">DAY</div></div>
             <div class="day-title">
-              <h3>晨景・退房・埔里順遊・北返</h3>
+              <h3>晨景・退房・埔里收尾北返</h3>
               <div class="date">9/27（日）</div>
-              <span class="focus">重點：晨間輕鬆 → 11:00 退房 → 台灣好行回台中（埔里下車順遊）→ 高鐵北返</span>
+              <span class="focus">重點：晨間輕鬆景點 → 11:00 前退房 → 埔里午餐順遊 → 提早北返避塞</span>
             </div>
           </div>
 
           <div class="slot">
             <div class="time">07:30 – 10:30</div>
             <h4>退房前的輕鬆晨間</h4>
-            <p class="desc">退房前挑一個近、輕鬆的點，留時間整理行李。</p>
+            <p class="desc">退房前不排重行程，挑一個近、輕鬆的點，留時間整理行李。</p>
             <div class="alts">
               <div class="alts-label">選擇</div>
               <ul>
                 <li><b>伊達邵親水步道晨走</b>：人少、湖面平靜，補拍美照。</li>
-                <li><b>纜車補搭</b>：前一天沒搭就趁早（注意營運時間）。</li>
-                <li><b>民宿慢早餐</b>：純放鬆收尾。</li>
+                <li><b>Day 2 沒去的環湖點</b>：文武廟或慈恩塔擇一補完。</li>
+                <li><b>民宿慢早餐</b>：純放鬆，悠閒收尾。</li>
               </ul>
             </div>
           </div>
@@ -818,54 +686,33 @@
           <div class="slot">
             <div class="time">11:00</div>
             <h4>退房</h4>
-            <p class="desc">11:00 前退房、結清。把握早點移動，銜接台灣好行與埔里午餐，並避開回程尖峰。</p>
+            <p class="desc">11:00 前退房、結清。把握早點上路，銜接埔里午餐並避開回程尖峰。</p>
           </div>
 
           <div class="slot">
-            <div class="time">11:30 – 12:10</div>
-            <h4><span class="move-tag">船／巴士＋台灣好行</span>伊達邵 → 水社 → 搭車往台中（埔里下車）</h4>
-            <p class="desc">先以遊湖巴士或船回水社，搭台灣好行 6670 往台中，於<b>埔里</b>下車順遊＋午餐，再搭下一班續行。</p>
+            <div class="time">11:40 – 13:30</div>
+            <h4><span class="meal-tag">午餐</span>埔里順遊＋用餐</h4>
+            <p class="desc">回程經埔里，順道吃午餐、買伴手禮再上國道。</p>
             <div class="alts">
-              <div class="alts-label">提醒</div>
+              <div class="alts-label">景點＋美食選擇</div>
               <ul>
-                <li><span class="meta">⚠ 看好台灣好行末班車：日月潭發平日末班約 17:40，假日以南投客運官網為準，別玩太晚。</span></li>
-                <li>埔里下車後再上車，記得抓好下一班發車時間（約一小時一班）。</li>
+                <li><b>18度C巧克力工房</b>：生吐司、冰淇淋、免費奉茶，近愛蘭交流道、好停車。</li>
+                <li><b>妮娜巧克力夢想城堡</b>：歐式城堡拍照（連假人多）。</li>
+                <li><b>紙教堂 / 中台世界博物館</b>：人文景點順遊。</li>
+                <li><b>午餐</b>：蘇媽媽湯圓、振松記米粉、橫濱拉麵（Day 1 沒吃到的補上）。</li>
               </ul>
             </div>
           </div>
 
           <div class="slot">
-            <div class="time">12:10 – 14:30</div>
-            <h4><span class="meal-tag">午餐</span><span class="cafe-tag">咖啡</span>埔里順遊・吃午餐喝咖啡</h4>
-            <p class="desc">埔里是清境、日月潭的中繼站，在地小吃多、伴手禮齊全，回程在這裡放慢腳步最順。</p>
-            <div class="alts">
-              <div class="alts-label">午餐選擇</div>
-              <ul>
-                <li><b>蘇媽媽湯圓</b>：招牌鹹湯圓、肉燥飯。<span class="meta">中山路三段118號／週三公休</span></li>
-                <li><b>振松記米粉</b>：芋頭米粉湯、紹興醉雞，埔里酒廠旁。<span class="meta">中山路三段215號／週三公休</span></li>
-                <li><b>橫濱拉麵</b>：日式豚骨，有停車場（現場抽號）。</li>
-                <li><b>胡國雄古早麵</b>：90 年擔仔麵老店。<span class="meta">仁愛路319號／10:00–20:00</span></li>
-              </ul>
-            </div>
-            <div class="alts">
-              <div class="alts-label">咖啡／景點／伴手禮</div>
-              <ul>
-                <li><b>台灣惠蓀咖啡品牌館</b>：埔里中山路四段395號，09:00–18:00。</li>
-                <li><b>18度C巧克力工房</b>：生吐司、冰淇淋、免費奉茶，買伴手禮。</li>
-                <li><b>桃米紙教堂</b>：人文景點散步。</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="slot">
-            <div class="time">15:00 – 16:30</div>
-            <h4><span class="move-tag">高鐵＋捷運</span>高鐵台中 → 台北 → 南勢角</h4>
-            <p class="desc">回到高鐵台中站搭直達北上車次（限停板橋、車程約 50 分鐘到台北），再轉捷運回南勢角。</p>
+            <div class="time">14:00 起</div>
+            <h4>國道6 → 國道3 北返南勢角</h4>
+            <p class="desc">出發前再看一次即時路況。連假下午北上易塞，能早走就早走；若預期傍晚嚴重，可在埔里多待、延到晚間離峰再北返。</p>
             <div class="alts">
               <div class="alts-label">回程提醒</div>
               <ul>
-                <li>建議搭約 15:00–16:30 的直達車，<b>回程票同樣要提早訂</b>；確切車次與餘票請於高鐵 App 查詢。</li>
-                <li>連假尾聲（9/28 一）人潮最多，9/27 返程通常較順；想更保險就早點走。</li>
+                <li>參考「高速公路1968」App 與高公局即時路況，必要時改走替代道路。</li>
+                <li>連假尾聲（9/28 一）北上最塞，提早於 9/27 返程通常較順。</li>
               </ul>
             </div>
           </div>
@@ -879,52 +726,34 @@
         <div class="section-head reveal">
           <div class="label">Good to know</div>
           <h2>注意事項（全面）</h2>
-          <p class="lead">連假搭大眾運輸，最關鍵的是「票券與班次」事前排好，現場才省心。以下逐項提醒。</p>
+          <p class="lead">連假出遊，事前準備愈周到、現場愈省心。以下逐項提醒。</p>
         </div>
 
         <div class="notes-grid">
           <div class="note-card reveal">
-            <h4><span class="ic">⛁</span>票券與預約</h4>
+            <h4><span class="ic">⛟</span>交通與停車</h4>
             <ul>
-              <li><b>高鐵</b>來回連假都要搶，乘車日前 28 天開賣，第一時間訂。</li>
-              <li><b>台灣好行不保證座位</b>、現場排隊；連假務必先到南投客運／南投假期官網預約去回程（最多提前 15 天）。</li>
-              <li><b>建議買套票</b>（纜車來回＋遊湖船＋遊湖巴士一日券＋水社/向山/車埕單程），約 NT$460 起最划算。</li>
+              <li><b>連假壅塞</b>：國道6 埔里端、環湖公路、伊達邵商圈為主要塞點，避開上午與午後尖峰。</li>
+              <li><b>停車</b>：伊達邵公有停車場假日一位難求，車停民宿後盡量步行或搭船、纜車移動；纜車站停車約 NT$150／車。</li>
+              <li><b>導航</b>：山區隧道多，先下載離線地圖；部分路段訊號弱。</li>
             </ul>
           </div>
 
           <div class="note-card reveal">
-            <h4><span class="ic">⛟</span>套票怎麼買</h4>
+            <h4><span class="ic">☷</span>訂位與排隊</h4>
             <ul>
-              <li><b>線上</b>：台灣好行「南投假期」、KKday、Klook、7-11 ibon。</li>
-              <li><b>現場</b>：高鐵台中站 1 樓第 5 出口南投客運櫃台（07:30–18:00）、台中干城站、日月潭站。</li>
-              <li><b>流程</b>：線上下單拿 QR → 高鐵台中站櫃台兌換實體票 → 排隊上車；內含纜車、船、巴士券到各站現場使用。</li>
-            </ul>
-          </div>
-
-          <div class="note-card reveal">
-            <h4><span class="ic">☷</span>班次與末班車</h4>
-            <ul>
-              <li><b>台灣好行</b>高鐵台中 ⇄ 日月潭約一小時一班；<b>回程末班</b>日月潭發平日約 17:40，假日以官網為準，Day 3 別玩太晚。</li>
-              <li><b>遊湖巴士 6669</b>串連水社、纜車站、伊達邵、玄光寺、慈恩塔、文武廟，<b>但不到向山</b>；向山需用套票接駁或 6670F。</li>
-              <li>各景點移動前先確認下一班時間，連假班班易客滿，要有候車心理準備。</li>
+              <li><b>晚餐務必訂位</b>或提早入座；伊達邵店家多在 20:00 前後打烊。</li>
+              <li>熱門小吃（東東刈包、杜啦、年記）連假大排長龍，想吃趁早、避開正餐尖峰。</li>
+              <li>景觀餐廳（雲月舫等）建議提前預約。</li>
             </ul>
           </div>
 
           <div class="note-card reveal">
             <h4><span class="ic">☼</span>纜車與遊湖</h4>
             <ul>
-              <li><b>纜車</b>假日約 10:00–16:30、售票至 16:00，留意末班；每月第一個週三保養（9/26 非該日，可安心搭）。</li>
+              <li><b>纜車</b>假日約 10:00–16:30、售票至 16:00，留意末班時間；每月第一個週三保養（9/26 非該日，可安心搭）。</li>
               <li><b>雷雨停駛</b>：山區午後常有雷陣雨，有雷擊疑慮時纜車會暫停，行程要留彈性。</li>
               <li><b>船票</b>為一日券、三碼頭不限次數；登船前 10 分鐘報到劃位。</li>
-            </ul>
-          </div>
-
-          <div class="note-card reveal">
-            <h4><span class="ic">☕</span>咖啡廳</h4>
-            <ul>
-              <li><b>蠻荒咖啡</b>（台灣好行中明站可達）、<b>伊達邵遊客中心 2F</b>（步行可達、湖景）最適合無車版。</li>
-              <li><b>鹿篙咖啡莊園</b>位置偏遠，需包車或計程車；想去要先排好交通。</li>
-              <li>名店多無訂位、需現場候位，連假請預留等待時間。</li>
             </ul>
           </div>
 
@@ -932,7 +761,7 @@
             <h4><span class="ic">☂</span>天氣與穿著</h4>
             <ul>
               <li>九月底日夜溫差大、湖邊與纜車上有風，<b>帶薄外套</b>。</li>
-              <li>午後雷陣雨機率高，<b>帶輕便雨具</b>；步道與碼頭注意路面濕滑。</li>
+              <li>午後雷陣雨機率高，<b>帶輕便雨具</b>；騎車、步道注意路面濕滑。</li>
               <li>白天日照仍強，防曬、補水、防蚊液備齊。</li>
             </ul>
           </div>
@@ -940,17 +769,17 @@
           <div class="note-card reveal">
             <h4><span class="ic">☾</span>中秋當晚（9/25）</h4>
             <ul>
-              <li>賞月點：伊達邵碼頭、親水步道（步行可達）。</li>
+              <li>賞月點：伊達邵碼頭、親水步道、慈恩塔（夜間照明有限，帶手電筒）。</li>
               <li>當晚老街、碼頭人潮多，貴重物品留意、走道注意小孩與單車。</li>
             </ul>
           </div>
 
           <div class="note-card reveal">
-            <h4><span class="ic">✦</span>行李・付款・其他</h4>
+            <h4><span class="ic">✦</span>付款與其他</h4>
             <ul>
-              <li><b>行李</b>：Day 1 先到伊達邵民宿寄放（15:00 前），輕裝玩湖區。</li>
-              <li>備一張<b>悠遊卡／一卡通</b>搭巴士與捷運；船票與部分小吃<b>僅收現金</b>，先備零錢。</li>
-              <li>原宿旅店<b>不可攜帶寵物</b>；落羽松約 12 月才轉色，9 月底向山仍是綠意湖景。</li>
+              <li>碼頭船票、部分小吃<b>僅收現金</b>，先備足零錢。</li>
+              <li>原宿旅店<b>不可攜帶寵物</b>；安靜時段 22:00–08:00，入住請帶證件與信用卡。</li>
+              <li>落羽松要秋冬（約 12 月）才轉色，9 月底向山仍是綠意湖景，拍照走清新路線。</li>
             </ul>
           </div>
         </div>
@@ -962,10 +791,10 @@
   <footer>
     <div class="wrap">
       <h3>祝你與發發中秋愉快</h3>
-      <p>不用開車、不用找車位——搭高鐵與台灣好行，整路看風景、好好遊湖。</p>
+      <p>潭水如鏡、明月當空——這趟就好好吃、慢慢逛、輕鬆遊湖。</p>
       <p class="disc">
-        本行程資訊整理自公開來源，高鐵與台灣好行班次時刻、票價、保養日與營業時間可能變動，出發前請再以台灣高鐵、南投客運（台灣好行）與各景點官方網站及現場公告確認。<br>
-        資料整理日：2026/06/19
+        本行程資訊整理自公開來源，營業時間、票價、保養日與交通管制可能變動，出發前請再以各官方網站與現場公告確認。<br>
+        資料整理日：2026/06/18
       </p>
     </div>
   </footer>
