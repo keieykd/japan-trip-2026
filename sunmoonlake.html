@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<!--
+  檔案：sml-trip.html
+  用途：Eason 與 Fafa「自駕（清晨出發避塞車）」前往日月潭伊達邵「原宿旅店」之三天兩夜行程表
+  日期：2026/09/25（五）入住 ～ 2026/09/27（日）退房（適逢中秋＋教師節四天連假）
+  交通：自駕　南勢角 → 國道3 → 國道6 → 埔里 → 台21 → 日月潭水社 → 伊達邵
+  設計：沿用原莫蘭迪版型（低彩度配色、深色文字、邵族山林湖水與中秋滿月主題）
+  本次更新：交通改為自駕版（清晨出發避塞車、完整路線、替代道路、停車攻略、ETC/加油、連假交通管制）；
+            保留所有 Google Maps 地點連結與官方來源連結；移除九族；埔里安排於回程順遊
+  連結說明：
+    - 地點連結採 Google Maps 搜尋網址（https://www.google.com/maps/search/?api=1&query=地點名稱），點店名即可開啟地圖
+    - 來源連結指向高速公路即時路況、日月潭國家風景區、日月潭纜車等官方網站
+    - 所有外部連結皆以新分頁開啟（target=_blank）並加上 rel=noopener noreferrer 以維護安全性
+  說明：單一 HTML 檔，樣式與互動皆內嵌，可直接以瀏覽器開啟，亦適合手機閱讀
+-->
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日月潭・中秋三天兩夜｜自駕・清晨出發避塞車</title>
+
+  <!-- 以行內 script 為 <html> 加上 js 類別，作為漸進增強的判斷依據（無 JS 時內容仍完整可見） -->
+  <script>document.documentElement.classList.add("js");</script>
+
+  <!-- 字體：Noto Serif TC 作標題（典雅襯線），Noto Sans TC 作內文；於使用者瀏覽器載入，失敗時自動回退系統字體 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== 設計 Token：莫蘭迪色票（低彩度、帶灰調），文字採暖炭灰確保深色與高可讀性 ===== */
+    :root {
+      --bg: #E7E3DA;          /* 背景：暖灰米色 */
+      --surface: #F3F1EA;     /* 卡片表面：較淺米白 */
+      --surface-2: #EBE7DD;   /* 次表面：用於區塊交錯 */
+      --ink: #2B2A26;         /* 主要文字：暖炭灰（深色） */
+      --ink-soft: #56524A;    /* 次要文字：灰褐 */
+      --ink-faint: #837D71;   /* 輔助文字：淺灰褐 */
+      --sage: #7E8F7C;        /* 莫蘭迪鼠尾草綠：象徵山林 */
+      --sage-deep: #5C6E5A;   /* 深綠：標題與重點 */
+      --lake: #6E8893;        /* 莫蘭迪霧藍：象徵湖水 */
+      --lake-deep: #4E6671;   /* 深霧藍 */
+      --clay: #AC7E5C;        /* 莫蘭迪陶土色：邵族圖騰與中秋月 */
+      --clay-soft: #C7A684;   /* 淺陶土 */
+      --moon: #D9CBA6;        /* 月色：柔黃 */
+      --line: #CEC7B7;        /* 分隔線：灰米 */
+      --warn-bg: #E9D9C7;     /* 提醒區底色：淺陶土 */
+      --warn-edge: #AC7E5C;   /* 提醒區邊線 */
+      --shadow: 0 1px 2px rgba(43,42,38,.05), 0 8px 24px rgba(43,42,38,.06);
+      --radius: 14px;
+      --maxw: 880px;
+    }
+
+    /* ===== 基礎重置 ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+      font-weight: 400;
+      line-height: 1.75;
+      letter-spacing: .01em;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 {
+      font-family: "Noto Serif TC", "PingFang TC", serif;
+      color: var(--ink);
+      line-height: 1.3;
+      margin: 0;
+      font-weight: 700;
+    }
+    p { margin: 0; }
+    a { color: var(--lake-deep); text-underline-offset: 3px; }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--lake-deep);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ===== 地點連結（點店名開 Google Maps） ===== */
+    a.gmap {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: var(--clay-soft);
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 2px;
+      cursor: pointer;
+    }
+    a.gmap:hover { color: var(--clay); text-decoration-color: var(--clay); }
+    a.gmap::after { content: "⌖"; font-size: .72em; margin-left: 2px; color: var(--clay); vertical-align: top; }
+
+    /* ===== 來源連結（官方網站） ===== */
+    a.src { color: var(--lake-deep); font-size: .9em; text-decoration: underline; text-decoration-color: rgba(78,102,113,.4); text-underline-offset: 2px; }
+    a.src::after { content: " ↗"; font-size: .8em; color: var(--ink-faint); }
+    a.src:hover { text-decoration-color: var(--lake-deep); }
+
+    .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
+
+    /* ===== Hero：中秋滿月＋湖面地平線 ===== */
+    .hero { position: relative; overflow: hidden; padding: 86px 0 64px; background: linear-gradient(180deg, #DFE3DF 0%, #DDE0DD 38%, #D6DBD9 60%, #CBD2D0 100%); }
+    .hero::before { content: ""; position: absolute; top: 44px; right: 8%; width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle at 38% 38%, #F0E8CF 0%, var(--moon) 52%, #CDBC92 100%); box-shadow: 0 0 0 18px rgba(217,203,166,.18), 0 0 64px 14px rgba(217,203,166,.45); }
+    .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 92px; background: linear-gradient(180deg, rgba(110,136,147,.0) 0%, rgba(110,136,147,.30) 60%, rgba(78,102,113,.45) 100%); }
+    .hero .wrap { position: relative; z-index: 2; }
+
+    .eyebrow { font-size: 13px; letter-spacing: .42em; text-transform: uppercase; color: var(--clay); font-weight: 700; margin-bottom: 18px; }
+    .hero h1 { font-size: clamp(34px, 7vw, 60px); font-weight: 900; letter-spacing: .02em; color: #25332E; }
+    .hero h1 .sub { display: block; font-size: clamp(15px, 2.6vw, 19px); font-weight: 500; letter-spacing: .08em; color: var(--ink-soft); margin-top: 14px; }
+
+    .facts { display: flex; flex-wrap: wrap; gap: 14px 30px; margin-top: 30px; padding-top: 26px; border-top: 1px solid rgba(43,42,38,.16); }
+    .fact { min-width: 116px; }
+    .fact .k { font-size: 12px; letter-spacing: .18em; color: var(--ink-faint); text-transform: uppercase; }
+    .fact .v { font-size: 16px; font-weight: 500; color: var(--ink); margin-top: 4px; }
+    .fact .v small { color: var(--ink-soft); font-weight: 400; }
+
+    section { padding: 56px 0; }
+    .section-head { margin-bottom: 30px; }
+    .section-head .label { font-size: 12px; letter-spacing: .34em; text-transform: uppercase; color: var(--clay); font-weight: 700; }
+    .section-head h2 { font-size: clamp(24px, 4.4vw, 32px); margin-top: 10px; }
+    .section-head .lead { color: var(--ink-soft); margin-top: 12px; font-size: 15.5px; }
+
+    /* ===== 重點提醒框 ===== */
+    .alert { background: var(--warn-bg); border: 1px solid var(--warn-edge); border-left-width: 5px; border-radius: var(--radius); padding: 24px 24px 22px; box-shadow: var(--shadow); margin-bottom: 20px; }
+    .alert:last-child { margin-bottom: 0; }
+    .alert h3 { font-size: 19px; color: #6E4B2E; display: flex; align-items: center; gap: 10px; }
+    .alert h3 .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--warn-edge); flex: 0 0 auto; }
+    .alert p { color: #5A4632; margin-top: 12px; font-size: 15px; }
+    .alert .pill { display: inline-block; margin-top: 16px; background: #6E4B2E; color: #F3EDE4; font-weight: 700; font-size: 15px; padding: 9px 16px; border-radius: 999px; letter-spacing: .04em; }
+    .alert ul { margin: 14px 0 0; padding-left: 20px; color: #5A4632; font-size: 14.5px; }
+    .alert li { margin: 7px 0; }
+    .alert a.gmap { color: #6E4B2E; text-decoration-color: #C49A72; }
+    .alert a.gmap:hover { color: #4A3420; }
+    .alert a.src { color: #6E4B2E; }
+    .alert a.src::after { color: #8A6B4E; }
+
+    /* 路線小卡 */
+    .route { margin-top: 16px; background: rgba(243,237,228,.7); border: 1px solid rgba(172,126,92,.45); border-radius: 10px; padding: 12px 16px; color: #5A4632; font-size: 14.5px; line-height: 1.9; }
+    .route b { color: #6E4B2E; }
+
+    /* ===== 行程時間軸 ===== */
+    .day { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 30px 26px 12px; margin-bottom: 30px; box-shadow: var(--shadow); }
+    .day-head { display: flex; align-items: flex-start; gap: 18px; padding-bottom: 22px; border-bottom: 1px dashed var(--line); margin-bottom: 8px; }
+    .day-no { flex: 0 0 auto; width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: var(--sage-deep); color: #F2EFE6; font-family: "Noto Serif TC", serif; line-height: 1; text-align: center; }
+    .day-no .n { font-size: 24px; font-weight: 900; }
+    .day-no .t { font-size: 10px; letter-spacing: .2em; margin-top: 2px; opacity: .85; }
+    .day-title h3 { font-size: 21px; }
+    .day-title .date { color: var(--ink-faint); font-size: 14px; margin-top: 4px; letter-spacing: .04em; }
+    .day-title .focus { display: inline-block; margin-top: 12px; font-size: 13.5px; color: var(--lake-deep); background: rgba(110,136,147,.14); padding: 5px 12px; border-radius: 999px; }
+
+    .slot { position: relative; padding: 18px 0 18px 30px; border-bottom: 1px solid rgba(206,199,183,.55); }
+    .day .slot:last-of-type { border-bottom: none; }
+    .slot::before { content: ""; position: absolute; left: 5px; top: 26px; bottom: -1px; width: 2px; background: var(--line); }
+    .day .slot:last-of-type::before { bottom: auto; height: 0; }
+    .slot::after { content: ""; position: absolute; left: 0; top: 22px; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); border: 3px solid var(--clay); }
+    .slot .time { font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 14px; color: var(--clay); letter-spacing: .06em; }
+    .slot h4 { font-size: 18px; margin-top: 4px; }
+    .slot .desc { color: var(--ink-soft); font-size: 15px; margin-top: 8px; }
+
+    .alts { margin-top: 14px; background: var(--surface-2); border-radius: 10px; padding: 14px 16px; }
+    .alts .alts-label { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--sage-deep); font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .alts .alts-label::before { content: "↹"; font-size: 13px; color: var(--sage-deep); }
+    .alts ul { margin: 10px 0 0; padding: 0; list-style: none; }
+    .alts li { font-size: 14px; color: var(--ink); padding: 6px 0 6px 18px; position: relative; border-top: 1px dotted rgba(206,199,183,.7); }
+    .alts li:first-child { border-top: none; }
+    .alts li::before { content: ""; position: absolute; left: 2px; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); }
+    .alts li b { color: var(--ink); font-weight: 700; }
+    .alts li .meta { color: var(--ink-faint); font-size: 12.5px; }
+
+    .meal-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .12em; color: #6E4B2E; background: #E4D2BD; padding: 3px 9px; border-radius: 6px; margin-right: 8px; vertical-align: middle; }
+    .cafe-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .12em; color: #5A4632; background: #DCCBB5; padding: 3px 9px; border-radius: 6px; margin-right: 8px; vertical-align: middle; }
+    .move-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .12em; color: #2F4751; background: #CBD8DC; padding: 3px 9px; border-radius: 6px; margin-right: 8px; vertical-align: middle; }
+
+    /* ===== 注意事項卡片 ===== */
+    .notes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .note-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 18px; box-shadow: var(--shadow); }
+    .note-card h4 { font-size: 16.5px; color: var(--sage-deep); display: flex; align-items: center; gap: 9px; margin-bottom: 10px; }
+    .note-card h4 .ic { width: 26px; height: 26px; border-radius: 7px; background: rgba(126,143,124,.18); display: grid; place-items: center; font-size: 14px; color: var(--sage-deep); }
+    .note-card ul { margin: 0; padding-left: 18px; }
+    .note-card li { font-size: 14px; color: var(--ink-soft); margin: 7px 0; }
+    .note-card li b { color: var(--ink); }
+    .note-card.sources { grid-column: 1 / -1; }
+    .note-card.sources ul { list-style: none; padding-left: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 24px; }
+    .note-card.sources li { margin: 5px 0; }
+
+    .legend { display: flex; flex-wrap: wrap; gap: 16px 26px; font-size: 13px; color: var(--ink-soft); margin-top: 8px; }
+    .legend span { display: inline-flex; align-items: center; gap: 8px; }
+    .legend .sw { width: 14px; height: 14px; border-radius: 50%; flex: 0 0 auto; }
+
+    footer { background: var(--sage-deep); color: #E9E6DB; padding: 40px 0 46px; margin-top: 30px; }
+    footer .wrap { text-align: center; }
+    footer h3 { color: #F2EFE6; font-size: 20px; }
+    footer p { color: #CBD2C2; font-size: 14px; margin-top: 12px; }
+    footer .disc { color: #A9B3A2; font-size: 12px; margin-top: 20px; line-height: 1.7; }
+
+    .js .reveal { opacity: 0; transform: translateY(18px); }
+    .js .reveal.in { opacity: 1; transform: none; transition: opacity .7s ease, transform .7s ease; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .js .reveal { opacity: 1; transform: none; }
+      .js .reveal.in { transition: none; }
+    }
+
+    @media (max-width: 720px) {
+      .notes-grid { grid-template-columns: 1fr; }
+      .note-card.sources ul { grid-template-columns: 1fr; }
+      .hero { padding: 64px 0 52px; }
+      .hero::before { width: 104px; height: 104px; top: 36px; right: 7%; }
+      section { padding: 44px 0; }
+      .day { padding: 24px 18px 8px; }
+      .day-head { gap: 14px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============ Hero ============ -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow reveal">Sun Moon Lake · Mid-Autumn</div>
+      <h1 class="reveal">
+        月映日月潭
+        <span class="sub">伊達邵・原宿旅店　三天兩夜　／　自駕・清晨出發避塞車</span>
+      </h1>
+
+      <div class="facts reveal">
+        <div class="fact"><div class="k">入住</div><div class="v">9/25（五）<small> 15:00 後</small></div></div>
+        <div class="fact"><div class="k">退房</div><div class="v">9/27（日）<small> 11:00 前</small></div></div>
+        <div class="fact"><div class="k">住宿</div><div class="v"><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=原宿旅店+日月潭伊達邵" target="_blank" rel="noopener noreferrer">原宿旅店</a></div></div>
+        <div class="fact"><div class="k">交通</div><div class="v">自駕<small>（住客免費停車）</small></div></div>
+        <div class="fact"><div class="k">行程主題</div><div class="v">在地美食 × 遊湖 × 咖啡</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ 出發策略 × 路線 × 停車 ============ -->
+    <section style="background: var(--surface-2);">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="label">Before you go</div>
+          <h2>出發策略・路線・停車（自駕版）</h2>
+          <p class="lead">9/25～9/28 為中秋＋教師節四天連假，日月潭與國道6號往埔里是出名的塞點。發發能早起，就用「清晨出發」這招把人車潮整個甩開——這是開車最強的玩法。</p>
+        </div>
+
+        <!-- 提醒框 1：清晨出發避塞車 -->
+        <div class="alert reveal">
+          <h3><span class="dot"></span>建議 04:30 起床、05:00 出發（連假首日清晨最順）</h3>
+          <p>連假首日（週五）國道3、國道6 清晨 5–6 點前最順，<b>約 7 點後國6往埔里段開始明顯回堵</b>。05:00 出發約 06:45–07:15 抵埔里、07:45 前進日月潭，完全避開車潮，而且 10 點前到景點停車最好停。</p>
+          <div class="route">
+            <b>主線</b>：<a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=捷運南勢角站" target="_blank" rel="noopener noreferrer">南勢角</a> → 國道3 南下 → 霧峰系統接 <b>國道6</b> → <a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=國道6號愛蘭交流道" target="_blank" rel="noopener noreferrer">愛蘭交流道（埔里）</a> 下 → 台14 / 台21 → <a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=日月潭水社遊客中心" target="_blank" rel="noopener noreferrer">日月潭水社</a> → <a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=伊達邵碼頭" target="_blank" rel="noopener noreferrer">伊達邵</a>（全程約 200 公里、清晨車程約 2.5–3 小時）
+          </div>
+          <span class="pill">回程（9/27 日）下午北上易塞，建議 14:00–15:00 前離開，或刻意延到晚間離峰</span>
+          <ul>
+            <li><b>替代路線</b>：若 <a class="src" href="https://1968.freeway.gov.tw/" target="_blank" rel="noopener noreferrer">國6 即時路況</a> 已塞，改國道3 下名間／竹山，走台3 → 台16 → 水里 → 台21 從南側進日月潭。</li>
+            <li><b>休息點</b>：國道6 <a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=國姓服務區" target="_blank" rel="noopener noreferrer">國姓服務區</a>（上洗手間、補咖啡）。</li>
+            <li><b>ETC／加油</b>：國道3、國道6 皆為 eTag 計程電子收費，確認餘額；山區加油站少，出發前加滿、埔里與魚池有加油站。</li>
+            <li><b>出發前一晚備妥</b>：行李、加滿油、ETC 餘額、手機離線地圖、保溫瓶。</li>
+          </ul>
+        </div>
+
+        <!-- 提醒框 2：連假停車攻略 -->
+        <div class="alert reveal">
+          <h3><span class="dot"></span>連假停車攻略：早到 × 停大場 × 走路／搭船</h3>
+          <p>伊達邵連假車位極搶手，老街內為<b>行人徒步／管制區</b>，外車請勿駛入。掌握「早到、停大停車場、車停民宿後步行或搭船」三原則就順。</p>
+          <ul>
+            <li><b>住宿期間</b>：車停 <a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=原宿旅店+日月潭伊達邵" target="_blank" rel="noopener noreferrer">原宿旅店</a>（住客免費停車，以民宿提供為準），之後步行逛伊達邵、搭船或纜車遊湖，不用一直找車位。</li>
+            <li><b>白天景點停車</b>：上午 10 點前抵達最好停。<a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=向山遊客中心停車場" target="_blank" rel="noopener noreferrer">向山遊客中心</a>（免費停車）、<a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=水社中興停車場" target="_blank" rel="noopener noreferrer">水社中興停車場</a>、<a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=日月潭纜車站停車場" target="_blank" rel="noopener noreferrer">日月潭纜車站停車場</a>（約 381 席，沿步道 10 餘分到伊達邵）。</li>
+            <li><b>車位客滿時</b>：日管處常於纜車站分流，引導停纜車站或水社大山停車場，再步行進風景區。</li>
+            <li><b>連假交通管制</b>：環潭部分路段常禁臨停、水社與伊達邵劃徒步區（過往連假台21線特定路段日間禁路邊停車），出發前查 <a class="src" href="https://www.sunmoonlake.gov.tw/" target="_blank" rel="noopener noreferrer">日月潭國家風景區管理處</a> 公告。</li>
+            <li><b>找車位 App</b>：Google Maps 搜「附近停車場」、停車大聲公看即時車位。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 行程主體 ============ -->
+    <section>
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="label">Itinerary</div>
+          <h2>三天行程（自駕完整版・每站皆附替代方案）</h2>
+          <p class="lead">清晨抵達的最大優勢，就是趁人潮未到、好停車時把環湖那些開車才方便到的點先收進口袋。<b>點任何店名／地標即可開啟 Google 地圖</b>。埔里安排在回程順遊。</p>
+          <div class="legend">
+            <span><i class="sw" style="background:var(--clay)"></i>主行程節點</span>
+            <span><i class="sw" style="background:var(--sage)"></i>替代／加碼</span>
+            <span><i class="sw" style="background:#E4D2BD"></i>用餐</span>
+            <span><i class="sw" style="background:#DCCBB5"></i>咖啡</span>
+            <span><i class="sw" style="background:#CBD8DC"></i>交通／停車</span>
+          </div>
+        </div>
+
+        <!-- ===== Day 1 ===== -->
+        <article class="day reveal">
+          <div class="day-head">
+            <div class="day-no"><div class="n">1</div><div class="t">DAY</div></div>
+            <div class="day-title">
+              <h3>清晨衝湖・環湖名點・賞月</h3>
+              <div class="date">9/25（五）・中秋當晚</div>
+              <span class="focus">重點：05:00 出發 → 趁早玩向山／水社／文武廟／慈恩塔 → 午餐 → 進伊達邵入住 → 夕陽 → 賞月</span>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">05:00</div>
+            <h4><span class="move-tag">自駕</span><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=捷運南勢角站" target="_blank" rel="noopener noreferrer">南勢角</a>出發 → 國道3 → 國道6 → <a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=日月潭" target="_blank" rel="noopener noreferrer">日月潭</a></h4>
+            <p class="desc">清晨上路、避開車潮。途中於 <a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=國姓服務區" target="_blank" rel="noopener noreferrer">國姓服務區</a> 稍作休息。出發前看一眼 <a class="src" href="https://1968.freeway.gov.tw/" target="_blank" rel="noopener noreferrer">高速公路即時路況</a>。</p>
+            <div class="alts">
+              <div class="alts-label">路線選擇</div>
+              <ul>
+                <li><b>主線</b>：國6 → 愛蘭交流道 → 台21 進水社（最快）。</li>
+                <li><b>替代</b>：國6 若塞 → 國3 下名間／竹山 → 台3／台16 → 水里 → 台21 南側進湖。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">07:00 – 07:30</div>
+            <h4><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=埔里" target="_blank" rel="noopener noreferrer">埔里</a>（快速早餐／加油／洗手間）</h4>
+            <p class="desc">在地小吃名店多在中午前後才開，清晨先以早餐店或便利商店墊胃、加滿油，埔里美食留到回程慢慢吃。</p>
+            <div class="alts">
+              <div class="alts-label">其他選擇</div>
+              <ul>
+                <li><b>直接進日月潭</b>：到水社商圈或民宿周邊吃早餐，搶最早的好停車時段。</li>
+                <li><b>車上簡單吃</b>：前一晚備好麵包咖啡，把時間花在湖邊。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">07:45 – 09:30</div>
+            <h4><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=向山遊客中心" target="_blank" rel="noopener noreferrer">向山遊客中心</a> + <a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=水社壩" target="_blank" rel="noopener noreferrer">水社壩</a></h4>
+            <p class="desc">清晨第一站。向山由日本建築師團紀彥設計的清水模建築，無邊際水池與懸臂觀景台是必拍，<b>附免費停車場、此時最好停</b>。接著到水社壩看開闊湖景、走涵碧步道。</p>
+            <div class="alts">
+              <div class="alts-label">其他選擇</div>
+              <ul>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=向山自行車道" target="_blank" rel="noopener noreferrer">向山自行車道</a></b>：租電輔車騎全球十大最美車道（約 3.4 公里、跨湖水上車道）。</li>
+                <li><span class="cafe-tag">咖啡</span><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=向山遊客中心+惠蓀咖啡" target="_blank" rel="noopener noreferrer">向山・惠蓀咖啡</a></b>：落地窗看湖，喝杯晨間咖啡。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=貓囒山步道+日月潭" target="_blank" rel="noopener noreferrer">貓囒山步道</a></b>：想看茶園日出可再更早起一趟。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">09:30 – 11:30</div>
+            <h4><span class="move-tag">開車環湖</span><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=日月潭文武廟" target="_blank" rel="noopener noreferrer">文武廟</a> → <a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=慈恩塔+日月潭" target="_blank" rel="noopener noreferrer">慈恩塔</a></h4>
+            <p class="desc">趁人潮未滿、開車最方便時把環湖大點收掉。文武廟是北方宮殿式建築、後殿眺湖；慈恩塔居高俯瞰拉魯島、玄光寺與涵碧半島，皆有停車場。</p>
+            <div class="alts">
+              <div class="alts-label">其他選擇</div>
+              <ul>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=玄光寺+日月潭" target="_blank" rel="noopener noreferrer">玄光寺</a> / <a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=玄奘寺+日月潭" target="_blank" rel="noopener noreferrer">玄奘寺</a></b>：阿婆茶葉蛋、青龍山步道。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=水蛙頭步道+日月潭" target="_blank" rel="noopener noreferrer">水蛙頭</a>、<a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=松柏崙步道+日月潭" target="_blank" rel="noopener noreferrer">松柏崙步道</a></b>：環潭小步道，停車快走。</li>
+                <li><b>留到 Day 2</b>：若想悠閒，環湖點可分散到第二天，今天早點進伊達邵休息。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">11:30 – 13:00</div>
+            <h4><span class="meal-tag">午餐</span>水社商圈 或 進伊達邵</h4>
+            <p class="desc">看你環湖到哪，在水社或回伊達邵用餐皆可。想吃好坐下來吃，推薦邵族合菜。</p>
+            <div class="alts">
+              <div class="alts-label">餐廳選擇</div>
+              <ul>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=麓司岸+日月潭伊達邵" target="_blank" rel="noopener noreferrer">麓司岸 Lusihan</a></b>：邵族主廚、招牌飯飯雞翅、竹筒飯、百菇湯，Google 約 4.5★。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=春華飯店+日月潭伊達邵" target="_blank" rel="noopener noreferrer">春華飯店</a></b>：在地 40 年合菜，清蒸總統魚、岩烤山豬肉。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=雲品溫泉酒店+日月潭" target="_blank" rel="noopener noreferrer">雲品酒店「雲月舫」</a></b>：270 度湖景景觀餐廳（價位較高、建議訂位）。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">13:00 – 15:00</div>
+            <h4>進伊達邵・車停民宿・湖區慢遊</h4>
+            <p class="desc">把車開進 <a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=原宿旅店+日月潭伊達邵" target="_blank" rel="noopener noreferrer">原宿旅店</a> 停好（住客免費），先寄放行李，之後全程步行。下午太陽大時，躲進湖景咖啡或搭纜車賞景。</p>
+            <div class="alts">
+              <div class="alts-label">其他選擇</div>
+              <ul>
+                <li><span class="move-tag">纜車</span><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=日月潭纜車站" target="_blank" rel="noopener noreferrer">日月潭纜車</a></b>：步行約 10 分，米其林三星級湖景。<a class="src" href="https://www.ropeway.com.tw/" target="_blank" rel="noopener noreferrer">官網</a></li>
+                <li><span class="cafe-tag">咖啡</span><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=伊達邵遊客中心" target="_blank" rel="noopener noreferrer">伊達邵遊客中心 2F 咖啡</a></b>：直面湖景、半露天，步行可達。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=逐鹿市集+伊達邵" target="_blank" rel="noopener noreferrer">逐鹿市集</a></b>：邵族歌舞表演、紀念品。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">15:00</div>
+            <h4>正式入住・休息</h4>
+            <p class="desc">15:00 後正式入住、梳洗，傍晚再出門看夕陽。民宿不可攜帶寵物；入住帶證件與信用卡。</p>
+          </div>
+
+          <div class="slot">
+            <div class="time">16:30 – 18:00</div>
+            <h4><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=伊達邵碼頭" target="_blank" rel="noopener noreferrer">伊達邵碼頭</a>夕陽・老街散步</h4>
+            <p class="desc">伊達邵碼頭是看夕陽最浪漫的點之一，黃昏木棧道灑滿金光、遊艇靜泊，畫面像明信片。</p>
+            <div class="alts">
+              <div class="alts-label">邊逛邊吃</div>
+              <ul>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=杜啦白鰻棍+伊達邵" target="_blank" rel="noopener noreferrer">杜啦白鰻棍</a></b>（烤小米麻糬，煉乳人氣）、<b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=東東刈包+伊達邵" target="_blank" rel="noopener noreferrer">東東豆干刈包</a></b>、<b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=劉山哥石板烤肉+伊達邵" target="_blank" rel="noopener noreferrer">劉山哥馬告山豬肉</a></b>。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=年記做不復賣香菇高麗菜包+日月潭" target="_blank" rel="noopener noreferrer">年記香菇高麗菜包</a></b>、<b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=劉家總統魚羹+伊達邵" target="_blank" rel="noopener noreferrer">劉家總統魚羹</a></b>：邊走邊吃。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">18:00 – 19:30</div>
+            <h4><span class="meal-tag">晚餐</span>伊達邵・坐下來好好吃</h4>
+            <p class="desc">老街店家多在 20:00 前後打烊，連假務必提早或先訂位。和午餐錯開口味。</p>
+            <div class="alts">
+              <div class="alts-label">餐廳選擇</div>
+              <ul>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=潭鮮美食料理+日月潭" target="_blank" rel="noopener noreferrer">潭鮮美食料理</a></b>：總統魚、鹿肉、鹹酥潭蝦，平實。<span class="meta">明德街32-1號</span></li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=支臘小館+日月潭" target="_blank" rel="noopener noreferrer">支臘小館</a></b>：奇力魚、總統魚（7-11 伊達邵店隔壁）。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=邵族頭目袁家美食+伊達邵" target="_blank" rel="noopener noreferrer">邵族頭目袁家美食</a></b>：山羌肉、甘蔗筍、竹筒飯。<span class="meta">週三公休</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">19:30 起</div>
+            <h4>中秋賞月・伊達邵碼頭</h4>
+            <p class="desc">9/25 為中秋當晚。湖面開闊、光害低，碼頭與親水步道就是現成賞月點，邊散步邊吃宵夜收尾。</p>
+            <div class="alts">
+              <div class="alts-label">賞月選擇</div>
+              <ul>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=伊達邵碼頭" target="_blank" rel="noopener noreferrer">伊達邵碼頭</a>、<a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=伊達邵親水步道" target="_blank" rel="noopener noreferrer">親水步道</a></b>：步行可達、最方便。</li>
+                <li><b>民宿頂樓／戶外區</b>：如有，安靜看月最舒服。</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- ===== Day 2 ===== -->
+        <article class="day reveal">
+          <div class="day-head">
+            <div class="day-no"><div class="n">2</div><div class="t">DAY</div></div>
+            <div class="day-title">
+              <h3>遊湖整日・湖光山色・咖啡</h3>
+              <div class="date">9/26（六）</div>
+              <span class="focus">重點：遊湖船 → 午餐 → 纜車或開車訪茶廠咖啡 → 傍晚晚餐</span>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">07:00 – 08:30</div>
+            <h4>（選配）晨景・茶園日出</h4>
+            <p class="desc">想看晨霧與茶園日出可早起一趟；想補眠就睡飽、民宿悠閒早餐。</p>
+            <div class="alts">
+              <div class="alts-label">其他選擇</div>
+              <ul>
+                <li><b>民宿早餐＋睡飽</b>：把精神留給整天遊湖（推薦）。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=貓囒山步道+日月潭" target="_blank" rel="noopener noreferrer">貓囒山步道</a></b>：茶園與晨景，車程約 10 分＋步行。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=伊達邵親水步道" target="_blank" rel="noopener noreferrer">伊達邵親水步道</a>晨走</b>：人少、光線柔和。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">09:30 – 12:00</div>
+            <h4><span class="move-tag">遊湖船</span><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=伊達邵碼頭" target="_blank" rel="noopener noreferrer">伊達邵</a> → <a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=玄光寺+日月潭" target="_blank" rel="noopener noreferrer">玄光寺</a> → <a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=水社碼頭" target="_blank" rel="noopener noreferrer">水社</a></h4>
+            <p class="desc">車停民宿、輕鬆搭船遊湖。船票一日內三碼頭不限次數上下船。玄光寺站務必下船吃一顆香菇茶葉蛋、走青龍山步道。<a class="src" href="https://www.sunmoonlake.gov.tw/" target="_blank" rel="noopener noreferrer">日月潭官方旅遊網</a></p>
+            <div class="alts">
+              <div class="alts-label">玩法與替代</div>
+              <ul>
+                <li><b>純遊湖放空</b>：不下船繞一圈約 50–70 分鐘。</li>
+                <li><b>玄光寺＋<a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=玄奘寺+日月潭" target="_blank" rel="noopener noreferrer">玄奘寺</a></b>：青龍山步道續走上玄奘寺。</li>
+                <li><b>水社碼頭</b>：水社商圈、涵碧步道散步。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">12:00 – 13:30</div>
+            <h4><span class="meal-tag">午餐</span>水社或伊達邵商圈</h4>
+            <p class="desc">依遊湖節奏在水社或回伊達邵用餐皆可。</p>
+            <div class="alts">
+              <div class="alts-label">選擇</div>
+              <ul>
+                <li><b>伊達邵小吃巡禮</b>：<a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=劉家總統魚羹+伊達邵" target="_blank" rel="noopener noreferrer">劉家總統魚羹</a>、飯飯雞翅，邊走邊吃。</li>
+                <li><b>水社商圈</b>：簡餐、紅茶冰品。</li>
+                <li><b>第一天沒吃到的合菜</b>：麓司岸／春華擇一。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">13:30 – 15:30</div>
+            <h4><span class="move-tag">纜車或開車</span>下午主線（擇一）</h4>
+            <p class="desc">看想悠閒還是想跑點，兩條擇一。</p>
+            <div class="alts">
+              <div class="alts-label">主線 A・纜車＋伊達邵（步行）</div>
+              <ul>
+                <li><span class="move-tag">纜車</span><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=日月潭纜車站" target="_blank" rel="noopener noreferrer">日月潭纜車</a></b>：伊達邵端來回賞景，連假發號碼牌、早點到。</li>
+                <li><span class="cafe-tag">咖啡</span><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=伊達邵遊客中心" target="_blank" rel="noopener noreferrer">伊達邵遊客中心 2F</a></b>：湖景咖啡收尾。</li>
+              </ul>
+            </div>
+            <div class="alts">
+              <div class="alts-label">主線 B・開車訪茶廠與咖啡</div>
+              <ul>
+                <li><span class="cafe-tag">咖啡</span><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=蠻荒咖啡+日月潭魚池" target="_blank" rel="noopener noreferrer">蠻荒咖啡 Desolate Coffee</a></b>：純白木造玻璃屋、IG 名店（無訂位需候位）。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=鹿篙咖啡莊園+魚池" target="_blank" rel="noopener noreferrer">鹿篙咖啡莊園</a></b>：山間茶園秘境、在地咖啡與紅茶、乳酪燒（開車才方便）。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=HOHOCHA喝喝茶+魚池" target="_blank" rel="noopener noreferrer">Hohocha 喝喝茶</a></b>：紅茶廠，奉茶＋紅玉茶葉蛋、DIY。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=日月老茶廠+魚池" target="_blank" rel="noopener noreferrer">日月老茶廠</a></b>：老建築與紅茶體驗。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">18:00 – 19:30</div>
+            <h4><span class="meal-tag">晚餐</span>第二晚・換家吃</h4>
+            <p class="desc">把口袋名單沒吃到的補完。</p>
+            <div class="alts">
+              <div class="alts-label">餐廳選擇</div>
+              <ul>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=麓司岸+日月潭伊達邵" target="_blank" rel="noopener noreferrer">麓司岸</a>／<a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=春華飯店+日月潭伊達邵" target="_blank" rel="noopener noreferrer">春華</a>／<a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=潭鮮美食料理+日月潭" target="_blank" rel="noopener noreferrer">潭鮮</a></b>：邵族合菜。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=劉山哥石板烤肉+伊達邵" target="_blank" rel="noopener noreferrer">劉山哥石板烤肉</a></b>：馬告山豬肉＋香腸。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=蒸開心複合式餐飲+日月潭" target="_blank" rel="noopener noreferrer">蒸開心複合式餐飲</a></b>：手工蔥肉絲瓜湯包。<span class="meta">週二、三公休</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">19:30 起</div>
+            <h4>（選配）老街夜晚・碼頭散步</h4>
+            <p class="desc">逛逛沒收攤的小吃、買隔天車上吃的伴手禮，碼頭吹風看夜景收尾。</p>
+          </div>
+        </article>
+
+        <!-- ===== Day 3 ===== -->
+        <article class="day reveal">
+          <div class="day-head">
+            <div class="day-no"><div class="n">3</div><div class="t">DAY</div></div>
+            <div class="day-title">
+              <h3>晨景・退房・埔里順遊・北返</h3>
+              <div class="date">9/27（日）</div>
+              <span class="focus">重點：晨間輕鬆 → 11:00 退房 → 埔里午餐＋咖啡＋伴手禮 → 早點北返避塞</span>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">07:30 – 10:30</div>
+            <h4>退房前的輕鬆晨間</h4>
+            <p class="desc">退房前挑一個近、輕鬆的點，留時間整理行李、裝車。</p>
+            <div class="alts">
+              <div class="alts-label">選擇</div>
+              <ul>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=伊達邵親水步道" target="_blank" rel="noopener noreferrer">伊達邵親水步道</a>晨走</b>：人少、湖面平靜，補拍美照。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=日月潭纜車站" target="_blank" rel="noopener noreferrer">纜車</a>補搭</b>：前一天沒搭就趁早。</li>
+                <li><b>民宿慢早餐</b>：純放鬆收尾。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">11:00</div>
+            <h4>退房・裝車出發</h4>
+            <p class="desc">11:00 前退房、結清，把握早點上路銜接埔里午餐並避開回程尖峰。</p>
+          </div>
+
+          <div class="slot">
+            <div class="time">11:40 – 14:00</div>
+            <h4><span class="meal-tag">午餐</span><span class="cafe-tag">咖啡</span><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=埔里" target="_blank" rel="noopener noreferrer">埔里</a>順遊・吃午餐喝咖啡買伴手禮</h4>
+            <p class="desc">回程經埔里，順道吃午餐、喝咖啡、買伴手禮，開車最方便停。</p>
+            <div class="alts">
+              <div class="alts-label">午餐選擇</div>
+              <ul>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=蘇媽媽湯圓+埔里" target="_blank" rel="noopener noreferrer">蘇媽媽湯圓</a></b>：招牌鹹湯圓、肉燥飯。<span class="meta">中山路三段118號／週三公休</span></li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=振松記米粉+埔里" target="_blank" rel="noopener noreferrer">振松記米粉</a></b>：芋頭米粉湯、紹興醉雞。<span class="meta">中山路三段215號／週三公休</span></li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=橫濱拉麵+埔里" target="_blank" rel="noopener noreferrer">橫濱拉麵</a></b>：日式豚骨，有停車場。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=胡國雄古早麵+埔里" target="_blank" rel="noopener noreferrer">胡國雄古早麵</a></b>：90 年擔仔麵老店。<span class="meta">仁愛路319號</span></li>
+              </ul>
+            </div>
+            <div class="alts">
+              <div class="alts-label">咖啡／景點／伴手禮</div>
+              <ul>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=台灣惠蓀咖啡+埔里" target="_blank" rel="noopener noreferrer">台灣惠蓀咖啡品牌館</a></b>：埔里中山路四段395號，09:00–18:00。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=18度C巧克力工房+埔里" target="_blank" rel="noopener noreferrer">18度C巧克力工房</a></b>：生吐司、冰淇淋、免費奉茶，好停車、買伴手禮。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=妮娜巧克力夢想城堡+埔里" target="_blank" rel="noopener noreferrer">妮娜巧克力夢想城堡</a></b>：歐式城堡拍照（連假人多）。</li>
+                <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=紙教堂+埔里桃米" target="_blank" rel="noopener noreferrer">桃米紙教堂</a></b>：人文景點散步。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="slot">
+            <div class="time">14:00 起</div>
+            <h4><span class="move-tag">自駕</span>國道6 → 國道3 北返 <a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=捷運南勢角站" target="_blank" rel="noopener noreferrer">南勢角</a></h4>
+            <p class="desc">出發前再看一次 <a class="src" href="https://1968.freeway.gov.tw/" target="_blank" rel="noopener noreferrer">即時路況</a>。連假下午北上易塞，能早走就早走；若預期傍晚嚴重，可在埔里多待、延到晚間離峰再北返。</p>
+            <div class="alts">
+              <div class="alts-label">回程提醒</div>
+              <ul>
+                <li>參考「高速公路1968」App 與高公局即時路況，必要時改走替代道路（台14 / 國3 名間端）。</li>
+                <li>連假尾聲（9/28 一）北上最塞，9/27 提早返程通常較順。</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 全面注意事項 ============ -->
+    <section style="background: var(--surface-2);">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="label">Good to know</div>
+          <h2>注意事項（全面）</h2>
+          <p class="lead">連假自駕，事前把出發時間、路線、停車與訂位排好，現場最省心。以下逐項提醒，並附官方來源連結。</p>
+        </div>
+
+        <div class="notes-grid">
+          <div class="note-card reveal">
+            <h4><span class="ic">⛟</span>開車與路線</h4>
+            <ul>
+              <li><b>清晨出發</b>：05:00 前上路最順，避開國6往埔里的回堵。</li>
+              <li><b>替代路線</b>：國6 塞時改國3 名間／竹山 → 台3／台16 → 水里 → 台21 南側進湖。</li>
+              <li><b>ETC／加油</b>：國3、國6 eTag 計程收費，先確認餘額；出發前加滿油，山區加油站少。</li>
+            </ul>
+          </div>
+
+          <div class="note-card reveal">
+            <h4><span class="ic">P</span>停車攻略</h4>
+            <ul>
+              <li><b>住宿車停民宿</b>：<a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=原宿旅店+日月潭伊達邵" target="_blank" rel="noopener noreferrer">原宿旅店</a> 住客免費停車，之後步行或搭船遊湖。</li>
+              <li><b>白天景點</b>：上午 10 點前最好停；<a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=向山遊客中心停車場" target="_blank" rel="noopener noreferrer">向山</a>（免費）、<a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=日月潭纜車站停車場" target="_blank" rel="noopener noreferrer">纜車站</a>（約 381 席）。</li>
+              <li><b>老街徒步區</b>：外車勿駛入，導航「纜車站」步行進伊達邵。</li>
+            </ul>
+          </div>
+
+          <div class="note-card reveal">
+            <h4><span class="ic">⚐</span>連假交通管制</h4>
+            <ul>
+              <li>環潭部分路段常<b>禁臨停</b>、水社與伊達邵<b>劃徒步區</b>，車位客滿時於纜車站分流。</li>
+              <li>出發前查 <a class="src" href="https://www.sunmoonlake.gov.tw/" target="_blank" rel="noopener noreferrer">日月潭國家風景區管理處</a> 與當地警分局公告。</li>
+              <li>用 <a class="src" href="https://1968.freeway.gov.tw/" target="_blank" rel="noopener noreferrer">高速公路1968</a> 看國道即時路況。</li>
+            </ul>
+          </div>
+
+          <div class="note-card reveal">
+            <h4><span class="ic">☼</span>纜車與遊湖</h4>
+            <ul>
+              <li><b><a class="src" href="https://www.ropeway.com.tw/" target="_blank" rel="noopener noreferrer">纜車</a></b>假日約 10:00–16:30、售票至 16:00，留意末班；每月第一個週三保養（9/26 非該日，可安心搭）。</li>
+              <li><b>雷雨停駛</b>：山區午後常有雷陣雨，有雷擊疑慮時纜車會暫停，行程要留彈性。</li>
+              <li><b>船票</b>三碼頭不限次數；登船前 10 分鐘報到劃位。</li>
+            </ul>
+          </div>
+
+          <div class="note-card reveal">
+            <h4><span class="ic">☕</span>咖啡廳</h4>
+            <ul>
+              <li>開車版可放心安排 <b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=蠻荒咖啡+日月潭魚池" target="_blank" rel="noopener noreferrer">蠻荒咖啡</a></b>、<b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=鹿篙咖啡莊園+魚池" target="_blank" rel="noopener noreferrer">鹿篙咖啡莊園</a></b> 等山間咖啡。</li>
+              <li><b><a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=伊達邵遊客中心" target="_blank" rel="noopener noreferrer">伊達邵遊客中心 2F</a></b> 步行可達、湖景佳。</li>
+              <li>名店多無訂位、需現場候位，連假請預留等待時間。</li>
+            </ul>
+          </div>
+
+          <div class="note-card reveal">
+            <h4><span class="ic">☂</span>天氣與穿著</h4>
+            <ul>
+              <li>九月底日夜溫差大、湖邊與纜車上有風，<b>帶薄外套</b>。</li>
+              <li>午後雷陣雨機率高，<b>帶輕便雨具</b>；步道與碼頭注意路面濕滑。</li>
+              <li>白天日照仍強，防曬、補水、防蚊液備齊。</li>
+            </ul>
+          </div>
+
+          <div class="note-card reveal">
+            <h4><span class="ic">☾</span>中秋當晚（9/25）＋訂位</h4>
+            <ul>
+              <li>賞月點：<a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=伊達邵碼頭" target="_blank" rel="noopener noreferrer">伊達邵碼頭</a>、<a class="gmap" href="https://www.google.com/maps/search/?api=1&amp;query=伊達邵親水步道" target="_blank" rel="noopener noreferrer">親水步道</a>。</li>
+              <li><b>晚餐務必訂位</b>或提早入座；伊達邵店家多 20:00 前後打烊。</li>
+              <li>當晚人潮多，貴重物品留意、走道注意小孩與單車。</li>
+            </ul>
+          </div>
+
+          <div class="note-card reveal">
+            <h4><span class="ic">✦</span>付款・其他</h4>
+            <ul>
+              <li>船票與部分小吃<b>僅收現金</b>，先備零錢；纜車、停車多可刷卡或電子支付。</li>
+              <li>原宿旅店<b>不可攜帶寵物</b>；安靜時段 22:00–08:00，入住帶證件與信用卡。</li>
+              <li>落羽松約 12 月才轉色，9 月底向山仍是綠意湖景。</li>
+            </ul>
+          </div>
+
+          <!-- 資料來源卡 -->
+          <div class="note-card sources reveal">
+            <h4><span class="ic">⛓</span>資料來源（官方網站）</h4>
+            <ul>
+              <li><a class="src" href="https://1968.freeway.gov.tw/" target="_blank" rel="noopener noreferrer">高速公路1968・國道即時路況</a></li>
+              <li><a class="src" href="https://www.sunmoonlake.gov.tw/" target="_blank" rel="noopener noreferrer">日月潭國家風景區（景點／交通／停車）</a></li>
+              <li><a class="src" href="https://www.ropeway.com.tw/" target="_blank" rel="noopener noreferrer">日月潭纜車</a></li>
+              <li><a class="src" href="https://www.thsrc.com.tw/" target="_blank" rel="noopener noreferrer">台灣高鐵（備用，如改搭乘）</a></li>
+              <li><a class="src" href="https://travel.nantou.gov.tw/" target="_blank" rel="noopener noreferrer">南投縣觀光旅遊網</a></li>
+              <li><a class="src" href="https://maps.google.com/" target="_blank" rel="noopener noreferrer">Google Maps（即時車位／導航）</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ 頁尾 ============ -->
+  <footer>
+    <div class="wrap">
+      <h3>祝你與發發中秋愉快</h3>
+      <p>清晨上路、把車潮甩在後面——潭水如鏡、明月當空，好好吃、慢慢逛、自在遊湖。</p>
+      <p class="disc">
+        本行程資訊整理自公開來源，國道路況、停車與交通管制、票價、保養日與營業時間可能變動，出發前請再以高公局、日月潭國家風景區與各景點官方網站及現場公告確認。<br>
+        地點連結為 Google Maps 搜尋結果，請於現場再次確認地址與營業狀態。資料整理日：2026/06/19
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===== 互動：捲動進場動畫（漸進增強，含降級處理） ===== -->
+  <script>
+    (function () {
+      "use strict";
+
+      // 取得所有需要進場動畫的元素
+      var revealItems = document.querySelectorAll(".reveal");
+
+      // 若瀏覽器不支援 IntersectionObserver，或使用者偏好減少動態，則直接全部顯示（降級處理）
+      var prefersReduced = window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (!("IntersectionObserver" in window) || prefersReduced) {
+        revealItems.forEach(function (el) { el.classList.add("in"); });
+        return;
+      }
+
+      try {
+        // 建立觀察器：元素進入視窗時加上 in 類別觸發淡入上移
+        var observer = new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in");
+              obs.unobserve(entry.target); // 出現一次後即停止觀察，節省資源
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+
+        revealItems.forEach(function (el) { observer.observe(el); });
+      } catch (error) {
+        // 觀察器建立失敗時，確保內容仍完整顯示，並記錄錯誤以利除錯
+        console.error("進場動畫初始化失敗，已改為直接顯示內容：", error);
+        revealItems.forEach(function (el) { el.classList.add("in"); });
+      }
+    })();
+  </script>
+</body>
+</html>
