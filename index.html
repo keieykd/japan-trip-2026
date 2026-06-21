@@ -1,633 +1,836 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>東京深度絕景完美行程 (新手初訪・極致安心手把手教學版)</title>
-    <style>
-        /* 莫蘭迪配色 (Morandi Palette) 與極高對比深色字體設定 */
-        body {
-            background-color: #E6E2D8; 
-            color: #111111; 
-            font-family: '微軟正黑體', 'Microsoft JhengHei', sans-serif;
-            font-size: 20px; 
-            line-height: 1.8;
-            margin: 0;
-            padding: 40px 20px;
-        }
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            background-color: #FDFCFB; 
-            padding: 50px;
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-        }
-        h1 {
-            color: #263238; 
-            font-size: 38px;
-            font-weight: 900;
-            border-bottom: 3px solid #C4C9C9;
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        h2 {
-            color: #2E4041; 
-            font-size: 30px;
-            font-weight: bold;
-            margin-top: 50px;
-            border-left: 8px solid #8FA3A3;
-            padding-left: 18px;
-            background-color: #F0F2F2;
-            padding-top: 5px;
-            padding-bottom: 5px;
-        }
-        h3 {
-            color: #4A3A35; 
-            font-size: 26px;
-            font-weight: bold;
-            margin-top: 35px;
-            border-bottom: 2px dashed #D1C7C1;
-            padding-bottom: 8px;
-        }
-        a {
-            color: #004D7A; 
-            text-decoration: underline;
-            font-weight: 900;
-            background-color: #E3ECEF;
-            padding: 2px 8px;
-            border-radius: 4px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        a:hover {
-            color: #8A331C;
-            background-color: #F2E3E0;
-        }
-        .fact-check-box {
-            background-color: #E6E5E0; 
-            color: #111111;
-            padding: 25px 30px;
-            border-radius: 12px;
-            margin-bottom: 35px;
-            font-size: 18px;
-            border-left: 6px solid #7A766F;
-        }
-        .fact-check-box strong {
-            color: #000000;
-            font-size: 22px;
-            font-weight: 900;
-        }
-        p {
-            margin-bottom: 18px;
-            font-weight: 500;
-        }
-        ul {
-            padding-left: 30px;
-            margin-bottom: 25px;
-        }
-        li {
-            margin-bottom: 14px;
-            font-weight: 500;
-        }
-        strong {
-            color: #000000; 
-            font-weight: 900;
-        }
-        .day-block {
-            background-color: #F7F6F3;
-            padding: 30px;
-            border-radius: 14px;
-            margin-bottom: 35px;
-            border-left: 8px solid #A89B95;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-        }
-        .day-title {
-            font-size: 26px;
-            font-weight: 900;
-            color: #3D3531; 
-            margin-bottom: 20px;
-            border-bottom: 1px solid #D6D2CE;
-            padding-bottom: 10px;
-        }
-        .time-tag {
-            display: inline-block;
-            background-color: #D4D8D9;
-            color: #111111;
-            padding: 2px 10px;
-            border-radius: 4px;
-            font-weight: 900;
-            margin-right: 10px;
-            font-size: 18px;
-        }
-        .highlight-cost {
-            background-color: #DADCDB;
-            padding: 2px 8px;
-            border-radius: 5px;
-            font-weight: 900;
-            color: #000000;
-        }
-        .supplementary-note {
-            background-color: #DEE4E5;
-            color: #111111;
-            padding: 18px 25px;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-size: 19px;
-            border-left: 6px solid #627A82;
-            font-weight: bold;
-        }
-        .options-box {
-            background-color: #ECEAE4;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 10px;
-            border: 2px solid #C4BEB5;
-        }
-        .options-box h4 {
-            margin-top: 0;
-            color: #4A3A35;
-            font-size: 22px;
-            border-bottom: 1px solid #D6D2CE;
-            padding-bottom: 5px;
-            font-weight: 900;
-        }
-        .opt-recommend {
-            background-color: #D6DBD3;
-            padding: 15px;
-            border-radius: 6px;
-            border-left: 5px solid #6E8266;
-            margin-bottom: 15px;
-        }
-        .food-reco {
-            font-size: 17px;
-            color: #2F3E46;
-            margin-top: 4px;
-            display: block;
-            font-weight: bold;
-        }
-        .ticket-box {
-            background-color: #E8DCC4;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 8px solid #A88651;
-            margin-bottom: 25px;
-        }
-        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; background-color: #FFFFFF; }
-        th, td { border: 1px solid var(--border-color); padding: 12px; text-align: left; }
-        th { background-color: #DFE4E5; color: #2E4041; }
-        
-        /* 響應式設計 RWD (手機版適應) */
-        @media (max-width: 768px) {
-            body { padding: 10px; font-size: 16px; }
-            .container { padding: 20px; }
-            h1 { font-size: 26px; }
-            h2 { font-size: 22px; }
-            h3 { font-size: 18px; }
-            .day-title { font-size: 20px; }
-            .options-box h4 { font-size: 18px; }
-            .info-box, .day-block, .options-box { padding: 15px; }
-            table { display: block; overflow-x: auto; white-space: nowrap; }
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>東京 7 天 6 夜・北關東與伊豆秋季環線</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   設計系統 — 莫蘭迪語意色票 + 深墨高對比字
+   ========================================================= */
+:root{
+    --paper:#E7E2D8;
+    --card:#F6F3ED;
+    --card-bright:#FBFAF5;
 
-        /* 專為另存 PDF 設計的 Print CSS (完美切頁不卡字) */
-        @media print {
-            body { background-color: #FFFFFF; padding: 0; margin: 0; }
-            .container { box-shadow: none; padding: 0; max-width: 100%; border-radius: 0; }
-            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-            .day-block, .fact-check-box, .supplementary-note, .options-box, .ticket-box, table {
-                page-break-inside: avoid; break-inside: avoid; margin-bottom: 20px;
-            }
-            h2, h3, .day-title, h4 { page-break-after: avoid; break-after: avoid; }
-            li { page-break-inside: avoid; break-inside: avoid; }
-        }
-    </style>
+    --ink:#27241F;          /* 主文字：深暖黑 */
+    --ink-2:#463F36;
+    --ink-3:#665E51;
+
+    --line:#D8D1C3;
+    --line-strong:#C7BEAC;
+
+    --sage:#788A71;   --sage-bg:#DCE2D5;   /* 灰綠：每日行程 */
+    --slate:#67808A;  --slate-bg:#D6DFE1;  /* 灰藍：交通・購票・注意事項 */
+    --clay:#A06F58;   --clay-bg:#E8D7CB;   /* 灰陶：重要提醒 */
+    --mustard:#A2864E;--mustard-bg:#E9DDC0;/* 灰芥末：票券・預算 */
+    --rose:#AC7C77;   --rose-bg:#E7D4CE;   /* 灰玫瑰：餐飲 */
+    --plum:#7B7188;   --plum-bg:#DDD6E0;   /* 灰紫：夜景・夜楓 */
+
+    --fs-h1:clamp(1.95rem, 1.15rem + 3.6vw, 3rem);
+    --fs-h2:clamp(1.32rem, 1.02rem + 1.5vw, 1.8rem);
+    --fs-h3:clamp(1.12rem, 1rem + 0.6vw, 1.35rem);
+    --fs-day:clamp(1.18rem, 1rem + 0.85vw, 1.5rem);
+    --fs-body:clamp(1rem, 0.965rem + 0.18vw, 1.1rem);
+    --fs-small:0.9rem;
+
+    --radius:16px;
+    --radius-sm:10px;
+    --shadow:0 10px 34px rgba(39,36,31,.10);
+    --shadow-sm:0 4px 16px rgba(39,36,31,.06);
+}
+
+*{box-sizing:border-box;}
+html{font-size:100%;-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+
+body{
+    margin:0;
+    padding:28px 16px 64px;
+    background:
+        radial-gradient(1200px 480px at 50% -8%, #EFEAE0 0%, rgba(239,234,224,0) 60%),
+        var(--paper);
+    color:var(--ink);
+    font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+    font-size:var(--fs-body);
+    font-weight:500;
+    line-height:1.85;
+    letter-spacing:.005em;
+}
+.wrap{max-width:880px;margin:0 auto;}
+
+h1,h2,h3,.day__title,.panel__title,.opts__head,.alert__title{
+    font-family:"Noto Serif TC","Songti TC",serif;
+}
+
+a{
+    color:var(--ink);text-decoration:none;font-weight:700;
+    background:var(--slate-bg);border-bottom:2px solid var(--slate);
+    padding:.05em .4em;border-radius:6px;
+    transition:background .25s ease, border-color .25s ease, transform .1s ease;
+    word-break:break-word;
+}
+a:hover{background:var(--clay-bg);border-bottom-color:var(--clay);}
+a:active{transform:translateY(1px);}
+a:focus-visible{outline:3px solid var(--slate);outline-offset:2px;}
+strong{font-weight:900;color:var(--ink);}
+
+.ic{width:1.15em;height:1.15em;display:inline-block;vertical-align:-0.18em;flex:none;}
+.ic--lg{width:1.7em;height:1.7em;}
+
+/* ===================== HERO ===================== */
+.hero{
+    background:linear-gradient(168deg,#F4EFE6 0%, #ECE6DA 100%);
+    border:1px solid var(--line);
+    border-radius:calc(var(--radius) + 6px);
+    padding:30px 26px 0;
+    box-shadow:var(--shadow);overflow:hidden;margin-bottom:18px;
+}
+.hero__eyebrow{
+    display:inline-flex;align-items:center;gap:.5em;
+    font-size:var(--fs-small);font-weight:900;letter-spacing:.16em;
+    color:var(--clay);background:var(--clay-bg);
+    padding:.35em .9em;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{
+    font-size:var(--fs-h1);font-weight:900;line-height:1.22;
+    margin:0 0 14px;color:var(--ink);letter-spacing:.01em;
+}
+.hero h1 .accent{color:var(--clay);}
+.hero__sub{
+    font-size:calc(var(--fs-body) + .05rem);color:var(--ink-2);
+    margin:0 0 22px;max-width:48ch;
+}
+.hero__meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;}
+.chip{
+    display:inline-flex;align-items:center;gap:.45em;
+    font-size:var(--fs-small);font-weight:700;color:var(--ink-2);
+    background:var(--card-bright);border:1px solid var(--line);
+    padding:.4em .85em;border-radius:999px;
+}
+.chip .ic{color:var(--sage);}
+.hero__art{display:block;width:calc(100% + 52px);margin:0 -26px -2px;}
+
+/* ===================== 章節導覽 ===================== */
+.nav{
+    position:sticky;top:0;z-index:20;
+    display:flex;gap:8px;overflow-x:auto;
+    padding:12px 4px;margin:0 -4px 26px;
+    background:linear-gradient(180deg, var(--paper) 70%, rgba(231,226,216,0));
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.nav::-webkit-scrollbar{display:none;}
+.nav a{
+    flex:none;background:var(--card-bright);border:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    color:var(--ink-2);font-weight:700;font-size:var(--fs-small);
+    padding:.4em .9em;border-radius:999px;white-space:nowrap;
+}
+.nav a:hover{background:var(--sage-bg);border-color:var(--sage);}
+
+/* ===================== 重要提醒 callout ===================== */
+.alert{
+    background:linear-gradient(160deg,#ECDBCF 0%, #E6D2C4 100%);
+    border:1px solid var(--clay);border-left:7px solid var(--clay);
+    border-radius:var(--radius);padding:22px 24px;margin-bottom:22px;
+    box-shadow:var(--shadow-sm);
+}
+.alert__title{
+    display:flex;align-items:center;gap:.55em;
+    font-size:var(--fs-h3);font-weight:900;color:#7A4E3A;margin:0 0 10px;
+}
+.alert__title .ic{color:var(--clay);}
+.alert p{margin:0 0 10px;color:#43352B;}
+.alert p:last-child{margin-bottom:0;}
+.alert strong{color:#5E3A28;}
+
+/* ===================== 章節標題 ===================== */
+.section-h{
+    display:flex;align-items:center;gap:.6em;
+    font-size:var(--fs-h2);font-weight:900;color:var(--ink);
+    margin:52px 0 22px;padding-bottom:12px;
+    border-bottom:3px solid var(--line-strong);line-height:1.3;
+    scroll-margin-top:64px;
+}
+.section-h .ic{color:var(--sage);width:1.4em;height:1.4em;}
+.section-h .num{
+    font-size:.62em;font-weight:900;color:var(--sage);
+    background:var(--sage-bg);border-radius:8px;padding:.12em .55em;letter-spacing:.04em;
+}
+
+/* ===================== 面板 ===================== */
+.panel{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);padding:22px 24px;margin-bottom:22px;
+    box-shadow:var(--shadow-sm);
+}
+.panel--accent{border-left:7px solid var(--accent,var(--slate));}
+.panel__title{
+    display:flex;align-items:center;gap:.5em;
+    font-size:var(--fs-h3);font-weight:900;color:var(--ink);margin:0 0 12px;
+}
+.panel__title .ic{color:var(--accent,var(--slate));width:1.3em;height:1.3em;}
+.panel p{margin:0 0 12px;}
+.panel p:last-child{margin-bottom:0;}
+.panel ul{margin:6px 0 0;padding-left:1.3em;}
+.panel li{margin-bottom:9px;}
+.panel li:last-child{margin-bottom:0;}
+.panel li::marker{color:var(--accent,var(--slate));font-weight:900;}
+.note{font-size:var(--fs-small);color:var(--ink-3);}
+
+.t-slate{--accent:var(--slate);}
+.t-sage{--accent:var(--sage);}
+.t-clay{--accent:var(--clay);}
+.t-mustard{--accent:var(--mustard);}
+.t-rose{--accent:var(--rose);}
+.t-plum{--accent:var(--plum);}
+
+/* 票券劃位框 */
+.ticket{
+    background:var(--mustard-bg);border:1px solid var(--mustard);
+    border-left:7px solid var(--mustard);border-radius:var(--radius-sm);
+    padding:20px 22px;margin-top:6px;line-height:1.95;
+}
+.ticket .leg{font-weight:900;color:var(--ink);}
+.ticket .dur{font-size:var(--fs-small);color:#7C6534;font-weight:700;}
+.ticket .seq{
+    display:inline-block;min-width:1.6em;font-weight:900;color:#fff;
+    background:var(--mustard);text-align:center;border-radius:6px;margin-right:.4em;
+    font-family:"Noto Serif TC",serif;
+}
+
+/* 餐廳訂位提醒 */
+.reserve{
+    background:var(--rose-bg);border:1px solid var(--rose);
+    border-left:7px solid var(--rose);border-radius:var(--radius-sm);
+    padding:20px 22px;margin-top:6px;
+}
+.reserve__title{display:flex;align-items:center;gap:.5em;font-weight:900;color:#7E4F49;margin-bottom:8px;font-size:calc(var(--fs-body) + .05rem);}
+.reserve code{background:#fff;border:1px solid var(--rose);border-radius:5px;padding:.05em .45em;font-weight:700;color:#7E4F49;}
+
+/* 表格 */
+.table-scroll{overflow-x:auto;border-radius:var(--radius-sm);border:1px solid var(--line);}
+table{width:100%;border-collapse:collapse;background:var(--card-bright);font-size:calc(var(--fs-body) - .02rem);}
+th,td{border-bottom:1px solid var(--line);padding:13px 14px;text-align:left;vertical-align:top;}
+thead th{
+    background:var(--sage-bg);color:#3C4A37;font-weight:900;
+    font-family:"Noto Serif TC",serif;border-bottom:2px solid var(--sage);white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:none;}
+.row-sum td{background:var(--mustard-bg);font-weight:900;color:var(--ink);}
+.txt-right{text-align:right;}
+.cost{font-weight:900;color:#7C6534;white-space:nowrap;}
+
+/* 每日行程 */
+.day{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:calc(var(--radius) + 2px);padding:24px 24px 22px;margin-bottom:24px;
+    box-shadow:var(--shadow-sm);position:relative;overflow:hidden;scroll-margin-top:64px;
+}
+.day::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:var(--day-accent,var(--sage));}
+.day__head{display:flex;align-items:flex-start;gap:14px;padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--line);}
+.day__badge{
+    flex:none;width:52px;height:52px;border-radius:14px;background:var(--day-accent,var(--sage));
+    color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    font-family:"Noto Serif TC",serif;line-height:1;box-shadow:var(--shadow-sm);
+}
+.day__badge .d-lbl{font-size:.6rem;font-weight:700;letter-spacing:.1em;opacity:.9;}
+.day__badge .d-num{font-size:1.5rem;font-weight:900;}
+.day__headtext{min-width:0;}
+.day__date{
+    display:inline-block;font-size:var(--fs-small);font-weight:900;
+    color:var(--day-accent,var(--sage));background:var(--day-accent-bg,var(--sage-bg));
+    padding:.15em .7em;border-radius:999px;margin-bottom:6px;
+}
+.day__title{font-size:var(--fs-day);font-weight:900;color:var(--ink);line-height:1.32;margin:0;}
+
+.timeline{list-style:none;margin:0;padding:0;}
+.step{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:0 0 16px 4px;position:relative;}
+.step:last-child{padding-bottom:0;}
+.time{
+    font-family:"Noto Serif TC",serif;font-weight:900;font-size:.96rem;
+    color:#fff;background:var(--ink-2);padding:.22em .55em;border-radius:7px;
+    height:fit-content;white-space:nowrap;letter-spacing:.02em;
+}
+.step__body{min-width:0;}
+
+.opts{background:var(--card-bright);border:1px solid var(--line);border-radius:var(--radius-sm);padding:16px 16px 6px;margin-top:10px;}
+.opts__head{
+    font-size:1rem;font-weight:900;color:var(--ink-2);margin:0 0 12px;padding-bottom:7px;
+    border-bottom:1px solid var(--line);display:flex;align-items:center;gap:.45em;
+}
+.opts__head .ic{color:var(--rose);}
+.pick{background:var(--sage-bg);border-left:5px solid var(--sage);border-radius:8px;padding:13px 15px;margin-bottom:12px;}
+.pick .tag{
+    display:inline-block;font-size:.74rem;font-weight:900;color:#fff;background:var(--sage);
+    padding:.1em .6em;border-radius:6px;margin-right:.4em;vertical-align:.08em;letter-spacing:.05em;
+}
+.opts ul{margin:0 0 10px;padding-left:1.2em;list-style:none;}
+.opts ul li{position:relative;margin-bottom:11px;padding-left:1.1em;}
+.opts ul li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:7px;border-radius:50%;background:var(--line-strong);}
+.reco{display:block;font-size:var(--fs-small);color:var(--ink-2);font-weight:700;margin-top:3px;}
+.desc{display:block;font-size:var(--fs-small);color:var(--ink-2);margin-top:3px;}
+.cost-i{background:var(--mustard-bg);padding:.05em .4em;border-radius:5px;font-weight:900;color:#7C6534;}
+
+/* 日內交通提示 */
+.move{
+    background:var(--slate-bg);border-left:5px solid var(--slate);border-radius:8px;
+    padding:12px 15px;margin-top:10px;font-size:var(--fs-small);color:var(--ink-2);font-weight:700;
+}
+.move .ic{color:var(--slate);}
+
+/* 頁尾 */
+.foot{text-align:center;margin-top:46px;padding-top:26px;border-top:1px solid var(--line);color:var(--ink-3);font-size:var(--fs-small);}
+.foot .ic{color:var(--clay);width:1.6em;height:1.6em;}
+
+/* 手機 */
+@media (max-width:600px){
+    body{padding:16px 11px 48px;}
+    .hero{padding:24px 18px 0;}
+    .hero__art{width:calc(100% + 36px);margin:0 -18px -2px;}
+    .panel,.day,.alert{padding:18px 16px;}
+    .day__badge{width:46px;height:46px;}
+    .day__badge .d-num{font-size:1.3rem;}
+    .step{grid-template-columns:1fr;gap:5px;}
+    .time{justify-self:start;}
+    .ticket,.reserve{padding:16px 16px;}
+}
+
+/* 動效 */
+@media (prefers-reduced-motion:no-preference){
+    .day,.panel,.alert{animation:rise .6s cubic-bezier(.2,.7,.3,1) both;}
+    @keyframes rise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+}
+
+/* 列印 */
+@media print{
+    body{background:#fff;padding:0;}
+    .nav{display:none;}
+    .hero,.alert,.panel,.day,.ticket,.reserve,.opts,table{box-shadow:none;break-inside:avoid;page-break-inside:avoid;}
+    a{background:none;border:none;color:#1a4a66;}
+    .section-h{page-break-after:avoid;}
+    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+}
+</style>
 </head>
 <body>
+<!-- 圖示庫 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-maple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-3"/><path d="M12 18l-3 .6.9-2.4-2.7.5 1.3-2.3-3 .2 2-2.2-2.4-.7 2.4-1.1-1.4-1.6 2.2.5-.3-2.4 1.7 1.5.9-2.5.9 2.5 1.7-1.5-.3 2.4 2.2-.5-1.4 1.6 2.4 1.1-2.4.7 2 2.2-3-.2 1.3 2.3-2.7-.5.9 2.4z"/></symbol>
+<symbol id="i-onsen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h18v2a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M8 9c0-1.2-1.2-1.6-1.2-3C6.8 4.7 8 4 8 4"/><path d="M12 9c0-1.2-1.2-1.6-1.2-3C10.8 4.7 12 4 12 4"/><path d="M16 9c0-1.2-1.2-1.6-1.2-3C14.8 4.7 16 4 16 4"/></symbol>
+<symbol id="i-train" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14"/><circle cx="9" cy="14" r=".6" fill="currentColor"/><circle cx="15" cy="14" r=".6" fill="currentColor"/><path d="M8 21l-1.5 0M16 21l1.5 0M9 17l-2 4M15 17l2 4"/></symbol>
+<symbol id="i-ticket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4z"/><path d="M14 6v12" stroke-dasharray="1.5 2.4"/></symbol>
+<symbol id="i-luggage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="7" width="12" height="13" rx="2.5"/><path d="M9 7V5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5v2"/><path d="M10 11v5M14 11v5"/><path d="M8 20v1.5M16 20v1.5"/></symbol>
+<symbol id="i-cat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9l-.6-4 3.2 2.2a8 8 0 0 1 4.4-1.2 8 8 0 0 1 4.4 1.2L19.6 5 19 9"/><path d="M5 9c0 5 3.1 9 7 9s7-4 7-9"/><circle cx="9.5" cy="11.5" r=".7" fill="currentColor" stroke="none"/><circle cx="14.5" cy="11.5" r=".7" fill="currentColor" stroke="none"/><path d="M12 14v1M10.5 15.2h3"/></symbol>
+<symbol id="i-dining" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13h11a0 0 0 0 1 0 0 5.5 5.5 0 0 1-5.5 5.5h0A5.5 5.5 0 0 1 4 13z"/><path d="M4 13c0-1 .4-1.8 1-2.4"/><path d="M19 4l-1.6 5.2a2 2 0 0 1-1.9 1.4"/><path d="M20 20H4"/></symbol>
+<symbol id="i-bed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8v11M3 13h18v6M21 19v-6a3 3 0 0 0-3-3H9v3"/><circle cx="6.5" cy="11" r="1.6"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 0 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><circle cx="12" cy="8" r=".8" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9a2 2 0 0 0-3-3L5 17z"/><path d="M14 6l3 3"/></symbol>
+<symbol id="i-mountain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19h18L14 6l-3.4 6L8.5 9z"/><path d="M11.4 9.4l1.1-2 1.5 2.8"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4 6.5 6.5 0 0 0 20 14.5z"/></symbol>
+<symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7z"/><path d="M9 8a3 3 0 0 1 6 0"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="16" rx="2.5"/><path d="M4 9h16M8 3v4M16 3v4"/></symbol>
+<symbol id="i-passport" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9.5 16h5"/></symbol>
+<symbol id="i-yen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l-4 7h8l-4-7zM12 11v9M8.5 14h7M8.5 17h7"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4"/><circle cx="12" cy="17" r=".8" fill="currentColor" stroke="none"/></symbol>
+</defs></svg>
 
-    <div class="container">
+<div class="wrap">
 
-        <h1>東京 7天6夜 深度行程規劃<br>(北關東與伊豆環線)</h1>
-
-        <div class="info-box">
-            <strong>📝 行程摘要與設計邏輯</strong>
-            <p>本行程專為初次到訪日本的旅客設計，並融合了資深旅客的路線深度。透過詳細的交通指引與票券使用教學，確保能安心走完大範圍移動（草津溫泉、宇都宮大谷、伊豆熱海）。所有交通時間、住宿、餐飲皆已精確計算並附有備用選項。</p>
+    <!-- ===================== HERO ===================== -->
+    <header class="hero">
+        <span class="hero__eyebrow"><svg class="ic"><use href="#i-maple"/></svg>2026 晚秋・深度環線</span>
+        <h1>東京 7 天 6 夜<br><span class="accent">北關東與伊豆秋季環線</span></h1>
+        <p class="hero__sub">為兩人安排的關東深度路線：草津的湯煙、宇都宮大谷石窟、伊豆熱海的海景溫泉，再回到東京賞庭園夜楓。交通、票券、住宿、餐飲皆已查證並備好替代方案。</p>
+        <div class="hero__meta">
+            <span class="chip"><svg class="ic"><use href="#i-cal"/></svg>11/22 – 11/28</span>
+            <span class="chip"><svg class="ic"><use href="#i-bed"/></svg>6 晚住宿</span>
+            <span class="chip"><svg class="ic"><use href="#i-ticket"/></svg>廣域券 3 日</span>
+            <span class="chip"><svg class="ic"><use href="#i-onsen"/></svg>草津・伊豆溫泉</span>
         </div>
+        <svg class="hero__art" viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="秋日富士與溫泉小鎮插畫">
+            <rect width="800" height="200" fill="#ECE6DA"/>
+            <path d="M0 150 L120 96 L210 150 Z" fill="#C7CBC0"/>
+            <path d="M150 150 L260 104 L360 150 Z" fill="#BFC6BE"/>
+            <path d="M300 150 L470 50 L640 150 Z" fill="#A9B0AC"/>
+            <path d="M433 77 L470 50 L508 77 L494 86 L482 79 L470 88 L458 79 L446 86 Z" fill="#F3EFE7"/>
+            <path d="M560 150 L690 92 L800 150 Z" fill="#C2C0B2"/>
+            <ellipse cx="180" cy="58" rx="46" ry="14" fill="#F1ECE3"/>
+            <ellipse cx="232" cy="64" rx="34" ry="11" fill="#F1ECE3"/>
+            <ellipse cx="640" cy="46" rx="40" ry="12" fill="#F1ECE3"/>
+            <rect y="150" width="800" height="50" fill="#D8CFBF"/>
+            <rect y="150" width="800" height="6" fill="#C9BFAB"/>
+            <g>
+              <rect x="70" y="120" width="58" height="30" fill="#B79A86"/>
+              <path d="M64 120 L99 102 L134 120 Z" fill="#9B7E6B"/>
+              <rect x="90" y="132" width="14" height="18" fill="#7E6453"/>
+              <path d="M86 100 c-6 -8 6 -12 0 -22" stroke="#CFC6B8" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M112 100 c-6 -8 6 -12 0 -22" stroke="#CFC6B8" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </g>
+            <g>
+              <rect x="700" y="118" width="6" height="32" fill="#8A6F5C"/>
+              <circle cx="703" cy="112" r="22" fill="#B5836C"/>
+              <circle cx="688" cy="120" r="14" fill="#A9785F"/>
+              <circle cx="718" cy="120" r="14" fill="#C08E74"/>
+            </g>
+            <g>
+              <rect x="300" y="126" width="120" height="24" rx="7" fill="#7E8C8E"/>
+              <rect x="300" y="126" width="120" height="9" rx="7" fill="#94A0A1"/>
+              <rect x="312" y="137" width="16" height="10" rx="2" fill="#E7E2D8"/>
+              <rect x="336" y="137" width="16" height="10" rx="2" fill="#E7E2D8"/>
+              <rect x="360" y="137" width="16" height="10" rx="2" fill="#E7E2D8"/>
+              <rect x="384" y="137" width="16" height="10" rx="2" fill="#E7E2D8"/>
+              <circle cx="324" cy="151" r="4" fill="#5C5246"/>
+              <circle cx="396" cy="151" r="4" fill="#5C5246"/>
+            </g>
+            <path d="M210 70 l3 4 -3 2 -3-2z" fill="#B5836C"/>
+            <path d="M520 92 l3 4 -3 2 -3-2z" fill="#C08E74"/>
+            <path d="M470 120 l3 4 -3 2 -3-2z" fill="#A9785F"/>
+        </svg>
+    </header>
 
-        <h2>🎒 第一章：行前準備與住宿總表</h2>
-        
-        <h3>1. 必備手續與網路</h3>
-        <ul>
-            <li><strong>Visit Japan Web (VJW)：</strong> 出發前一週內，請至官方網站填寫入境審查與海關申報資料，並將生成的 QR Code 截圖存於手機，以加快機場通關速度。</li>
-            <li><strong>網路通訊 (eSIM)：</strong> 建議出發前購買日本上網 eSIM。抵達機場後開啟漫遊即可連網，免換實體卡。</li>
-            <li><strong>氣溫與穿著 (11月下旬)：</strong> 東京市區約 10°C~15°C（建議洋蔥式穿搭：發熱衣+薄長袖+防風外套）；草津溫泉與大谷資料館氣溫極低（約 0°C~8°C），請務必攜帶保暖毛帽、厚羽絨外套與防滑鞋。</li>
-        </ul>
+    <!-- ===================== 導覽 ===================== -->
+    <nav class="nav" aria-label="章節導覽">
+        <a href="#prep">出發前必讀</a>
+        <a href="#stay">住宿</a>
+        <a href="#ticket">購票劃位</a>
+        <a href="#d1">Day1</a>
+        <a href="#d2">Day2</a>
+        <a href="#d3">Day3</a>
+        <a href="#d4">Day4</a>
+        <a href="#d5">Day5</a>
+        <a href="#d6">Day6</a>
+        <a href="#d7">Day7</a>
+        <a href="#budget">預算</a>
+    </nav>
 
-        <h3>2. 住宿總表與預算 (匯率 1 JPY = 0.21 TWD)</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>入住日期</th>
-                    <th>地點與飯店</th>
-                    <th>晚數</th>
-                    <th>房型與包含項目</th>
-                    <th>預估金額 (新台幣)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>11/22 (日) - 11/24 (二)</td>
-                    <td>【<a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E6%A9%AAINN+%E6%9D%B1%E4%BA%AC%E9%B6%AF%E8%B0%B7%E7%AB%99%E5%89%8D" target="_blank">東橫 INN 東京鶯谷站前</a>】</td>
-                    <td>2 晚</td>
-                    <td>禁菸經濟雙人房</td>
-                    <td>¥ 26,020 (約 NT$ 5,464)</td>
-                </tr>
-                <tr>
-                    <td>11/24 (二) - 11/25 (三)</td>
-                    <td>【<a href="https://www.google.com/maps/search/?api=1&query=%E8%8D%89%E6%B4%A5%E6%BA%AB%E6%B3%89+%E6%9C%9B%E9%9B%B2" target="_blank">草津溫泉 望雲</a>】</td>
-                    <td>1 晚</td>
-                    <td>附露天風呂豪華和室 (一泊二食)</td>
-                    <td>¥ 71,049 (約 NT$ 14,920)</td>
-                </tr>
-                <tr>
-                    <td>11/25 (三) - 11/26 (四)</td>
-                    <td>【<a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E6%A9%AAINN+%E5%AE%87%E9%83%BD%E5%AE%AE%E9%A7%85%E5%89%8D1" target="_blank">東橫 INN 宇都宮站前 1 號店</a>】</td>
-                    <td>1 晚</td>
-                    <td>禁菸雙人房 B</td>
-                    <td>¥ 10,260 (約 NT$ 2,155)</td>
-                </tr>
-                <tr>
-                    <td>11/26 (四) - 11/28 (六)</td>
-                    <td>【<a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E6%A9%AAINN+%E6%9D%B1%E4%BA%AC%E9%B6%AF%E8%B0%B7%E7%AB%99%E5%89%8D" target="_blank">東橫 INN 東京鶯谷站前</a>】</td>
-                    <td>2 晚</td>
-                    <td>禁菸經濟雙人房</td>
-                    <td>¥ 24,320 (約 NT$ 5,107)</td>
-                </tr>
-                <tr>
-                    <td colspan="4" style="text-align: right;"><strong>住宿總計 (兩人)：</strong></td>
-                    <td><strong>¥ 131,649 (約 NT$ 27,646)</strong></td>
-                </tr>
-            </tbody>
-        </table>
+    <!-- ===================== 出發前必讀 ===================== -->
+    <h2 class="section-h" id="prep"><svg class="ic"><use href="#i-alert"/></svg>出發前必讀・2026 入境與當地新制</h2>
 
-        <h3>3. 行李寄放策略 (投幣式置物櫃)</h3>
-        <p>因應飯店寄放規定，請於 11/24 早上，將 29 吋大型行李存入【<a href="https://www.google.com/maps/search/?api=1&query=JR+%E4%B8%8A%E9%87%8E%E9%A7%85+%E3%82%B3%E3%82%A4%E3%83%B3%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC" target="_blank">JR 上野站 投幣式置物櫃</a>】（特大型約 ¥800/天，上限可放 72 小時）。請使用 Apple Pay 內的 Suica 付款上鎖，並拍照記錄號碼與位置。11/26 傍晚回程時，使用同一張 Suica 感應補繳超時費用並領取行李。</p>
-
-        <h2>🎫 第二章：官方購票、劃位與訂位指南</h2>
-
-        <h3>1. 機場快線 (Keisei Skyliner) 官方購票</h3>
-        <ul>
-            <li><strong>購票方式：</strong> 前往「京成電鐵 Skyliner e-ticket」官方網站，選擇日期與人數直接刷卡購買。使用官網可避免匯差手續費且系統穩定。</li>
-            <li><strong>取票方式：</strong> 抵達成田機場後，循「鐵道 (Railways)」指標至 B1，於京成電鐵的藍色售票機掃描手機 QR Code，即可劃位並領取實體車票。</li>
-        </ul>
-
-        <h3>2. JR 東京廣域周遊券 (JR-EAST Train Reservation)</h3>
-        <ul>
-            <li><strong>購票方式：</strong> 於「JR-EAST Train Reservation」官方網站購買（售價 ¥15,000/人）。官網購買可直接在線上提前一個月劃定新幹線與特急列車的「指定席」。</li>
-            <li><strong>取票方式：</strong> 抵達上野站後，至有護照讀取功能的指定席售票機，掃描 QR Code 與護照，即可一次領出周遊券與預劃的車票。</li>
-        </ul>
-
-        <h3>3. 預先劃位時刻表 (請提前於官網劃位)</h3>
-        <div class="ticket-box">
-            請預先劃定以下區間的指定席：<br><br>
-            1. <strong>11/24 (二)：</strong> 【特急 草津・四萬 1號 (Kusatsu/Shima No.1)】 上野出發 10:00 ➔ 長野原草津口抵達 12:18。<br>
-            <span style="color:var(--text-muted);">行駛時間：2 小時 18 分鐘</span><br><br>
-            2. <strong>11/25 (三)：</strong><br> 
-               (段落一) 【新幹線 Hakutaka 566號】 高崎出發 15:44 ➔ 大宮抵達 16:07。<br>
-               <span style="color:var(--text-muted);">行駛時間：23 分鐘</span><br>
-               (段落二) 【新幹線 Yamabiko 145號】 大宮出發 16:29 ➔ 宇都宮抵達 16:53。<br>
-               <span style="color:var(--text-muted);">行駛時間：24 分鐘 (含轉車總車程約 1 小時 9 分鐘)</span><br><br>
-            3. <strong>11/26 (四)：</strong><br>
-               (段落一) 【新幹線 Yamabiko 208號】 宇都宮 08:38 ➔ 東京 09:24。<br>
-               <span style="color:var(--text-muted);">行駛時間：46 分鐘</span><br>
-               (段落二) 【特急 踊子 5號 (Odoriko No.5)】 東京出發 10:00 ➔ 熱海抵達 11:18。<br>
-               <span style="color:var(--text-muted);">行駛時間：1 小時 18 分鐘</span><br><br>
-            4. <strong>11/26 (四) 回程：</strong> 【特急 踊子 16號 (Odoriko No.16)】 熱海出發 16:42 ➔ 東京抵達 18:05。<br>
-            <span style="color:var(--text-muted);">行駛時間：1 小時 23 分鐘</span>
-        </div>
-
-        <h3>4. 餐廳訂位說明</h3>
-        <div class="supplementary-note">
-            <strong>【鶯谷園 (Uguisudanien)】 燒肉訂位</strong><br>
-            <strong>步驟 1：</strong> 開放預約時間為一個月前。請於 <strong>2026/10/22 日本時間 15:00 (台灣時間 14:00)</strong> 進行預約。<br>
-            <strong>步驟 2：</strong> 餐廳電話：<code>+81-3-3874-8717</code>。<br>
-            <strong>步驟 3 (強烈建議)：</strong> 由於店家非常熱門且以日語為主，建議使用您信用卡（如 Visa 御璽卡 / JCB 極緻卡）的「秘書免費代訂服務」，請客服於開放當天協助致電預約。
-        </div>
-
-        <h2>🍁 第三章：每日行程與自選方案</h2>
-
-        <div class="day-block">
-            <div class="day-title">Day 1 (11/22 日)：抵達東京與夜間景點</div>
-            <ul>
-                <li><span class="time-tag">14:20</span> <strong>航班抵達：</strong>JX802 降落成田機場 T2，辦理入境手續。</li>
-                <li><span class="time-tag">15:30</span> <strong>市區移動：</strong>搭乘 Skyliner 至日暮里站，轉 JR 山手線至鶯谷站。</li>
-                <li><span class="time-tag">16:30</span> <strong>住宿 Check-in：</strong>入住【<a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E6%A9%AAINN+%E6%9D%B1%E4%BA%AC%E9%B6%AF%E8%B0%B7%E7%AB%99%E5%89%8D" target="_blank">東橫 INN 東京鶯谷站前</a>】。</li>
-                <li><span class="time-tag">17:30</span> <strong>夜間行程 (4 選 1)：</strong>
-                    <div class="options-box">
-                        <div class="opt-recommend">
-                            <strong>🔥 Option 1：【<a href="https://www.google.com/maps/search/?api=1&query=%E6%83%A0%E6%AF%94%E5%A3%BD%E8%8A%B1%E5%9C%92%E5%BB%A3%E5%A0%B4+Baccarat" target="_blank">惠比壽花園廣場 (Yebisu Garden Place)</a>】</strong><br>
-                            說明：11月底點亮 Baccarat 水晶吊燈，歐式紅磚建築與燈光氛圍極佳，適合晚間散步。
-                        </div>
-                        <ul>
-                            <li><strong>Option 2：【<a href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E5%AE%BF+%E6%80%9D%E3%81%84%E5%87%BA%E6%A8%AA%E4%B8%81" target="_blank">新宿回憶橫丁</a> + <a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%BB%B3+%E5%B1%95%E6%9C%9B%E5%AE%A4" target="_blank">都廳免費夜景</a>】</strong> - 具備懷舊風格的昭和巷弄，隨後至都廳觀賞免費夜景。</li>
-                            <li><strong>Option 3：【<a href="https://www.google.com/maps/search/?api=1&query=%E6%B1%A0%E8%A2%8B+Sunshine+60+%E5%B1%95%E6%9C%9B%E5%8F%B0+Tenbou+Park" target="_blank">池袋 Sunshine 60 展望台</a>】</strong> - 設有人工草皮區，環境輕鬆休閒。</li>
-                            <li><strong>Option 4：【<a href="https://www.google.com/maps/search/?api=1&query=%E5%85%AD%E6%9C%AC%E6%9C%A8%E3%83%92%E3%83%AB%E3%82%BA+%E6%A3%AE%E3%82%BF%E3%83%AF%E3%83%BC" target="_blank">六本木之丘 森大樓</a>】</strong> - 拍攝東京鐵塔與城市夜景的經典位置。</li>
-                        </ul>
-                    </div>
-                </li>
-                <li><span class="time-tag">20:30</span> <strong>晚餐 (4 選 1)：</strong>
-                    <div class="options-box">
-                        <div class="opt-recommend">
-                            <strong>🔥 Option 1 (高評價和牛)：【<a href="https://www.google.com/maps/search/?api=1&query=%E9%B6%AF%E8%B0%B7%E5%9C%92+%E7%87%92%E8%82%89" target="_blank">鶯谷園 (Uguisudanien)</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：特上肉臀、厚切牛舌。距離飯店近，需提前一個月由信用卡秘書代訂。預估：NT$ 2,500/兩人。</span>
-                        </div>
-                        <ul>
-                            <li><strong>Option 2：【<a href="https://www.google.com/maps/search/?api=1&query=%E7%84%BC%E8%82%89%E6%88%BF%E5%AE%B6+%E6%97%A5%E6%9A%AE%E9%87%8C%E5%BA%97" target="_blank">燒肉 房家 (Bouya) 日暮里店</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：嚴選黑毛和牛 4 種盛合。Google 可直接訂位。預估：NT$ 2,200/兩人。</span></li>
-                            <li><strong>Option 3：【<a href="https://www.google.com/maps/search/?api=1&query=%E3%82%84%E3%81%8D%E3%81%A8%E3%82%93+%E3%81%B2%E3%81%AA%E3%81%9F+%E4%B8%8A%E9%87%8E" target="_blank">やきとん ひなた (Hinata) 上野店</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：綜合烤肉串、明太子玉子燒。平價居酒屋氛圍。預估：NT$ 1,200/兩人。</span></li>
-                            <li><strong>Option 4：【<a href="https://www.google.com/maps/search/?api=1&query=%E3%82%89%E3%83%BC%E3%82%81%E3%82%93+%E9%B4%A8%E3%81%A8%E8%91%B1+%E5%BE%A1%E5%BE%92%E7%9A%BA" target="_blank">らーめん 鴨と葱 (Kamo to Negi)</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：特上鴨拉麵。純鴨熬煮清湯配鮮甜大蔥。排隊名店。預估：NT$ 600/兩人。</span></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="day-block">
-            <div class="day-title">Day 2 (11/23 一)：市區秋色與文化散策 (假日)</div>
-            <ul>
-                <li><span class="time-tag">08:00</span> <strong>晨間景點：</strong>搭地鐵至外苑前站，步行至【<a href="https://www.google.com/maps/search/?api=1&query=%E6%98%8E%E6%B2%BB%E7%A5%9E%E5%AE%AE%E5%A4%96%E8%8B%91+%E3%82%A4%E3%83%81%E3%83%A7%E3%82%A6%E4%B8%A6%E6%9C%A8" target="_blank">明治神宮外苑 銀杏大道</a>】。建議 8:30 前抵達避開人潮。</li>
-                <li><span class="time-tag">10:30</span> <strong>秋季建築：</strong>轉往【<a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E5%A4%A7%E5%AD%B8+%E6%9C%AC%E9%84%B7%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%91%E3%82%B9" target="_blank">東京大學 本鄉校區</a>】。百年紅磚建築搭配銀杏，適合攝影。</li>
-                <li><span class="time-tag">12:30</span> <strong>午餐 (3 選 1)：</strong>
-                    <div class="options-box">
-                        <div class="opt-recommend">
-                            <strong>🔥 Option 1 (高人氣海鮮)：【<a href="https://www.google.com/maps/search/?api=1&query=%E6%B5%B7%E9%AE%AE%E5%87%A6+%E3%81%95%E3%81%84%E3%81%A8%E3%81%86+%E5%85%A5%E8%B0%B7" target="_blank">海鮮処 さいとう (Kappo Saito) 入谷</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：海鮮丼大盛。份量豐盛，評價良好。預估：NT$ 700/兩人。當地人推薦名店。</span>
-                        </div>
-                        <ul>
-                            <li><strong>Option 2 (壽喜燒老店)：【<a href="https://www.google.com/maps/search/?api=1&query=%E6%B5%85%E8%8D%89%E4%BB%8A%E5%8D%8A+%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E6%9C%AC%E5%BA%97" target="_blank">淺草今半 國際通本店</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：午間限定黑毛和牛壽喜燒定食。預估：NT$ 2,800/兩人。</span></li>
-                            <li><strong>Option 3 (知名親子丼)：【<a href="https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E3%81%B2%E3%81%A7+%E4%BA%BA%E5%BD%A2%E7%94%BA" target="_blank">玉ひで (Tamahide) 人形町</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：元祖親子丼。日本親子丼發源地。預估：NT$ 1,200/兩人。</span></li>
-                        </ul>
-                    </div>
-                </li>
-                <li><span class="time-tag">14:30</span> <strong>午後散策 (3 選 1)：</strong>
-                    <div class="options-box">
-                        <div class="opt-recommend">
-                            <strong>🔥 Option 1：【<a href="https://www.google.com/maps/search/?api=1&query=%E8%B0%B7%E4%B8%AD%E9%8A%80%E5%BA%A7" target="_blank">谷中銀座</a> & 根津神社】</strong><br>
-                            說明：保留東京傳統下町風情，著名的「夕陽階梯」有機會遇見街貓。
-                        </div>
-                        <ul>
-                            <li><strong>Option 2：【<a href="https://www.google.com/maps/search/?api=1&query=%E9%AB%98%E5%86%86%E5%AF%BA+%E7%B4%94%E6%83%85%E5%95%86%E5%BA%97%E8%A1%97" target="_blank">高圓寺</a> & 阿佐谷】</strong> - 次文化與古著愛好者的聚落。</li>
-                            <li><strong>Option 3：【<a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%8B%E5%8C%97%E6%B2%A2+Reload" target="_blank">下北澤 Reload</a>】</strong> - 全新改造的文創與複合建築區域。</li>
-                        </ul>
-                    </div>
-                </li>
-                <li><span class="time-tag">19:30</span> <strong>晚餐 (3 選 1)：</strong>
-                    <div class="options-box">
-                        <div class="opt-recommend">
-                            <strong>🔥 Option 1 (高評價壽喜燒)：【<a href="https://www.google.com/maps/search/?api=1&query=%E3%81%99%E3%81%8D%E7%84%BC%E3%81%8D+%E4%BC%8A%E5%90%B9+%E6%96%B0%E5%AE%BF" target="_blank">すき焼き 伊吹 (Ibuki) 新宿</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：頂級黑毛和牛壽喜燒。肉質優異。預估：NT$ 2,500/兩人。需預訂。</span>
-                        </div>
-                        <ul>
-                            <li><strong>Option 2 (頂級和牛吃到飽)：【<a href="https://www.google.com/maps/search/?api=1&query=%E5%85%AD%E6%AD%8C%E4%BB%99+%E6%96%B0%E5%AE%BF" target="_blank">六歌仙 新宿店</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：松阪牛涮涮鍋/燒肉吃到飽。預估：NT$ 6,500/兩人。</span></li>
-                            <li><strong>Option 3 (神級烏龍麵)：【<a href="https://www.google.com/maps/search/?api=1&query=%E3%81%86%E3%81%A9%E3%82%93+%E6%85%8E+%E6%96%B0%E5%AE%BF" target="_blank">うどん 慎 (Udon Shin)</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：現打冷烏龍麵配炸蝦天婦羅。需排隊候位。預估：NT$ 800/兩人。</span></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="day-block">
-            <div class="day-title">Day 3 (11/24 二)：【啟用廣域券】草津溫泉深度一泊二食</div>
-            <ul>
-                <li><span class="time-tag">08:00</span> <strong>行李存放：</strong>將大型行李鎖入 JR 上野站投幣式置物櫃。背上輕裝背包出發。</li>
-                <li><span class="time-tag">09:30</span> <strong>特急出發：</strong>於上野站搭乘【特急 草津・四萬 1號】至長野原草津口站。出站轉乘 JR 巴士直達【<a href="https://www.google.com/maps/search/?api=1&query=%E8%8D%89%E6%B4%A5%E6%BA%AB%E6%B3%89+%E6%B9%AF%E7%95%91" target="_blank">草津溫泉</a>】。</li>
-                <li><span class="time-tag">12:30</span> <strong>湯田景觀：</strong>抵達草津溫泉中心【湯畑 (Yubatake)】。拍攝溫泉景觀。</li>
-                <li><span class="time-tag">13:30</span> <strong>午餐 (3 選 1)：</strong>
-                    <div class="options-box">
-                        <div class="opt-recommend">
-                            <strong>🔥 Option 1：【<a href="https://www.google.com/maps/search/?api=1&query=%E8%8D%89%E6%B4%A5%E6%BA%AB%E6%B3%89+%E4%B8%89%E5%9C%8B%E5%B1%8B" target="_blank">三國屋 (Mikuniya)</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：「三國蕎麥麵」配「舞茸天婦羅」。預估：NT$ 800/兩人。</span>
-                        </div>
-                        <ul>
-                            <li><strong>Option 2：【<a href="https://www.google.com/maps/search/?api=1&query=%E9%87%9C%E3%82%81%E3%81%97+%E3%81%84%E3%81%84%E3%82%84%E3%81%BE%E4%BA%AD+%E8%8D%89%E6%B4%A5" target="_blank">釜めし いいやま亭</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：五目釜飯，用高湯生米現煮。預估：NT$ 900/兩人。</span></li>
-                            <li><strong>Option 3：【<a href="https://www.google.com/maps/search/?api=1&query=%E3%81%A9%E3%82%93%E3%81%90%E3%82%8A+%E8%8D%89%E6%B4%A5" target="_blank">どんぐり (Donguri)</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：老字號洋食屋的豬排咖哩飯。預估：NT$ 800/兩人。</span></li>
-                        </ul>
-                    </div>
-                </li>
-                <li><span class="time-tag">15:00</span> <strong>傳統活動與浴池：</strong>觀賞【<a href="https://www.google.com/maps/search/?api=1&query=%E7%86%B1%E4%B9%83%E6%B9%AF+%E6%B9%AF%E6%8F%89%E3%81%BF" target="_blank">熱乃湯 (揉湯表演)</a>】，接著前往【<a href="https://www.google.com/maps/search/?api=1&query=%E8%A5%BF%E3%81%AE%E6%B2%B3%E5%8E%9F%E9%9C%B2%E5%A4%A9%E9%A2%A8%E5%91%82" target="_blank">西之河原露天風呂</a>】體驗大型露天溫泉。</li>
-                <li><span class="time-tag">17:30</span> <strong>住宿與晚餐：</strong>入住【<a href="https://www.google.com/maps/search/?api=1&query=%E8%8D%89%E6%B4%A5%E6%BA%AB%E6%B3%89+%E6%9C%9B%E9%9B%B2" target="_blank">草津溫泉 望雲</a>】。享用旅館附設的晚餐，隨後可穿著浴衣前往湯畑欣賞點燈。</li>
-            </ul>
-        </div>
-
-        <div class="day-block">
-            <div class="day-title">Day 4 (11/25 三)：【廣域券環線】大谷資料館與宇都宮餃子</div>
-            <ul>
-                <li><span class="time-tag">09:00</span> <strong>交通移動：</strong>搭乘巴士回長野原草津口，轉 JR 至高崎站。接續搭乘新幹線經大宮抵達【<a href="https://www.google.com/maps/search/?api=1&query=%E5%AE%87%E9%83%BD%E5%AE%AE%E9%A7%85" target="_blank">宇都宮站</a>】。</li>
-                <li><span class="time-tag">12:30</span> <strong>午餐 (3 選 1)：</strong>
-                    <div class="options-box">
-                        <div class="opt-recommend">
-                            <strong>🔥 Option 1 (高評價餃子)：【<a href="https://www.google.com/maps/search/?api=1&query=%E5%AE%87%E9%83%BD%E5%AE%AE%E9%A4%83%E5%AD%90+%E3%81%BF%E3%82%93%E3%81%BF%E3%82%93+%E6%9C%AC%E5%BA%97" target="_blank">宇都宮餃子 みんみん (Minmin)</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：燒餃子 2 份 + 水餃子 1 份。皮薄酥脆。預估：NT$ 600/兩人。</span>
-                        </div>
-                        <ul>
-                            <li><strong>Option 2：【<a href="https://www.google.com/maps/search/?api=1&query=%E3%81%8E%E3%82%87%E3%81%86%E3%81%96%E5%B0%82%E9%96%80%E5%BA%97+%E6%AD%A3%E5%97%A3" target="_blank">餃子專門店 正嗣 (Masashi)</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：專注提供煎餃跟水餃。預估：NT$ 500/兩人。</span></li>
-                            <li><strong>Option 3：【<a href="https://www.google.com/maps/search/?api=1&query=%E5%AE%87%E9%83%BD%E5%AE%AE%E9%A4%83%E5%AD%90%E9%A4%A8+%E8%A5%BF%E5%8F%A3%E5%BA%97" target="_blank">宇都宮餃子館 西口店</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：綜合餃子拼盤。預估：NT$ 800/兩人。</span></li>
-                        </ul>
-                    </div>
-                </li>
-                <li><span class="time-tag">14:30</span> <strong>午後探險 (2 選 1)：</strong>
-                    <div class="options-box">
-                        <div class="opt-recommend">
-                            <strong>🔥 Option A：【<a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E8%B0%B7%E8%B3%87%E6%96%99%E9%A4%A8+%E5%AE%87%E9%83%BD%E5%AE%AE" target="_blank">大谷資料館</a>】</strong><br>
-                            說明：搭乘路線公車抵達。地下採石場遺跡，氣溫較低，空間宏大，適合廣角攝影。
-                        </div>
-                        <ul>
-                            <li><strong>Option B：【<a href="https://www.google.com/maps/search/?api=1&query=%E6%97%A5%E5%85%89%E6%9D%B1%E7%85%A7%E5%AE%AE" target="_blank">日光東照宮</a>】</strong> - 從宇都宮搭乘 JR 日光線。參觀德川家康陵寢與歷史木雕。</li>
-                        </ul>
-                    </div>
-                </li>
-                <li><span class="time-tag">18:00</span> <strong>住宿 Check-in：</strong>入住【<a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E6%A9%AAINN+%E5%AE%87%E9%83%BD%E5%AE%AE%E9%A7%85%E5%89%8D1" target="_blank">東橫 INN 宇都宮站前 1 號店</a>】。</li>
-                <li><span class="time-tag">18:30</span> <strong>晚餐 (3 選 1)：</strong>
-                    <div class="options-box">
-                        <div class="opt-recommend">
-                            <strong>🔥 Option 1 (熱鬧酒場)：【<a href="https://www.google.com/maps/search/?api=1&query=%E5%AE%87%E9%83%BD%E5%AE%AE%E5%B1%8B%E5%8F%B0%E6%A8%AA%E4%B8%81" target="_blank">宇都宮屋台橫丁</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：關東煮、烤雞肉串與當地清酒。體驗在地氣氛。預估：NT$ 1,500/兩人。</span>
-                        </div>
-                        <ul>
-                            <li><strong>Option 2 (高評價和牛)：【<a href="https://www.google.com/maps/search/?api=1&query=%E7%84%BC%E8%82%89%E3%82%B0%E3%83%AC%E3%83%BC%E3%83%88+%E5%AE%87%E9%83%BD%E5%AE%AE%E9%A7%85%E5%89%8D%E5%BA%97" target="_blank">焼肉グレート (Yakiniku Great)</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：稀有部位盛合。預估：NT$ 3,000/兩人。</span></li>
-                            <li><strong>Option 3 (深夜拉麵)：【<a href="https://www.google.com/maps/search/?api=1&query=%E9%BA%BA%E5%B1%8B+%E3%81%BF%E3%82%84%E3%81%9F+%E5%AE%87%E9%83%BD%E5%AE%AE" target="_blank">麺屋 みやた (Miyata)</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：濃厚雞白湯拉麵。預估：NT$ 600/兩人。</span></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="day-block">
-            <div class="day-title">Day 5 (11/26 四)：【廣域券最終日】熱海溫泉與重返東京</div>
-            <ul>
-                <li><span class="time-tag">08:30</span> <strong>交通移動：</strong>從宇都宮搭乘新幹線直達東京站。轉乘【特急 踊子 5號】開往【<a href="https://www.google.com/maps/search/?api=1&query=%E7%86%B1%E6%B5%B7%E9%A7%85" target="_blank">熱海 (Atami)</a>】。</li>
-                <li><span class="time-tag">11:30</span> <strong>熱海/伊豆行程 (3 選 1)：</strong>
-                    <div class="options-box">
-                        <div class="opt-recommend">
-                            <strong>🔥 Option 1：【<a href="https://www.google.com/maps/search/?api=1&query=%E7%86%B1%E6%B5%B7%E5%BE%8C%E6%A8%82%E5%9C%92%E3%83%9B%E3%83%86%E3%83%AB+%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91+Fuua" target="_blank">熱海 Ocean Spa Fuua</a>】 + 【<a href="https://www.google.com/maps/search/?api=1&query=%E5%9B%B2%E7%88%90%E8%8C%B6%E5%B1%8B+%E7%86%B1%E6%B5%B7" target="_blank">囲炉茶屋</a>】</strong><br>
-                            說明：抵達熱海後，先品嚐海鮮定食，再前往 Fuua 體驗面對相模灣的海景無邊際露天溫泉。
-                        </div>
-                        <ul>
-                            <li><strong>Option 2：【<a href="https://www.google.com/maps/search/?api=1&query=%E4%BF%AE%E7%A6%85%E5%AF%BA+%E4%BC%8A%E8%B1%86" target="_blank">伊豆 修善寺</a> + 竹林小徑】</strong> - 轉乘至修善寺站。參拜古剎與品嚐生芥末蕎麥麵。</li>
-                            <li><strong>Option 3：【<a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%89%E5%B3%B6%E3%82%B9%E3%82%AB%E3%82%A4%E3%82%A6%E3%82%A9%E3%83%BC%E3%82%AF" target="_blank">三島 Skywalk</a>】</strong> - 在長達 400 公尺的吊橋上觀賞富士山與駿河灣。</li>
-                        </ul>
-                    </div>
-                </li>
-                <li><span class="time-tag">16:30</span> <strong>返回東京：</strong>搭乘【特急 踊子 16號】回到東京車站，轉乘回上野。</li>
-                <li><span class="time-tag">18:30</span> <strong>領取行李：</strong>在上野站置物櫃補繳超時費用領回行李，回到【<a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E6%A9%AAINN+%E6%9D%B1%E4%BA%AC%E9%B6%AF%E8%B0%B7%E7%AB%99%E5%89%8D" target="_blank">東橫 INN 東京鶯谷站前</a>】重新 Check-in。</li>
-                <li><span class="time-tag">19:30</span> <strong>晚餐 (3 選 1)：</strong>
-                    <div class="options-box">
-                        <div class="opt-recommend">
-                            <strong>🔥 Option 1：【<a href="https://www.google.com/maps/search/?api=1&query=%E7%89%9B%E3%81%8B%E3%81%A4+%E3%81%82%E3%81%8A%E3%81%AA+%E5%BE%A1%E5%BE%92%E7%9A%BA%E6%9C%AC%E5%BA%97" target="_blank">牛かつ あおな (Gyukatsu Aona) 御徒町本店</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：黑毛和牛霜降炸牛排。肉質極度軟嫩。預估：NT$ 1,200/兩人。</span>
-                        </div>
-                        <ul>
-                            <li><strong>Option 2：【<a href="https://www.google.com/maps/search/?api=1&query=%E3%81%A8%E3%82%93%E3%81%8B%E3%81%A4%E5%B1%B1%E5%AE%B6+%E4%B8%8A%E9%87%8E%E5%BA%97" target="_blank">とんかつ山家 (Tonkatsu Yamabe) 上野店</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：ロースかつ定食 (里肌豬排)。預估：NT$ 500/兩人。</span></li>
-                            <li><strong>Option 3：【<a href="https://www.google.com/maps/search/?api=1&query=%E7%A3%AF%E4%B8%B8%E6%B0%B4%E7%94%A3+%E4%B8%8A%E9%87%8E" target="_blank">磯丸水產 上野店</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：蟹味噌甲羅燒、現烤扇貝。桌上有烤爐可自行燒烤。預估：NT$ 1,200/兩人。</span></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="day-block">
-            <div class="day-title">Day 6 (11/27 五)：海鮮早市、庭園秋色與質感美學</div>
-            <ul>
-                <li><span class="time-tag">08:00</span> <strong>海鮮早餐：</strong>空腹直奔【<a href="https://www.google.com/maps/search/?api=1&query=%E7%AF%89%E5%9C%B0%E5%A0%B4%E5%A4%96%E5%B8%82%E5%A0%B4" target="_blank">築地場外市場</a>】！品嚐現烤玉子燒、生蠔與各式海鮮小吃。</li>
-                <li><span class="time-tag">10:30</span> <strong>秋庭漫步：</strong>走到旁邊的【<a href="https://www.google.com/maps/search/?api=1&query=%E6%BF%B1%E9%9B%A2%E5%AE%AE%E6%81%A9%E8%B3%9C%E5%BA%AD%E5%9C%92" target="_blank">濱離宮恩賜庭園</a>】，在湖心茶屋品嚐抹茶。</li>
-                <li><span class="time-tag">13:00</span> <strong>午後散策 (3 選 1)：</strong>
-                    <div class="options-box">
-                        <div class="opt-recommend">
-                            <strong>🔥 Option 1：【<a href="https://www.google.com/maps/search/?api=1&query=%E8%B1%AA%E5%BE%B3%E5%AF%BA+%E6%8B%9B%E8%B2%A1%E8%B2%93" target="_blank">豪德寺 (Gotokuji)</a>】</strong><br>
-                            說明：著名的「招財貓發源地」。大量招財貓排列，適合拍照。
-                        </div>
-                        <ul>
-                            <li><strong>Option 2：【<a href="https://www.google.com/maps/search/?api=1&query=%E5%B0%8F%E7%9F%B3%E5%B7%9D%E5%BE%8C%E6%A8%82%E5%9C%92" target="_blank">小石川後樂園</a>】</strong> - 具備純粹的日式大名庭園秋景。</li>
-                            <li><strong>Option 3：【<a href="https://www.google.com/maps/search/?api=1&query=%E6%B1%9F%E6%88%B6%E6%9D%B1%E4%BA%AC%E3%81%9F%E3%81%A6%E3%82%82%E3%81%AE%E5%9C%92" target="_blank">江戶東京建築園</a>】</strong> - 保存了許多古老洋樓與傳統商鋪。</li>
-                        </ul>
-                    </div>
-                </li>
-                <li><span class="time-tag">17:00</span> <strong>夜楓幻境：</strong>傍晚前往【<a href="https://www.google.com/maps/search/?api=1&query=%E5%85%AD%E7%BE%A9%E5%9C%92+%E3%83%A9%E3%81%84%E3%83%88%E3%82%A2%E3%83%83%E3%83%97" target="_blank">六義園 夜間特別拜觀</a>】。欣賞光影與紅葉的結合。</li>
-                <li><span class="time-tag">19:30</span> <strong>晚餐 (3 選 1)：</strong>
-                    <div class="options-box">
-                        <div class="opt-recommend">
-                            <strong>🔥 Option 1 (高評價在地壽司)：【<a href="https://www.google.com/maps/search/?api=1&query=%E5%AF%BF%E5%8F%B8%E4%B8%80%E7%95%AA+%E4%B8%8A%E9%87%8E" target="_blank">壽司一番 (Sushi Ichiban) 上野</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：職人現握江戶前壽司。預估：NT$ 1,800/兩人。不須排長隊，在地人推薦。</span>
-                        </div>
-                        <ul>
-                            <li><strong>Option 2 (高湯拉麵)：【<a href="https://www.google.com/maps/search/?api=1&query=%E9%BA%BA%E5%B1%8B%E6%AD%A6%E8%94%B5+%E6%AD%A6%E9%AA%A8+%E5%BE%A1%E5%BE%92%E7%9A%BA" target="_blank">麵屋武藏 武骨 御徒町</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：黑武骨沾麵。大塊爌肉配墨魚汁湯頭。預估：NT$ 600/兩人。</span></li>
-                            <li><strong>Option 3 (炸豬排名店)：【<a href="https://www.google.com/maps/search/?api=1&query=%E3%81%A8%E3%82%93%E3%81%8B%E3%81%A4+%E3%81%BE%E3%82%8B%E4%B8%80+%E7%A7%8B%E8%91%89%E5%8E%9F" target="_blank">丸一 豬排 (Maruichi) 秋葉原</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：特級里肌豬排。預估：NT$ 1,200/兩人。</span></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="day-block">
-            <div class="day-title">Day 7 (11/28 六)：退房衝刺與商業選物</div>
-            <ul>
-                <li><span class="time-tag">09:00</span> <strong>退房寄物：</strong>飯店退房，將行李寄放於飯店櫃檯。</li>
-                <li><span class="time-tag">11:00</span> <strong>最後散策 (3 選 1)：</strong>
-                    <div class="options-box">
-                        <div class="opt-recommend">
-                            <strong>🔥 Option 1：【<a href="https://www.google.com/maps/search/?api=1&query=%E8%97%8F%E5%89%8D+%E6%9D%B1%E4%BA%AC" target="_blank">藏前 (Kuramae)</a>】</strong><br>
-                            說明：被稱為東京的布魯克林。具備許多職人手作店、皮件店與咖啡廳，適合尋找特色紀念品。
-                        </div>
-                        <ul>
-                            <li><strong>Option 2：【<a href="https://www.google.com/maps/search/?api=1&query=%E6%97%A5%E6%9C%AC%E6%A9%8B+COREDO+%E5%AE%A4%E7%94%BA" target="_blank">日本橋 COREDO 室町</a>】</strong> - 匯集了高品質的傳統工藝品、柴魚高湯專賣店。</li>
-                            <li><strong>Option 3：【<a href="https://www.google.com/maps/search/?api=1&query=%E5%B7%A3%E9%B4%A8+%E5%9C%B0%E8%97%8F%E9%80%9A%E3%82%8A" target="_blank">巢鴨地藏通 (Sugamo)</a>】</strong> - 有著復古氣息的商店街，小吃種類豐富且價格親民。</li>
-                        </ul>
-                    </div>
-                </li>
-                <li><span class="time-tag">13:30</span> <strong>午餐 (3 選 1)：</strong>
-                    <div class="options-box">
-                        <div class="opt-recommend">
-                            <strong>🔥 Option 1：【<a href="https://www.google.com/maps/search/?api=1&query=%E9%B0%BB+%E4%BC%8A%E8%B1%86%E6%A0%84+%E6%9C%AC%E5%BA%97" target="_blank">鰻 伊豆榮 (Izuei) 本店</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：蒲燒鰻魚重。上野歷史悠久的鰻魚飯名店。預估：NT$ 2,500/兩人。</span>
-                        </div>
-                        <ul>
-                            <li><strong>Option 2：【<a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%8A%E9%87%8E%E7%B2%BE%E9%A4%8A%E8%BB%92+%E6%9C%AC%E5%BA%97" target="_blank">上野精養軒 本店</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：傳統紅酒燉牛肉蛋包飯。上野公園內的百年西餐廳。預估：NT$ 1,500/兩人。</span></li>
-                            <li><strong>Option 3：【<a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E5%A6%B9%E7%BE%85+%E9%BB%92%E5%B7%9D+%E6%B5%85%E8%8D%89" target="_blank">天麩羅 秋葉原 黑川</a>】</strong><br>
-                            <span class="food-reco">💡 推薦：上天丼。現炸海鮮與野菜。預估：NT$ 900/兩人。</span></li>
-                        </ul>
-                    </div>
-                </li>
-                <li><span class="time-tag">15:30</span> <strong>前往機場：</strong>至飯店拿取行李，步行至【<a href="https://www.google.com/maps/search/?api=1&query=%E4%BA%AC%E6%88%90%E4%B8%8A%E9%87%8E%E7%AB%99" target="_blank">京成上野站</a>】搭乘 Skyliner (車程約 40 分鐘)。</li>
-                <li><span class="time-tag">17:10</span> <strong>抵達與歸途：</strong>抵達成田機場 T2。辦理退稅與報到手續。20:10 搭乘 JX805 舒適返台，結束行程。</li>
-            </ul>
-        </div>
-
-        <h2>📊 兩人總花費預算表</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>項目</th>
-                    <th>預估金額 (新台幣/兩人)</th>
-                    <th>備註</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>住宿總計</strong></td>
-                    <td>約 NT$ 27,646</td>
-                    <td>東橫 INN (4晚) + 草津望雲 (1晚) + 東橫 INN 宇都宮 (1晚)</td>
-                </tr>
-                <tr>
-                    <td><strong>JR 東京廣域周遊券 (3日券)</strong></td>
-                    <td>約 NT$ 6,600</td>
-                    <td>¥15,000/人，涵蓋草津、宇都宮、熱海之新幹線與特急</td>
-                </tr>
-                <tr>
-                    <td><strong>JR 上野站置物櫃 (72小時)</strong></td>
-                    <td>約 NT$ 550</td>
-                    <td>放置 29 吋行李箱</td>
-                </tr>
-                <tr>
-                    <td><strong>市區地鐵與一般交通</strong></td>
-                    <td>約 NT$ 2,500</td>
-                    <td>使用 Suica 支付</td>
-                </tr>
-                <tr>
-                    <td><strong>景點門票與日歸溫泉</strong></td>
-                    <td>約 NT$ 3,000</td>
-                    <td>大谷資料館、熱海 Fuua 等</td>
-                </tr>
-                <tr>
-                    <td><strong>餐飲總計</strong></td>
-                    <td>約 NT$ 15,000 - 18,000</td>
-                    <td>依實際選擇之餐廳方案而定</td>
-                </tr>
-                <tr>
-                    <td style="text-align: right;"><strong>預估總計：</strong></td>
-                    <td><strong>約 NT$ 55,296 - 58,296</strong></td>
-                    <td>此金額為兩人合計，不含機票與個人購物</td>
-                </tr>
-            </tbody>
-        </table>
-
+    <div class="alert">
+        <div class="alert__title"><svg class="ic"><use href="#i-alert"/></svg>兩件最影響這趟的新變化</div>
+        <p><strong>① 退稅改制（2026/11/1 起）：</strong>你出發時正逢新制上路。免稅店改為先付「含稅價」，出國時在成田機場海關端末（kiosk）出示護照與商品、確認帶出後才退還消費稅；須在購買日起 90 天內辦理。Day 7 在機場要預留辦理時間。</p>
+        <p><strong>② 廣域券漲價（2026/3/14 起）：</strong>JR 東京廣域周遊券已由 ¥15,000 調升為 <strong>¥16,000／人</strong>，本行程預算已更新為新價。</p>
     </div>
 
+    <div class="panel t-slate panel--accent">
+        <h3 class="panel__title"><svg class="ic"><use href="#i-passport"/></svg>入境手續（仍維持免簽＋VJW）</h3>
+        <ul>
+            <li><strong>免簽停留：</strong>持台灣護照短期觀光免簽，可停留 90 天；護照效期建議 6 個月以上、無破損。</li>
+            <li><strong>Visit Japan Web：</strong>出發前 3–5 天於官網填好入境審查與海關申報，生成 QR Code 截圖存手機；成田已設「共同自助通關機」與 walk-through 閘門，可加速通關。</li>
+            <li><strong>JESTA 免擔心：</strong>日本版電子渡航認證 JESTA 已於 2026 年立法，但預定 2028 年度才實施；本次（2026/11）尚不需要申請，仍以 VJW 為準。</li>
+        </ul>
+    </div>
+
+    <div class="panel t-clay panel--accent">
+        <h3 class="panel__title"><svg class="ic"><use href="#i-yen"/></svg>購物退稅新制（重點）</h3>
+        <ul>
+            <li><strong>付款方式改變：</strong>2026/11/1 起購買免稅品時先付含稅價，<strong>退稅改到出境機場辦理</strong>（Refund 退款制）。</li>
+            <li><strong>機場流程：</strong>於成田海關免稅端末出示護照，系統判定綠燈即完成、紅燈需到檢查台確認商品帶出；務必把欲退稅商品留在隨身可查驗狀態。</li>
+            <li><strong>期限與鬆綁：</strong>須在購買日起 90 天內出境辦理；消耗品（化妝品、食品、藥品）特殊包裝與 50 萬日圓上限取消，與一般物品同等處理。</li>
+        </ul>
+    </div>
+
+    <div class="panel t-slate panel--accent">
+        <h3 class="panel__title"><svg class="ic"><use href="#i-luggage"/></svg>隨身電器與行動電源</h3>
+        <ul>
+            <li><strong>行動電源：</strong>須隨身攜帶、不可託運，並符合容量規格標示。</li>
+            <li><strong>電捲棒／直髮器：</strong>僅插電式或可拆卸電池款可攜帶；USB 充電或內建鋰電的無線款無法託運或手提，建議留在台灣。</li>
+        </ul>
+    </div>
+
+    <div class="panel t-sage panel--accent">
+        <h3 class="panel__title"><svg class="ic"><use href="#i-maple"/></svg>天氣、穿著與紅葉時節</h3>
+        <ul>
+            <li><strong>氣溫：</strong>東京市區約 10–15°C；草津溫泉與大谷資料館約 0–8°C，11 月下旬山區偏初冬、可能遇初雪。洋蔥式穿搭＋保暖毛帽、厚羽絨、防滑鞋。</li>
+            <li><strong>紅葉時節：</strong>東京市區（明治神宮外苑銀杏、六義園、濱離宮）約 11 月下旬至 12 月初為見頃，與本行程吻合；草津與日光偏向初冬景致，定位為雪見與溫泉。</li>
+        </ul>
+    </div>
+
+    <div class="panel t-rose panel--accent">
+        <h3 class="panel__title"><svg class="ic"><use href="#i-edit"/></svg>需提前預約／訂位</h3>
+        <ul>
+            <li><strong>六義園夜間特別拜觀：</strong>近年夜楓點燈多採線上預約指定日期時段，出發前先至官網確認場次並購票，以免現場向隅。</li>
+            <li><strong>鶯谷園燒肉：</strong>開放預約為一個月前，建議於 2026/10/22（日本時間 15:00）由信用卡秘書服務代訂。</li>
+            <li><strong>人氣壽喜燒（伊吹等）：</strong>建議事先線上或電話訂位。</li>
+        </ul>
+        <p class="note" style="margin-top:10px;">以上時段與制度以官方最新公告為準；出發前一週再確認一次最穩妥。</p>
+    </div>
+
+    <!-- ===================== 第一章 ===================== -->
+    <h2 class="section-h" id="stay"><span class="num">第一章</span><svg class="ic"><use href="#i-bed"/></svg>住宿總表與行李</h2>
+
+    <div class="panel t-sage panel--accent">
+        <h3 class="panel__title"><svg class="ic"><use href="#i-bed"/></svg>住宿總表 <span class="note">（匯率 1 JPY ≈ 0.21 TWD）</span></h3>
+        <div class="table-scroll">
+        <table>
+            <thead>
+                <tr><th>入住日期</th><th>地點與飯店</th><th>晚數</th><th>房型與包含</th><th>預估金額</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>11/22 (日)–11/24 (二)</td>
+                    <td>【<a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E6%A9%AAINN+%E6%9D%B1%E4%BA%AC%E9%B6%AF%E8%B0%B7%E7%AB%99%E5%89%8D" target="_blank" rel="noopener">東橫 INN 東京鶯谷站前</a>】</td>
+                    <td>2 晚</td><td>禁菸經濟雙人房</td>
+                    <td class="cost">¥26,020<br><span class="note">≈ NT$5,464</span></td>
+                </tr>
+                <tr>
+                    <td>11/24 (二)–11/25 (三)</td>
+                    <td>【<a href="https://www.google.com/maps/search/?api=1&query=%E8%8D%89%E6%B4%A5%E6%BA%AB%E6%B3%89+%E6%9C%9B%E9%9B%B2" target="_blank" rel="noopener">草津溫泉 望雲</a>】</td>
+                    <td>1 晚</td><td>附露天風呂豪華和室（一泊二食）</td>
+                    <td class="cost">¥71,049<br><span class="note">≈ NT$14,920</span></td>
+                </tr>
+                <tr>
+                    <td>11/25 (三)–11/26 (四)</td>
+                    <td>【<a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E6%A9%AAINN+%E5%AE%87%E9%83%BD%E5%AE%AE%E9%A7%85%E5%89%8D1" target="_blank" rel="noopener">東橫 INN 宇都宮站前 1 號店</a>】</td>
+                    <td>1 晚</td><td>禁菸雙人房 B</td>
+                    <td class="cost">¥10,260<br><span class="note">≈ NT$2,155</span></td>
+                </tr>
+                <tr>
+                    <td>11/26 (四)–11/28 (六)</td>
+                    <td>【<a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E6%A9%AAINN+%E6%9D%B1%E4%BA%AC%E9%B6%AF%E8%B0%B7%E7%AB%99%E5%89%8D" target="_blank" rel="noopener">東橫 INN 東京鶯谷站前</a>】</td>
+                    <td>2 晚</td><td>禁菸經濟雙人房</td>
+                    <td class="cost">¥24,320<br><span class="note">≈ NT$5,107</span></td>
+                </tr>
+                <tr class="row-sum">
+                    <td colspan="4" class="txt-right">住宿總計（兩人）：</td>
+                    <td class="cost">¥131,649<br><span class="note">≈ NT$27,646</span></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <div class="panel t-slate panel--accent">
+        <h3 class="panel__title"><svg class="ic"><use href="#i-luggage"/></svg>行李寄放策略（上野置物櫃）</h3>
+        <p>因應飯店寄放規定，於 11/24 早上將 29 吋大型行李存入【<a href="https://www.google.com/maps/search/?api=1&query=JR+%E4%B8%8A%E9%87%8E%E9%A7%85+%E3%82%B3%E3%82%A4%E3%83%B3%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC" target="_blank" rel="noopener">JR 上野站投幣式置物櫃</a>】（特大型約 ¥800／天，上限 72 小時）。以 Apple Pay 內的 Suica 付款上鎖，並拍照記錄號碼與位置。草津、宇都宮兩晚輕裝出行，11/26 傍晚從熱海回程時，以同一張 Suica 感應補繳超時費用並領回行李。</p>
+        <p class="note">11/24 早上存、11/26 傍晚領，約 60 小時，在 72 小時上限內；本行程 Day 5 傍晚會回到東京，故沿用此最省力的寄物方式，無須宅配或全程拖行李。</p>
+    </div>
+
+    <!-- ===================== 第二章 ===================== -->
+    <h2 class="section-h" id="ticket"><span class="num">第二章</span><svg class="ic"><use href="#i-ticket"/></svg>官方購票、劃位與訂位</h2>
+
+    <div class="panel t-mustard panel--accent">
+        <h3 class="panel__title"><svg class="ic"><use href="#i-train"/></svg>1. 機場快線 Keisei Skyliner</h3>
+        <ul>
+            <li><strong>購票：</strong>前往「京成電鐵 Skyliner e-ticket」官網，選日期人數直接刷卡。官網可避免匯差手續費且系統穩定。</li>
+            <li><strong>取票：</strong>抵成田機場後循「鐵道 Railways」指標至 B1，於京成電鐵藍色售票機掃 QR Code，劃位並領實體車票。</li>
+        </ul>
+    </div>
+
+    <div class="panel t-mustard panel--accent">
+        <h3 class="panel__title"><svg class="ic"><use href="#i-ticket"/></svg>2. JR 東京廣域周遊券</h3>
+        <ul>
+            <li><strong>價格（已更新）：</strong>2026/3/14 起新制票價 <strong>¥16,000／人</strong>（原 ¥15,000）。連續 3 天有效、記名限本人使用，無法多人共用或分段。</li>
+            <li><strong>購票：</strong>於「JR-EAST Train Reservation」官網購買，可提前一個月線上劃定新幹線與特急「指定席」。</li>
+            <li><strong>取票：</strong>抵上野站後，至有護照讀取功能（IC 晶片護照）的指定席售票機，掃 QR Code 與護照，一次領出周遊券與預劃車票。</li>
+            <li><strong>涵蓋與限制：</strong>草津、宇都宮、熱海皆在範圍內（含區內新幹線與特急，多需劃位）；東海道新幹線與 JR 巴士不適用。本行程 11/24–26 連續 3 天剛好用滿。</li>
+        </ul>
+    </div>
+
+    <div class="panel t-mustard panel--accent">
+        <h3 class="panel__title"><svg class="ic"><use href="#i-edit"/></svg>3. 預先劃位時刻表</h3>
+        <div class="ticket">
+            <span class="seq">1</span><span class="leg">11/24 (二)</span>：【特急 草津・四萬 1 號】上野 10:00 ➔ 長野原草津口 12:18<br>
+            <span class="dur">行駛 2 小時 18 分</span><br><br>
+            <span class="seq">2</span><span class="leg">11/25 (三)</span>：<br>
+            （段一）【新幹線 Hakutaka 566 號】高崎 15:44 ➔ 大宮 16:07<span class="dur"> ・23 分</span><br>
+            （段二）【新幹線 Yamabiko 145 號】大宮 16:29 ➔ 宇都宮 16:53<span class="dur"> ・24 分（含轉車約 1 小時 9 分）</span><br><br>
+            <span class="seq">3</span><span class="leg">11/26 (四) 去程</span>：<br>
+            （段一）【新幹線 Yamabiko 208 號】宇都宮 08:38 ➔ 東京 09:24<span class="dur"> ・46 分</span><br>
+            （段二）【特急 踊子 5 號】東京 10:00 ➔ 熱海 11:18<span class="dur"> ・1 小時 18 分</span><br><br>
+            <span class="seq">4</span><span class="leg">11/26 (四) 回程</span>：【特急 踊子 16 號】熱海 16:42 ➔ 東京 18:05<span class="dur"> ・1 小時 23 分</span>
+        </div>
+        <p class="note" style="margin-top:10px;">車次時刻以 JR 官網最新時刻表為準；熱門時段建議一抵站就先把指定席劃妥。</p>
+    </div>
+
+    <div class="reserve">
+        <div class="reserve__title"><svg class="ic"><use href="#i-dining"/></svg>4. 餐廳訂位 —【鶯谷園】燒肉</div>
+        <p style="margin:0 0 6px;color:#43352B;"><strong>步驟 1：</strong>開放預約為一個月前。請於 <strong>2026/10/22 日本時間 15:00（台灣 14:00）</strong> 進行預約。</p>
+        <p style="margin:0 0 6px;color:#43352B;"><strong>步驟 2：</strong>餐廳電話 <code>+81-3-3874-8717</code>。</p>
+        <p style="margin:0;color:#43352B;"><strong>步驟 3（建議）：</strong>店家熱門且以日語為主，可用信用卡（Visa 御璽卡／JCB 極緻卡）的「秘書免費代訂服務」，請客服於開放當天協助致電。</p>
+    </div>
+
+    <!-- ===================== 第三章 ===================== -->
+    <h2 class="section-h"><span class="num">第三章</span><svg class="ic"><use href="#i-maple"/></svg>每日行程與自選方案</h2>
+
+    <!-- ===== Day 1 ===== -->
+    <article class="day" id="d1" style="--day-accent:var(--plum);--day-accent-bg:var(--plum-bg);">
+        <div class="day__head">
+            <div class="day__badge"><span class="d-lbl">DAY</span><span class="d-num">1</span></div>
+            <div class="day__headtext"><span class="day__date">11/22（日）</span><h3 class="day__title">抵達東京與夜間景點</h3></div>
+        </div>
+        <ul class="timeline">
+            <li class="step"><span class="time">14:20</span><div class="step__body"><strong>航班抵達：</strong>JX802 降落成田機場 T2，辦理入境手續。</div></li>
+            <li class="step"><span class="time">15:30</span><div class="step__body"><strong>市區移動：</strong>搭乘 Skyliner 至日暮里站，轉 JR 山手線至鶯谷站。</div></li>
+            <li class="step"><span class="time">16:30</span><div class="step__body"><strong>住宿 Check-in：</strong>入住【<a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E6%A9%AAINN+%E6%9D%B1%E4%BA%AC%E9%B6%AF%E8%B0%B7%E7%AB%99%E5%89%8D" target="_blank" rel="noopener">東橫 INN 東京鶯谷站前</a>】。</div></li>
+            <li class="step"><span class="time">17:30</span><div class="step__body"><strong>夜間行程（4 選 1）：</strong>
+                <div class="opts">
+                    <div class="opts__head"><svg class="ic"><use href="#i-moon"/></svg>夜景散步</div>
+                    <div class="pick"><span class="tag">主推</span><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E6%83%A0%E6%AF%94%E5%A3%BD%E8%8A%B1%E5%9C%92%E5%BB%A3%E5%A0%B4+Baccarat" target="_blank" rel="noopener">惠比壽花園廣場</a>】</strong><span class="desc">11 月底點亮 Baccarat 水晶吊燈，歐式紅磚建築與燈光氛圍極佳。</span></div>
+                    <ul>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E5%AE%BF+%E6%80%9D%E3%81%84%E5%87%BA%E6%A8%AA%E4%B8%81" target="_blank" rel="noopener">新宿回憶橫丁</a> + <a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%BB%B3+%E5%B1%95%E6%9C%9B%E5%AE%A4" target="_blank" rel="noopener">都廳免費夜景</a>】</strong><span class="desc">懷舊昭和巷弄，隨後至都廳觀賞免費夜景。</span></li>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E6%B1%A0%E8%A2%8B+Sunshine+60+%E5%B1%95%E6%9C%9B%E5%8F%B0+Tenbou+Park" target="_blank" rel="noopener">池袋 Sunshine 60 展望台</a>】</strong><span class="desc">設有人工草皮區，環境輕鬆休閒。</span></li>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E5%85%AD%E6%9C%AC%E6%9C%A8%E3%83%92%E3%83%AB%E3%82%BA+%E6%A3%AE%E3%82%BF%E3%83%AF%E3%83%BC" target="_blank" rel="noopener">六本木之丘 森大樓</a>】</strong><span class="desc">拍攝東京鐵塔與城市夜景的經典位置。</span></li>
+                    </ul>
+                </div>
+            </div></li>
+            <li class="step"><span class="time">20:30</span><div class="step__body"><strong>晚餐（4 選 1）：</strong>
+                <div class="opts">
+                    <div class="opts__head"><svg class="ic"><use href="#i-dining"/></svg>晚餐</div>
+                    <div class="pick"><span class="tag">主推</span><strong>（高評價和牛）【<a href="https://www.google.com/maps/search/?api=1&query=%E9%B6%AF%E8%B0%B7%E5%9C%92+%E7%87%92%E8%82%89" target="_blank" rel="noopener">鶯谷園</a>】</strong><span class="reco">特上肉臀、厚切牛舌。距飯店近，需提前一個月由信用卡秘書代訂。<span class="cost-i">NT$2,500／兩人</span></span></div>
+                    <ul>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E7%84%BC%E8%82%89%E6%88%BF%E5%AE%B6+%E6%97%A5%E6%9A%AE%E9%87%8C%E5%BA%97" target="_blank" rel="noopener">燒肉 房家 日暮里店</a>】</strong><span class="reco">嚴選黑毛和牛 4 種盛合。Google 可直接訂位。<span class="cost-i">NT$2,200／兩人</span></span></li>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E3%82%84%E3%81%8D%E3%81%A8%E3%82%93+%E3%81%B2%E3%81%AA%E3%81%9F+%E4%B8%8A%E9%87%8E" target="_blank" rel="noopener">やきとん ひなた 上野店</a>】</strong><span class="reco">綜合烤肉串、明太子玉子燒。平價居酒屋。<span class="cost-i">NT$1,200／兩人</span></span></li>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E3%82%89%E3%83%BC%E3%82%81%E3%82%93+%E9%B4%A8%E3%81%A8%E8%91%B1+%E5%BE%A1%E5%BE%92%E7%9A%BA" target="_blank" rel="noopener">らーめん 鴨と葱</a>】</strong><span class="reco">特上鴨拉麵，純鴨清湯配大蔥。排隊名店。<span class="cost-i">NT$600／兩人</span></span></li>
+                    </ul>
+                </div>
+            </div></li>
+        </ul>
+    </article>
+
+    <!-- ===== Day 2 ===== -->
+    <article class="day" id="d2" style="--day-accent:var(--sage);--day-accent-bg:var(--sage-bg);">
+        <div class="day__head">
+            <div class="day__badge"><span class="d-lbl">DAY</span><span class="d-num">2</span></div>
+            <div class="day__headtext"><span class="day__date">11/23（一）</span><h3 class="day__title">市區秋色與文化散策</h3></div>
+        </div>
+        <ul class="timeline">
+            <li class="step"><span class="time">08:00</span><div class="step__body"><strong>晨間景點：</strong>搭地鐵至外苑前站，步行至【<a href="https://www.google.com/maps/search/?api=1&query=%E6%98%8E%E6%B2%BB%E7%A5%9E%E5%AE%AE%E5%A4%96%E8%8B%91+%E3%82%A4%E3%83%81%E3%83%A7%E3%82%A6%E4%B8%A6%E6%9C%A8" target="_blank" rel="noopener">明治神宮外苑 銀杏大道</a>】。建議 8:30 前抵達避開人潮（11 月下旬通常為銀杏見頃）。</div></li>
+            <li class="step"><span class="time">10:30</span><div class="step__body"><strong>秋季建築：</strong>轉往【<a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E5%A4%A7%E5%AD%B8+%E6%9C%AC%E9%84%B7%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%91%E3%82%B9" target="_blank" rel="noopener">東京大學 本鄉校區</a>】。百年紅磚建築搭配銀杏，適合攝影。</div></li>
+            <li class="step"><span class="time">12:30</span><div class="step__body"><strong>午餐（3 選 1）：</strong>
+                <div class="opts">
+                    <div class="opts__head"><svg class="ic"><use href="#i-dining"/></svg>午餐</div>
+                    <div class="pick"><span class="tag">主推</span><strong>（高人氣海鮮）【<a href="https://www.google.com/maps/search/?api=1&query=%E6%B5%B7%E9%AE%AE%E5%87%A6+%E3%81%95%E3%81%84%E3%81%A8%E3%81%86+%E5%85%A5%E8%B0%B7" target="_blank" rel="noopener">海鮮処 さいとう 入谷</a>】</strong><span class="reco">海鮮丼大盛，份量豐盛、評價良好。<span class="cost-i">NT$700／兩人</span></span></div>
+                    <ul>
+                        <li><strong>（壽喜燒老店）【<a href="https://www.google.com/maps/search/?api=1&query=%E6%B5%85%E8%8D%89%E4%BB%8A%E5%8D%8A+%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener">淺草今半 國際通本店</a>】</strong><span class="reco">午間限定黑毛和牛壽喜燒定食。<span class="cost-i">NT$2,800／兩人</span></span></li>
+                        <li><strong>（知名親子丼）【<a href="https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E3%81%B2%E3%81%A7+%E4%BA%BA%E5%BD%A2%E7%94%BA" target="_blank" rel="noopener">玉ひで 人形町</a>】</strong><span class="reco">元祖親子丼，日本親子丼發源地。<span class="cost-i">NT$1,200／兩人</span></span></li>
+                    </ul>
+                </div>
+            </div></li>
+            <li class="step"><span class="time">14:30</span><div class="step__body"><strong>午後散策（3 選 1）：</strong>
+                <div class="opts">
+                    <div class="opts__head"><svg class="ic"><use href="#i-maple"/></svg>下町散策</div>
+                    <div class="pick"><span class="tag">主推</span><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E8%B0%B7%E4%B8%AD%E9%8A%80%E5%BA%A7" target="_blank" rel="noopener">谷中銀座</a> & 根津神社】</strong><span class="desc">保留東京傳統下町風情，著名的「夕陽階梯」有機會遇見街貓。</span></div>
+                    <ul>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E9%AB%98%E5%86%86%E5%AF%BA+%E7%B4%94%E6%83%85%E5%95%86%E5%BA%97%E8%A1%97" target="_blank" rel="noopener">高圓寺</a> & 阿佐谷】</strong><span class="desc">次文化與古著愛好者的聚落。</span></li>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%8B%E5%8C%97%E6%B2%A2+Reload" target="_blank" rel="noopener">下北澤 Reload</a>】</strong><span class="desc">全新改造的文創與複合建築區域。</span></li>
+                    </ul>
+                </div>
+            </div></li>
+            <li class="step"><span class="time">19:30</span><div class="step__body"><strong>晚餐（3 選 1）：</strong>
+                <div class="opts">
+                    <div class="opts__head"><svg class="ic"><use href="#i-dining"/></svg>晚餐</div>
+                    <div class="pick"><span class="tag">主推</span><strong>（高評價壽喜燒）【<a href="https://www.google.com/maps/search/?api=1&query=%E3%81%99%E3%81%8D%E7%84%BC%E3%81%8D+%E4%BC%8A%E5%90%B9+%E6%96%B0%E5%AE%BF" target="_blank" rel="noopener">すき焼き 伊吹 新宿</a>】</strong><span class="reco">頂級黑毛和牛壽喜燒，肉質優異，需預訂。<span class="cost-i">NT$2,500／兩人</span></span></div>
+                    <ul>
+                        <li><strong>（頂級和牛吃到飽）【<a href="https://www.google.com/maps/search/?api=1&query=%E5%85%AD%E6%AD%8C%E4%BB%99+%E6%96%B0%E5%AE%BF" target="_blank" rel="noopener">六歌仙 新宿店</a>】</strong><span class="reco">松阪牛涮涮鍋／燒肉吃到飽。<span class="cost-i">NT$6,500／兩人</span></span></li>
+                        <li><strong>（神級烏龍麵）【<a href="https://www.google.com/maps/search/?api=1&query=%E3%81%86%E3%81%A9%E3%82%93+%E6%85%8E+%E6%96%B0%E5%AE%BF" target="_blank" rel="noopener">うどん 慎</a>】</strong><span class="reco">現打冷烏龍麵配炸蝦天婦羅，需排隊。<span class="cost-i">NT$800／兩人</span></span></li>
+                    </ul>
+                </div>
+            </div></li>
+        </ul>
+    </article>
+
+    <!-- ===== Day 3 ===== -->
+    <article class="day" id="d3" style="--day-accent:var(--slate);--day-accent-bg:var(--slate-bg);">
+        <div class="day__head">
+            <div class="day__badge"><span class="d-lbl">DAY</span><span class="d-num">3</span></div>
+            <div class="day__headtext"><span class="day__date">11/24（二）・啟用廣域券</span><h3 class="day__title">草津溫泉深度一泊二食</h3></div>
+        </div>
+        <ul class="timeline">
+            <li class="step"><span class="time">08:00</span><div class="step__body"><strong>行李存放：</strong>自鶯谷退房，將大型行李鎖入 JR 上野站投幣式置物櫃，背上輕裝背包出發。</div></li>
+            <li class="step"><span class="time">09:30</span><div class="step__body"><strong>特急出發：</strong>於上野站搭【特急 草津・四萬 1 號】至長野原草津口站，出站轉乘 JR 巴士直達【<a href="https://www.google.com/maps/search/?api=1&query=%E8%8D%89%E6%B4%A5%E6%BA%AB%E6%B3%89+%E6%B9%AF%E7%95%91" target="_blank" rel="noopener">草津溫泉</a>】。</div></li>
+            <li class="step"><span class="time">12:30</span><div class="step__body"><strong>湯畑景觀：</strong>抵達草津溫泉中心【湯畑 (Yubatake)】，拍攝溫泉景觀（11 月下旬山區偏初冬，留意保暖）。</div></li>
+            <li class="step"><span class="time">13:30</span><div class="step__body"><strong>午餐（3 選 1）：</strong>
+                <div class="opts">
+                    <div class="opts__head"><svg class="ic"><use href="#i-dining"/></svg>午餐</div>
+                    <div class="pick"><span class="tag">主推</span><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E8%8D%89%E6%B4%A5%E6%BA%AB%E6%B3%89+%E4%B8%89%E5%9C%8B%E5%B1%8B" target="_blank" rel="noopener">三國屋</a>】</strong><span class="reco">「三國蕎麥麵」配「舞茸天婦羅」。<span class="cost-i">NT$800／兩人</span></span></div>
+                    <ul>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E9%87%9C%E3%82%81%E3%81%97+%E3%81%84%E3%81%84%E3%82%84%E3%81%BE%E4%BA%AD+%E8%8D%89%E6%B4%A5" target="_blank" rel="noopener">釜めし いいやま亭</a>】</strong><span class="reco">五目釜飯，用高湯生米現煮。<span class="cost-i">NT$900／兩人</span></span></li>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E3%81%A9%E3%82%93%E3%81%90%E3%82%8A+%E8%8D%89%E6%B4%A5" target="_blank" rel="noopener">どんぐり</a>】</strong><span class="reco">老字號洋食屋的豬排咖哩飯。<span class="cost-i">NT$800／兩人</span></span></li>
+                    </ul>
+                </div>
+            </div></li>
+            <li class="step"><span class="time">15:00</span><div class="step__body"><strong>傳統活動與浴池：</strong>觀賞【<a href="https://www.google.com/maps/search/?api=1&query=%E7%86%B1%E4%B9%83%E6%B9%AF+%E6%B9%AF%E6%8F%89%E3%81%BF" target="_blank" rel="noopener">熱乃湯（揉湯表演）</a>】，接著前往【<a href="https://www.google.com/maps/search/?api=1&query=%E8%A5%BF%E3%81%AE%E6%B2%B3%E5%8E%9F%E9%9C%B2%E5%A4%A9%E9%A2%A8%E5%91%82" target="_blank" rel="noopener">西之河原露天風呂</a>】體驗大型露天溫泉。</div></li>
+            <li class="step"><span class="time">17:30</span><div class="step__body"><strong>住宿與晚餐：</strong>入住【<a href="https://www.google.com/maps/search/?api=1&query=%E8%8D%89%E6%B4%A5%E6%BA%AB%E6%B3%89+%E6%9C%9B%E9%9B%B2" target="_blank" rel="noopener">草津溫泉 望雲</a>】享用旅館晚餐，隨後穿浴衣前往湯畑欣賞點燈。</div></li>
+        </ul>
+    </article>
+
+    <!-- ===== Day 4 ===== -->
+    <article class="day" id="d4" style="--day-accent:var(--mustard);--day-accent-bg:var(--mustard-bg);">
+        <div class="day__head">
+            <div class="day__badge"><span class="d-lbl">DAY</span><span class="d-num">4</span></div>
+            <div class="day__headtext"><span class="day__date">11/25（三）・廣域券環線</span><h3 class="day__title">大谷資料館與宇都宮餃子</h3></div>
+        </div>
+        <ul class="timeline">
+            <li class="step"><span class="time">09:00</span><div class="step__body"><strong>交通移動：</strong>搭巴士回長野原草津口，轉 JR 至高崎站，接續新幹線經大宮抵達【<a href="https://www.google.com/maps/search/?api=1&query=%E5%AE%87%E9%83%BD%E5%AE%AE%E9%A7%85" target="_blank" rel="noopener">宇都宮站</a>】。</div></li>
+            <li class="step"><span class="time">12:30</span><div class="step__body"><strong>午餐（3 選 1）：</strong>
+                <div class="opts">
+                    <div class="opts__head"><svg class="ic"><use href="#i-dining"/></svg>宇都宮餃子</div>
+                    <div class="pick"><span class="tag">主推</span><strong>（高評價餃子）【<a href="https://www.google.com/maps/search/?api=1&query=%E5%AE%87%E9%83%BD%E5%AE%AE%E9%A4%83%E5%AD%90+%E3%81%BF%E3%82%93%E3%81%BF%E3%82%93+%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener">宇都宮餃子 みんみん</a>】</strong><span class="reco">燒餃子 2 份 + 水餃子 1 份，皮薄酥脆。<span class="cost-i">NT$600／兩人</span></span></div>
+                    <ul>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E3%81%8E%E3%82%87%E3%81%86%E3%81%96%E5%B0%82%E9%96%80%E5%BA%97+%E6%AD%A3%E5%97%A3" target="_blank" rel="noopener">餃子專門店 正嗣</a>】</strong><span class="reco">專注提供煎餃與水餃。<span class="cost-i">NT$500／兩人</span></span></li>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E5%AE%87%E9%83%BD%E5%AE%AE%E9%A4%83%E5%AD%90%E9%A4%A8+%E8%A5%BF%E5%8F%A3%E5%BA%97" target="_blank" rel="noopener">宇都宮餃子館 西口店</a>】</strong><span class="reco">綜合餃子拼盤。<span class="cost-i">NT$800／兩人</span></span></li>
+                    </ul>
+                </div>
+            </div></li>
+            <li class="step"><span class="time">14:30</span><div class="step__body"><strong>午後探險（2 選 1）：</strong>
+                <div class="opts">
+                    <div class="opts__head"><svg class="ic"><use href="#i-mountain"/></svg>午後</div>
+                    <div class="pick"><span class="tag">主推</span><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E8%B0%B7%E8%B3%87%E6%96%99%E9%A4%A8+%E5%AE%87%E9%83%BD%E5%AE%AE" target="_blank" rel="noopener">大谷資料館</a>】</strong><span class="desc">搭路線公車抵達。地下採石場遺跡，氣溫較低、空間宏大，適合廣角攝影。</span></div>
+                    <ul>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E6%97%A5%E5%85%89%E6%9D%B1%E7%85%A7%E5%AE%AE" target="_blank" rel="noopener">日光東照宮</a>】</strong><span class="desc">從宇都宮搭 JR 日光線，參觀德川家康陵寢與歷史木雕。</span></li>
+                    </ul>
+                </div>
+            </div></li>
+            <li class="step"><span class="time">18:00</span><div class="step__body"><strong>住宿 Check-in：</strong>入住【<a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E6%A9%AAINN+%E5%AE%87%E9%83%BD%E5%AE%AE%E9%A7%85%E5%89%8D1" target="_blank" rel="noopener">東橫 INN 宇都宮站前 1 號店</a>】。</div></li>
+            <li class="step"><span class="time">18:30</span><div class="step__body"><strong>晚餐（3 選 1）：</strong>
+                <div class="opts">
+                    <div class="opts__head"><svg class="ic"><use href="#i-dining"/></svg>晚餐</div>
+                    <div class="pick"><span class="tag">主推</span><strong>（熱鬧酒場）【<a href="https://www.google.com/maps/search/?api=1&query=%E5%AE%87%E9%83%BD%E5%AE%AE%E5%B1%8B%E5%8F%B0%E6%A8%AA%E4%B8%81" target="_blank" rel="noopener">宇都宮屋台橫丁</a>】</strong><span class="reco">關東煮、烤雞肉串與當地清酒，體驗在地氣氛。<span class="cost-i">NT$1,500／兩人</span></span></div>
+                    <ul>
+                        <li><strong>（高評價和牛）【<a href="https://www.google.com/maps/search/?api=1&query=%E7%84%BC%E8%82%89%E3%82%B0%E3%83%AC%E3%83%BC%E3%83%88+%E5%AE%87%E9%83%BD%E5%AE%AE%E9%A7%85%E5%89%8D%E5%BA%97" target="_blank" rel="noopener">焼肉グレート</a>】</strong><span class="reco">稀有部位盛合。<span class="cost-i">NT$3,000／兩人</span></span></li>
+                        <li><strong>（深夜拉麵）【<a href="https://www.google.com/maps/search/?api=1&query=%E9%BA%BA%E5%B1%8B+%E3%81%BF%E3%82%84%E3%81%9F+%E5%AE%87%E9%83%BD%E5%AE%AE" target="_blank" rel="noopener">麺屋 みやた</a>】</strong><span class="reco">濃厚雞白湯拉麵。<span class="cost-i">NT$600／兩人</span></span></li>
+                    </ul>
+                </div>
+            </div></li>
+        </ul>
+    </article>
+
+    <!-- ===== Day 5 ===== -->
+    <article class="day" id="d5" style="--day-accent:var(--rose);--day-accent-bg:var(--rose-bg);">
+        <div class="day__head">
+            <div class="day__badge"><span class="d-lbl">DAY</span><span class="d-num">5</span></div>
+            <div class="day__headtext"><span class="day__date">11/26（四）・廣域券最終日</span><h3 class="day__title">熱海海景溫泉與重返東京</h3></div>
+        </div>
+        <ul class="timeline">
+            <li class="step"><span class="time">08:30</span><div class="step__body"><strong>交通移動：</strong>從宇都宮搭【新幹線 Yamabiko 208 號】至東京站（09:24），轉【特急 踊子 5 號】開往【<a href="https://www.google.com/maps/search/?api=1&query=%E7%86%B1%E6%B5%B7%E9%A7%85" target="_blank" rel="noopener">熱海</a>】（10:00 → 11:18）。</div></li>
+            <li class="step"><span class="time">11:30</span><div class="step__body"><strong>熱海／伊豆（3 選 1）：</strong>
+                <div class="opts">
+                    <div class="opts__head"><svg class="ic"><use href="#i-onsen"/></svg>海景溫泉與午餐</div>
+                    <div class="pick"><span class="tag">主推</span><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E7%86%B1%E6%B5%B7%E5%BE%8C%E6%A8%82%E5%9C%92%E3%83%9B%E3%83%86%E3%83%AB+%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%91+Fuua" target="_blank" rel="noopener">熱海 Ocean Spa Fuua</a>】 + 【<a href="https://www.google.com/maps/search/?api=1&query=%E5%9B%B2%E7%88%90%E8%8C%B6%E5%B1%8B+%E7%86%B1%E6%B5%B7" target="_blank" rel="noopener">囲炉茶屋</a>】</strong><span class="desc">抵達後先嚐海鮮定食，再前往 Fuua 體驗面對相模灣的海景無邊際露天溫泉。</span></div>
+                    <ul>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E4%BF%AE%E7%A6%85%E5%AF%BA+%E4%BC%8A%E8%B1%86" target="_blank" rel="noopener">伊豆 修善寺</a> + 竹林小徑】</strong><span class="desc">轉乘至修善寺站，參拜古剎與品嚐生芥末蕎麥麵。</span></li>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%89%E5%B3%B6%E3%82%B9%E3%82%AB%E3%82%A4%E3%82%A6%E3%82%A9%E3%83%BC%E3%82%AF" target="_blank" rel="noopener">三島 Skywalk</a>】</strong><span class="desc">在長達 400 公尺的吊橋上觀賞富士山與駿河灣。</span></li>
+                    </ul>
+                </div>
+            </div></li>
+            <li class="step"><span class="time">16:30</span><div class="step__body"><strong>返回東京：</strong>搭【特急 踊子 16 號】回到東京站，轉乘回上野。
+                <div class="move"><svg class="ic"><use href="#i-train"/></svg>廣域券今日為最後一天，回程踊子號務必於今日搭乘。</div>
+            </div></li>
+            <li class="step"><span class="time">18:30</span><div class="step__body"><strong>領取行李：</strong>於上野站置物櫃以 Suica 感應補繳超時費用、領回行李，回到【<a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E6%A9%AAINN+%E6%9D%B1%E4%BA%AC%E9%B6%AF%E8%B0%B7%E7%AB%99%E5%89%8D" target="_blank" rel="noopener">東橫 INN 東京鶯谷站前</a>】重新 Check-in。</div></li>
+            <li class="step"><span class="time">19:30</span><div class="step__body"><strong>晚餐（3 選 1）：</strong>
+                <div class="opts">
+                    <div class="opts__head"><svg class="ic"><use href="#i-dining"/></svg>晚餐</div>
+                    <div class="pick"><span class="tag">主推</span><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E7%89%9B%E3%81%8B%E3%81%A4+%E3%81%82%E3%81%8A%E3%81%AA+%E5%BE%A1%E5%BE%92%E7%9A%BA%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener">牛かつ あおな 御徒町本店</a>】</strong><span class="reco">黑毛和牛霜降炸牛排，肉質極軟嫩。<span class="cost-i">NT$1,200／兩人</span></span></div>
+                    <ul>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E3%81%A8%E3%82%93%E3%81%8B%E3%81%A4%E5%B1%B1%E5%AE%B6+%E4%B8%8A%E9%87%8E%E5%BA%97" target="_blank" rel="noopener">とんかつ山家 上野店</a>】</strong><span class="reco">ロースかつ定食（里肌豬排）。<span class="cost-i">NT$500／兩人</span></span></li>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E7%A3%AF%E4%B8%B8%E6%B0%B4%E7%94%A3+%E4%B8%8A%E9%87%8E" target="_blank" rel="noopener">磯丸水產 上野店</a>】</strong><span class="reco">蟹味噌甲羅燒、現烤扇貝，桌上有烤爐。<span class="cost-i">NT$1,200／兩人</span></span></li>
+                    </ul>
+                </div>
+            </div></li>
+        </ul>
+    </article>
+
+    <!-- ===== Day 6 ===== -->
+    <article class="day" id="d6" style="--day-accent:var(--plum);--day-accent-bg:var(--plum-bg);">
+        <div class="day__head">
+            <div class="day__badge"><span class="d-lbl">DAY</span><span class="d-num">6</span></div>
+            <div class="day__headtext"><span class="day__date">11/27（五）</span><h3 class="day__title">海鮮早市、庭園秋色與夜楓</h3></div>
+        </div>
+        <ul class="timeline">
+            <li class="step"><span class="time">08:00</span><div class="step__body"><strong>海鮮早餐：</strong>空腹直奔【<a href="https://www.google.com/maps/search/?api=1&query=%E7%AF%89%E5%9C%B0%E5%A0%B4%E5%A4%96%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">築地場外市場</a>】，品嚐現烤玉子燒、生蠔與各式海鮮小吃。</div></li>
+            <li class="step"><span class="time">10:30</span><div class="step__body"><strong>秋庭漫步：</strong>步行至旁邊的【<a href="https://www.google.com/maps/search/?api=1&query=%E6%BF%B1%E9%9B%A2%E5%AE%AE%E6%81%A9%E8%B3%9C%E5%BA%AD%E5%9C%92" target="_blank" rel="noopener">濱離宮恩賜庭園</a>】，在湖心茶屋品嚐抹茶。</div></li>
+            <li class="step"><span class="time">13:00</span><div class="step__body"><strong>午後散策（3 選 1）：</strong>
+                <div class="opts">
+                    <div class="opts__head"><svg class="ic"><use href="#i-cat"/></svg>午後庭園・街區</div>
+                    <div class="pick"><span class="tag">主推</span><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E8%B1%AA%E5%BE%B3%E5%AF%BA+%E6%8B%9B%E8%B2%A1%E8%B2%93" target="_blank" rel="noopener">豪德寺</a>】</strong><span class="desc">著名的招財貓發源地，大量招財貓排列、適合拍照（位於世田谷，往返距離較遠，時間有限可改選下方庭園）。</span></div>
+                    <ul>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E5%B0%8F%E7%9F%B3%E5%B7%9D%E5%BE%8C%E6%A8%82%E5%9C%92" target="_blank" rel="noopener">小石川後樂園</a>】</strong><span class="desc">純粹的日式大名庭園秋景，位置順往六義園方向。</span></li>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E6%B1%9F%E6%88%B6%E6%9D%B1%E4%BA%AC%E3%81%9F%E3%81%A6%E3%82%82%E3%81%AE%E5%9C%92" target="_blank" rel="noopener">江戶東京建築園</a>】</strong><span class="desc">保存許多古老洋樓與傳統商鋪。</span></li>
+                    </ul>
+                </div>
+                <div class="move"><svg class="ic"><use href="#i-train"/></svg>動線提醒：築地與濱離宮相鄰、上午很順；午後若選豪德寺需往西邊世田谷、再折回北邊六義園，路程較長，建議依當天時間決定。</div>
+            </div></li>
+            <li class="step"><span class="time">17:00</span><div class="step__body"><strong>夜楓幻境：</strong>傍晚前往【<a href="https://www.google.com/maps/search/?api=1&query=%E5%85%AD%E7%BE%A9%E5%9C%92+%E3%83%A9%E3%81%84%E3%83%88%E3%82%A2%E3%83%83%E3%83%97" target="_blank" rel="noopener">六義園 夜間特別拜觀</a>】，欣賞光影與紅葉的結合。
+                <div class="move"><svg class="ic"><use href="#i-edit"/></svg>夜間點燈近年多採線上預約指定時段，請出發前先至官網確認場次並購票。</div>
+            </div></li>
+            <li class="step"><span class="time">19:30</span><div class="step__body"><strong>晚餐（3 選 1）：</strong>
+                <div class="opts">
+                    <div class="opts__head"><svg class="ic"><use href="#i-dining"/></svg>晚餐</div>
+                    <div class="pick"><span class="tag">主推</span><strong>（高評價在地壽司）【<a href="https://www.google.com/maps/search/?api=1&query=%E5%AF%BF%E5%8F%B8%E4%B8%80%E7%95%AA+%E4%B8%8A%E9%87%8E" target="_blank" rel="noopener">壽司一番 上野</a>】</strong><span class="reco">職人現握江戶前壽司，在地人推薦、不須排長隊。<span class="cost-i">NT$1,800／兩人</span></span></div>
+                    <ul>
+                        <li><strong>（高湯沾麵）【<a href="https://www.google.com/maps/search/?api=1&query=%E9%BA%BA%E5%B1%8B%E6%AD%A6%E8%94%B5+%E6%AD%A6%E9%AA%A8+%E5%BE%A1%E5%BE%92%E7%9A%BA" target="_blank" rel="noopener">麵屋武藏 武骨 御徒町</a>】</strong><span class="reco">黑武骨沾麵，大塊爌肉配墨魚汁湯頭。<span class="cost-i">NT$600／兩人</span></span></li>
+                        <li><strong>（炸豬排名店）【<a href="https://www.google.com/maps/search/?api=1&query=%E3%81%A8%E3%82%93%E3%81%8B%E3%81%A4+%E3%81%BE%E3%82%8B%E4%B8%80+%E7%A7%8B%E8%91%89%E5%8E%9F" target="_blank" rel="noopener">丸一 豬排 秋葉原</a>】</strong><span class="reco">特級里肌豬排。<span class="cost-i">NT$1,200／兩人</span></span></li>
+                    </ul>
+                </div>
+            </div></li>
+        </ul>
+    </article>
+
+    <!-- ===== Day 7 ===== -->
+    <article class="day" id="d7" style="--day-accent:var(--sage);--day-accent-bg:var(--sage-bg);">
+        <div class="day__head">
+            <div class="day__badge"><span class="d-lbl">DAY</span><span class="d-num">7</span></div>
+            <div class="day__headtext"><span class="day__date">11/28（六）</span><h3 class="day__title">退房散策與商業選物</h3></div>
+        </div>
+        <ul class="timeline">
+            <li class="step"><span class="time">09:00</span><div class="step__body"><strong>退房寄物：</strong>飯店退房，將行李寄放於飯店櫃檯。</div></li>
+            <li class="step"><span class="time">11:00</span><div class="step__body"><strong>最後散策（3 選 1）：</strong>
+                <div class="opts">
+                    <div class="opts__head"><svg class="ic"><use href="#i-bag"/></svg>選物散策</div>
+                    <div class="pick"><span class="tag">主推</span><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E8%97%8F%E5%89%8D+%E6%9D%B1%E4%BA%AC" target="_blank" rel="noopener">藏前</a>】</strong><span class="desc">被稱為東京的布魯克林，許多職人手作店、皮件店與咖啡廳，適合尋找特色紀念品。</span></div>
+                    <ul>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E6%97%A5%E6%9C%AC%E6%A9%8B+COREDO+%E5%AE%A4%E7%94%BA" target="_blank" rel="noopener">日本橋 COREDO 室町</a>】</strong><span class="desc">匯集高品質傳統工藝品、柴魚高湯專賣店。</span></li>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E5%B7%A3%E9%B4%A8+%E5%9C%B0%E8%97%8F%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">巢鴨地藏通</a>】</strong><span class="desc">復古氣息的商店街，小吃種類豐富且價格親民。</span></li>
+                    </ul>
+                </div>
+            </div></li>
+            <li class="step"><span class="time">13:30</span><div class="step__body"><strong>午餐（3 選 1）：</strong>
+                <div class="opts">
+                    <div class="opts__head"><svg class="ic"><use href="#i-dining"/></svg>午餐</div>
+                    <div class="pick"><span class="tag">主推</span><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E9%B0%BB+%E4%BC%8A%E8%B1%86%E6%A0%84+%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener">鰻 伊豆榮 本店</a>】</strong><span class="reco">蒲燒鰻魚重，上野歷史悠久的鰻魚飯名店。<span class="cost-i">NT$2,500／兩人</span></span></div>
+                    <ul>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%8A%E9%87%8E%E7%B2%BE%E9%A4%8A%E8%BB%92+%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener">上野精養軒 本店</a>】</strong><span class="reco">傳統紅酒燉牛肉蛋包飯，上野公園內百年西餐廳。<span class="cost-i">NT$1,500／兩人</span></span></li>
+                        <li><strong>【<a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E5%A6%B9%E7%BE%85+%E9%BB%92%E5%B7%9D+%E6%B5%85%E8%8D%89" target="_blank" rel="noopener">天麩羅 秋葉原 黑川</a>】</strong><span class="reco">上天丼，現炸海鮮與野菜。<span class="cost-i">NT$900／兩人</span></span></li>
+                    </ul>
+                </div>
+            </div></li>
+            <li class="step"><span class="time">15:30</span><div class="step__body"><strong>前往機場：</strong>回飯店取行李，步行至【<a href="https://www.google.com/maps/search/?api=1&query=%E4%BA%AC%E6%88%90%E4%B8%8A%E9%87%8E%E7%AB%99" target="_blank" rel="noopener">京成上野站</a>】搭乘 Skyliner（車程約 40 分）。</div></li>
+            <li class="step"><span class="time">17:10</span><div class="step__body"><strong>抵達與歸途：</strong>抵成田機場 T2，辦理退稅與報到，20:10 搭乘 JX805 返台。
+                <div class="move"><svg class="ic"><use href="#i-yen"/></svg>退稅新制：若有免稅購物，於海關免稅端末（kiosk）出示護照與商品辦理退款，請預留排隊時間、並把商品留在隨身可查驗狀態。</div>
+            </div></li>
+        </ul>
+    </article>
+
+    <!-- ===================== 預算表 ===================== -->
+    <h2 class="section-h" id="budget"><svg class="ic"><use href="#i-yen"/></svg>兩人總花費預算</h2>
+    <div class="panel t-mustard panel--accent">
+        <div class="table-scroll">
+        <table>
+            <thead><tr><th>項目</th><th>預估金額（NT$／兩人）</th><th>備註</th></tr></thead>
+            <tbody>
+                <tr><td><strong>住宿總計</strong></td><td class="cost">約 27,646</td><td>鶯谷（2+2 晚）＋草津望雲＋宇都宮</td></tr>
+                <tr><td><strong>JR 東京廣域周遊券（3 日）</strong></td><td class="cost">約 6,720</td><td>新制 ¥16,000／人，涵蓋草津、宇都宮、熱海</td></tr>
+                <tr><td><strong>JR 上野站置物櫃（72 小時）</strong></td><td class="cost">約 550</td><td>放置 29 吋行李箱</td></tr>
+                <tr><td><strong>市區地鐵與一般交通</strong></td><td class="cost">約 2,500</td><td>以 Suica 支付</td></tr>
+                <tr><td><strong>景點門票與日歸溫泉</strong></td><td class="cost">約 3,000</td><td>大谷資料館、熱海 Fuua 等</td></tr>
+                <tr><td><strong>餐飲總計</strong></td><td class="cost">約 15,000–18,000</td><td>依實際選擇之餐廳方案而定</td></tr>
+                <tr class="row-sum"><td class="txt-right">預估總計：</td><td class="cost">約 55,416–58,416</td><td>兩人合計，不含機票與個人購物</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <p class="note" style="margin-top:12px;">已套用廣域券 2026 新價（¥16,000／人）。提醒：2026/11/1 起購物為「先付含稅、出境退稅」，購物款項會先以含稅價支付，退稅於成田機場辦理，列預算時可預留這筆暫付的稅金。</p>
+    </div>
+
+    <footer class="foot">
+        <svg class="ic ic--lg"><use href="#i-cat"/></svg>
+        <p>東京 7 天 6 夜・北關東與伊豆秋季環線 ｜ 2 人 ｜ 2026.11.22–11.28<br>票價、時刻與入境規定以官方最新公告為準，出發前一週再確認一次最穩妥。</p>
+    </footer>
+
+</div>
 </body>
 </html>
