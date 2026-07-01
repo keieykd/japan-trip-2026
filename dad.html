@@ -13,21 +13,20 @@
 <style>
 /* ===================== 設計變數（莫蘭迪色票） ===================== */
 :root {
-  --paper:      #E9E5DD; /* 暖灰紙背景 */
-  --paper-soft: #F1ECE3; /* 卡片底色 */
-  --ink:        #3B3E39; /* 深墨綠灰，主要文字 */
-  --ink-soft:   #6A6C63; /* 次要文字 */
-  --sage:       #93A18F; /* 灰綠（放鬆/海灘草坪） */
-  --sand:       #BF9C82; /* 沙色（私人海灘） */
-  --sea:        #8198A0; /* 霧藍（海） */
-  --lantern:    #C29A55; /* 燈籠琥珀（會安古城） */
-  --seal:       #AE6450; /* 印章磚紅，全頁唯一的高彩重點 */
-  --line:       #CFC8BB; /* 細分隔線 */
+  --paper:      #E9E5DD;
+  --paper-soft: #F1ECE3;
+  --ink:        #3B3E39;
+  --ink-soft:   #6A6C63;
+  --sage:       #93A18F;
+  --sand:       #BF9C82;
+  --sea:        #8198A0;
+  --lantern:    #C29A55;
+  --seal:       #AE6450;
+  --line:       #CFC8BB;
   --shadow:     0 18px 40px -24px rgba(59, 62, 57, 0.45);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -40,78 +39,50 @@ body {
   overflow-x: hidden;
 }
 
-/* 細微紙張紋理，避免大色塊太平 */
+/* 細微紙張紋理 */
 body::before {
   content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.5;
+  position: fixed; inset: 0;
+  pointer-events: none; opacity: 0.5;
   background-image: radial-gradient(rgba(59,62,57,0.035) 1px, transparent 1px);
   background-size: 4px 4px;
   z-index: 0;
 }
 
 .wrap {
-  position: relative;
-  z-index: 1;
-  max-width: 880px;
-  margin: 0 auto;
-  padding: 0 24px;
+  position: relative; z-index: 1;
+  max-width: 880px; margin: 0 auto; padding: 0 24px;
 }
 
-/* ===================== 共用排版元件 ===================== */
+/* ===================== 共用排版 ===================== */
 .eyebrow {
-  font-family: "Noto Sans TC", sans-serif;
-  font-weight: 500;
-  font-size: 0.74rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
+  font-family: "Noto Sans TC", sans-serif; font-weight: 500;
+  font-size: 0.74rem; letter-spacing: 0.32em; text-transform: uppercase;
   color: var(--ink-soft);
 }
-
 .num-lat { font-family: "Fraunces", serif; font-variant-numeric: lining-nums; }
-
 h2.section-title {
-  font-family: "Noto Serif TC", serif;
-  font-weight: 700;
-  font-size: clamp(1.6rem, 4.5vw, 2.3rem);
-  line-height: 1.25;
-  letter-spacing: 0.01em;
+  font-family: "Noto Serif TC", serif; font-weight: 700;
+  font-size: clamp(1.6rem, 4.5vw, 2.3rem); line-height: 1.25; letter-spacing: 0.01em;
 }
 
-/* 進場動畫（尊重 prefers-reduced-motion） */
-.reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
+/* 進場動畫 */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.8s ease, transform 0.8s ease; }
 .reveal.is-visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
 }
 
-/* ===================== 照片元件（含莫蘭迪色調與破圖備援） ===================== */
-/*
-  作法：figure.photo 本身帶一個莫蘭迪漸層底色（依 pg-* 類別），
-  圖片載入成功就覆蓋在上面；若圖片載入失敗，onerror 會替圖片加上
-  .img-failed 讓它淡出，露出底下的漸層與標題，避免出現裂圖。
-*/
+/* ===================== 照片元件（莫蘭迪色調＋破圖備援） ===================== */
 .photo {
-  position: relative;
-  width: 100%;
-  border-radius: 16px;
-  overflow: hidden;
+  position: relative; width: 100%; border-radius: 16px; overflow: hidden;
   box-shadow: var(--shadow);
   background: linear-gradient(135deg, var(--sage), var(--sand));
 }
 .photo.ratio-wide { aspect-ratio: 16 / 9; }
 .photo.ratio-tri  { aspect-ratio: 3 / 4; }
-.photo.ratio-card { aspect-ratio: 4 / 3; }
 .photo.ratio-feature { aspect-ratio: 3 / 2; }
-
-/* 莫蘭迪底色變體（破圖時顯示） */
 .photo.pg-sea     { background: linear-gradient(140deg, #8198A0, #A9B6B2); }
 .photo.pg-sand    { background: linear-gradient(140deg, #BF9C82, #D8C3AC); }
 .photo.pg-lantern { background: linear-gradient(140deg, #C29A55, #D9BC86); }
@@ -119,158 +90,63 @@ h2.section-title {
 .photo.pg-seal    { background: linear-gradient(140deg, #AE6450, #C99178); }
 
 .photo img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* 統一成莫蘭迪調性：降彩度、稍微提亮、降一點對比，讓照片與版面融合 */
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  /* 統一莫蘭迪調性：降彩度、稍提亮、降對比 */
   filter: saturate(0.78) brightness(1.03) contrast(0.96);
-  transition: opacity 0.6s ease, transform 1.2s ease;
+  transition: opacity 0.6s ease;
 }
 .photo img.img-failed { opacity: 0; }
-
-/* 暖色罩 + 底部漸層 scrim，讓標題在任何照片上都讀得到 */
 .photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
+  content: ""; position: absolute; inset: 0; pointer-events: none;
   background:
     linear-gradient(to top, rgba(40,42,38,0.62) 0%, rgba(40,42,38,0) 46%),
     rgba(191,156,130,0.10);
-  pointer-events: none;
 }
 .photo .cap {
-  position: absolute;
-  left: 14px;
-  bottom: 12px;
-  z-index: 2;
-  color: #F3EFE7;
-  font-family: "Noto Serif TC", serif;
-  font-weight: 500;
-  font-size: 0.86rem;
-  letter-spacing: 0.02em;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.35);
+  position: absolute; left: 14px; bottom: 12px; z-index: 2; color: #F3EFE7;
+  font-family: "Noto Serif TC", serif; font-weight: 500; font-size: 0.86rem;
+  letter-spacing: 0.02em; text-shadow: 0 1px 6px rgba(0,0,0,0.35);
 }
 .photo .cap small {
-  display: block;
-  font-family: "Noto Sans TC", sans-serif;
-  font-weight: 300;
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
-  opacity: 0.85;
-  margin-top: 1px;
+  display: block; font-family: "Noto Sans TC", sans-serif; font-weight: 300;
+  font-size: 0.68rem; letter-spacing: 0.06em; opacity: 0.85; margin-top: 1px;
 }
 
-/* ===================== HERO 封面 ===================== */
-.hero {
-  position: relative;
-  padding: 72px 0 56px;
-  overflow: hidden;
-}
-
-/* 海 → 沙 → 燈 的旅程色帶，象徵從私人海灘走到會安古城 */
+/* ===================== HERO ===================== */
+.hero { position: relative; padding: 72px 0 56px; overflow: hidden; }
 .journey-band {
-  height: 8px;
-  border-radius: 999px;
+  height: 8px; border-radius: 999px; margin-bottom: 40px;
   background: linear-gradient(90deg, var(--sea) 0%, var(--sand) 52%, var(--lantern) 100%);
-  margin-bottom: 40px;
 }
-
-.hero .to-line {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 22px;
-}
+.hero .to-line { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
 .hero .to-line .eyebrow { white-space: nowrap; }
 .hero .to-line .rule { height: 1px; background: var(--line); flex: 1; }
-
 .hero h1 {
-  font-family: "Noto Serif TC", serif;
-  font-weight: 900;
-  font-size: clamp(3rem, 13vw, 6rem);
-  line-height: 0.98;
-  letter-spacing: 0.04em;
-  margin-bottom: 18px;
+  font-family: "Noto Serif TC", serif; font-weight: 900;
+  font-size: clamp(3rem, 13vw, 6rem); line-height: 0.98; letter-spacing: 0.04em; margin-bottom: 18px;
 }
-.hero h1 .amp {
-  font-family: "Fraunces", serif;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--lantern);
-  padding: 0 0.12em;
-}
-
+.hero h1 .amp { font-family: "Fraunces", serif; font-weight: 400; font-style: italic; color: var(--lantern); padding: 0 0.12em; }
 .hero .subtitle {
-  font-family: "Noto Serif TC", serif;
-  font-weight: 500;
-  font-size: clamp(1.05rem, 3.2vw, 1.45rem);
-  color: var(--ink-soft);
-  margin-bottom: 30px;
+  font-family: "Noto Serif TC", serif; font-weight: 500;
+  font-size: clamp(1.05rem, 3.2vw, 1.45rem); color: var(--ink-soft); margin-bottom: 30px;
 }
+.hero-triptych { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 34px; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 28px 48px; padding-top: 30px; border-top: 1px solid var(--line); }
+.hero-meta .item .label { font-size: 0.72rem; letter-spacing: 0.2em; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 4px; }
+.hero-meta .item .value { font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 1.06rem; }
 
-/* HERO 三聯照（海・城・宴，一眼帶出旅程主題） */
-.hero-triptych {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 34px;
-}
-
-.hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 28px 48px;
-  padding-top: 30px;
-  border-top: 1px solid var(--line);
-}
-.hero-meta .item .label {
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  color: var(--ink-soft);
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-.hero-meta .item .value {
-  font-family: "Noto Serif TC", serif;
-  font-weight: 700;
-  font-size: 1.06rem;
-}
-
-/* HERO 中的價值大數字 */
 .headline-cost {
-  margin-top: 46px;
-  background: var(--paper-soft);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 30px 32px;
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 18px;
+  margin-top: 46px; background: var(--paper-soft); border: 1px solid var(--line);
+  border-radius: 20px; padding: 30px 32px; box-shadow: var(--shadow);
+  display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px;
 }
-.headline-cost .cost-main .cap {
-  font-size: 0.78rem; letter-spacing: 0.16em; color: var(--ink-soft);
-}
+.headline-cost .cost-main .cap { font-size: 0.78rem; letter-spacing: 0.16em; color: var(--ink-soft); }
 .headline-cost .cost-main .figure {
-  font-family: "Fraunces", serif;
-  font-weight: 600;
-  font-size: clamp(2.4rem, 8vw, 3.4rem);
-  line-height: 1.1;
-  color: var(--ink);
+  font-family: "Fraunces", serif; font-weight: 600;
+  font-size: clamp(2.4rem, 8vw, 3.4rem); line-height: 1.1; color: var(--ink);
 }
-.headline-cost .cost-main .figure small {
-  font-size: 0.42em; font-weight: 600; color: var(--ink-soft); margin-left: 4px;
-}
-.headline-cost .cost-side {
-  text-align: right;
-  font-size: 0.86rem;
-  color: var(--ink-soft);
-  line-height: 1.55;
-}
+.headline-cost .cost-main .figure small { font-size: 0.42em; font-weight: 600; color: var(--ink-soft); margin-left: 4px; }
+.headline-cost .cost-side { text-align: right; font-size: 0.86rem; color: var(--ink-soft); line-height: 1.55; }
 .headline-cost .cost-side b { color: var(--ink); font-weight: 700; }
 
 /* ===================== 區段通用 ===================== */
@@ -278,282 +154,157 @@ section.block { padding: 52px 0; }
 section.block .head { margin-bottom: 30px; }
 section.block .head .eyebrow { display: block; margin-bottom: 10px; }
 
-/* ===================== 價值主張卡片 ===================== */
-.value-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-.value-card {
-  background: var(--paper-soft);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 24px 22px;
-  position: relative;
-}
+/* ===================== 價值卡片 ===================== */
+.value-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.value-card { background: var(--paper-soft); border: 1px solid var(--line); border-radius: 16px; padding: 24px 22px; position: relative; }
 .value-card .tag {
-  display: inline-block;
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
-  font-weight: 500;
-  padding: 4px 10px;
-  border-radius: 999px;
-  margin-bottom: 14px;
-  color: #fff;
+  display: inline-block; font-size: 0.68rem; letter-spacing: 0.14em; font-weight: 500;
+  padding: 4px 10px; border-radius: 999px; margin-bottom: 14px; color: #fff;
 }
 .tag.t-sea { background: var(--sea); }
 .tag.t-sand { background: var(--sand); }
 .tag.t-sage { background: var(--sage); }
 .tag.t-lantern { background: var(--lantern); }
-.value-card h3 {
-  font-family: "Noto Serif TC", serif;
-  font-weight: 700;
-  font-size: 1.12rem;
-  margin-bottom: 8px;
-}
+.value-card h3 { font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 1.12rem; margin-bottom: 8px; }
 .value-card p { font-size: 0.9rem; color: var(--ink-soft); }
-.value-card .save {
-  margin-top: 12px;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--seal);
-}
+.value-card .save { margin-top: 12px; font-size: 0.82rem; font-weight: 500; color: var(--seal); }
 
 /* ===================== 每日行程時間軸 ===================== */
 .timeline { position: relative; }
-.day {
-  position: relative;
-  padding-left: 64px;
-  padding-bottom: 38px;
-}
+.day { position: relative; padding-left: 64px; padding-bottom: 38px; }
 .day:last-child { padding-bottom: 0; }
-/* 垂直連線 */
-.day::before {
-  content: "";
-  position: absolute;
-  left: 22px;
-  top: 8px;
-  bottom: -6px;
-  width: 2px;
-  background: var(--line);
-}
+.day::before { content: ""; position: absolute; left: 22px; top: 8px; bottom: -6px; width: 2px; background: var(--line); }
 .day:last-child::before { display: none; }
-/* 日期圓點（含序號，行程是真實序列才用編號） */
 .day .dot {
-  position: absolute;
-  left: 0; top: 0;
-  width: 46px; height: 46px;
-  border-radius: 50%;
-  background: var(--paper);
-  border: 2px solid var(--sage);
+  position: absolute; left: 0; top: 0; width: 46px; height: 46px; border-radius: 50%;
+  background: var(--paper); border: 2px solid var(--sage);
   display: flex; align-items: center; justify-content: center;
-  font-family: "Fraunces", serif;
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: var(--ink);
+  font-family: "Fraunces", serif; font-weight: 600; font-size: 1.1rem; color: var(--ink);
 }
 .day.birthday .dot { border-color: var(--seal); color: var(--seal); }
-
 .day .day-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin-bottom: 6px; }
-.day .day-head .date {
-  font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 1.18rem;
-}
+.day .day-head .date { font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 1.18rem; }
 .day .day-head .dow { font-size: 0.82rem; color: var(--ink-soft); }
-.day .day-head .badge {
-  font-size: 0.7rem; letter-spacing: 0.1em; padding: 3px 9px; border-radius: 999px;
-  background: rgba(174,100,80,0.12); color: var(--seal); font-weight: 500;
-}
-.day .theme {
-  font-size: 0.86rem; color: var(--ink-soft); margin-bottom: 14px;
-}
-/* 每日照片 */
+.day .day-head .badge { font-size: 0.7rem; letter-spacing: 0.1em; padding: 3px 9px; border-radius: 999px; background: rgba(174,100,80,0.12); color: var(--seal); font-weight: 500; }
+.day .theme { font-size: 0.86rem; color: var(--ink-soft); margin-bottom: 14px; }
 .day .day-photo { margin-bottom: 14px; }
 .day ul { list-style: none; }
-.day ul li {
-  position: relative;
-  padding-left: 18px;
-  margin-bottom: 8px;
-  font-size: 0.92rem;
-}
-.day ul li::before {
-  content: "";
-  position: absolute; left: 0; top: 11px;
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--sand);
-}
-.day ul li .t {
-  font-family: "Fraunces", serif; font-weight: 600; color: var(--ink);
-  margin-right: 6px;
-}
+.day ul li { position: relative; padding-left: 18px; margin-bottom: 8px; font-size: 0.92rem; }
+.day ul li::before { content: ""; position: absolute; left: 0; top: 11px; width: 6px; height: 6px; border-radius: 50%; background: var(--sand); }
+.day ul li .t { font-family: "Fraunces", serif; font-weight: 600; color: var(--ink); margin-right: 6px; }
 
-/* ===================== 生日晚餐壓軸卡（Nén） ===================== */
+/* ===================== 生日晚餐壓軸卡 ===================== */
 .feature {
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 0;
-  background: var(--ink);
-  color: var(--paper);
-  border-radius: 22px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: 0;
+  background: var(--ink); color: var(--paper); border-radius: 22px; overflow: hidden; box-shadow: var(--shadow);
 }
 .feature .feature-photo { position: relative; min-height: 280px; }
-.feature .feature-photo .photo {
-  position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 0; box-shadow: none;
-}
+.feature .feature-photo .photo { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 0; box-shadow: none; }
 .feature .feature-photo .photo.ratio-feature { aspect-ratio: auto; }
 .feature .feature-body { padding: 34px 32px; }
-.feature .star {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: #D9BC86; margin-bottom: 14px;
-}
-.feature .star .dot-g {
-  width: 9px; height: 9px; border-radius: 50%; background: var(--sage);
-  box-shadow: 0 0 0 3px rgba(147,161,143,0.25);
-}
-.feature h3 {
-  font-family: "Noto Serif TC", serif; font-weight: 700;
-  font-size: clamp(1.4rem, 4vw, 1.9rem); color: var(--paper); margin-bottom: 6px;
-}
+.feature .star { display: inline-flex; align-items: center; gap: 8px; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: #D9BC86; margin-bottom: 14px; }
+.feature .star .dot-g { width: 9px; height: 9px; border-radius: 50%; background: var(--lantern); box-shadow: 0 0 0 3px rgba(194,154,85,0.25); }
+.feature h3 { font-family: "Noto Serif TC", serif; font-weight: 700; font-size: clamp(1.4rem, 4vw, 1.9rem); color: var(--paper); margin-bottom: 6px; }
 .feature .zh-sub { color: rgba(243,239,231,0.7); font-size: 0.9rem; margin-bottom: 18px; }
 .feature .feature-rows { display: grid; gap: 10px; margin-bottom: 18px; }
-.feature .frow {
-  display: flex; justify-content: space-between; gap: 16px;
-  font-size: 0.88rem; padding-bottom: 9px;
-  border-bottom: 1px solid rgba(243,239,231,0.16);
-}
+.feature .frow { display: flex; justify-content: space-between; gap: 16px; font-size: 0.88rem; padding-bottom: 9px; border-bottom: 1px solid rgba(243,239,231,0.16); }
 .feature .frow .k { color: rgba(243,239,231,0.6); white-space: nowrap; }
 .feature .frow .v { text-align: right; color: var(--paper); }
 .feature .frow .v b { font-family: "Fraunces", serif; font-weight: 600; }
-.feature .why {
-  font-size: 0.85rem; color: rgba(243,239,231,0.82); line-height: 1.6;
-  border-left: 2px solid var(--seal); padding-left: 12px;
-}
+.feature .why { font-size: 0.85rem; color: rgba(243,239,231,0.82); line-height: 1.6; border-left: 2px solid var(--seal); padding-left: 12px; }
 
-/* ===================== 預算明細（帳本） ===================== */
-.ledger {
-  background: var(--paper-soft);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 8px 4px;
-  box-shadow: var(--shadow);
-}
+/* ===================== 預算帳本 ===================== */
+.ledger { background: var(--paper-soft); border: 1px solid var(--line); border-radius: 18px; padding: 8px 4px; box-shadow: var(--shadow); }
 .ledger table { width: 100%; border-collapse: collapse; }
 .ledger th, .ledger td { text-align: left; padding: 14px 22px; }
-.ledger thead th {
-  font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--ink-soft); font-weight: 500;
-  border-bottom: 1px solid var(--line);
-}
+.ledger thead th { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; border-bottom: 1px solid var(--line); }
 .ledger thead th.amt, .ledger td.amt { text-align: right; }
-.ledger tbody td {
-  font-size: 0.92rem;
-  border-bottom: 1px solid rgba(207,200,187,0.5);
-}
+.ledger tbody td { font-size: 0.92rem; border-bottom: 1px solid rgba(207,200,187,0.5); }
 .ledger tbody tr:last-child td { border-bottom: none; }
-.ledger td.amt {
-  font-family: "Fraunces", serif; font-variant-numeric: lining-nums; font-weight: 600;
-  white-space: nowrap;
-}
+.ledger td.amt { font-family: "Fraunces", serif; font-variant-numeric: lining-nums; font-weight: 600; white-space: nowrap; }
 .ledger td .note { display: block; font-size: 0.74rem; color: var(--ink-soft); margin-top: 2px; }
-.ledger .opt td:first-child::after {
-  content: "選配"; font-size: 0.64rem; color: var(--sage);
-  border: 1px solid var(--sage); border-radius: 999px; padding: 1px 7px; margin-left: 8px;
-}
-.ledger tfoot td {
-  padding-top: 18px; padding-bottom: 18px;
-  border-top: 2px solid var(--ink);
-  font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 1.05rem;
-}
-.ledger tfoot td.amt {
-  font-family: "Fraunces", serif; font-size: 1.3rem; color: var(--seal);
-}
-
-.budget-note {
-  margin-top: 16px;
-  font-size: 0.82rem;
-  color: var(--ink-soft);
-  display: flex; gap: 8px; align-items: flex-start;
-}
+.ledger .opt td:first-child::after { content: "選配"; font-size: 0.64rem; color: var(--sage); border: 1px solid var(--sage); border-radius: 999px; padding: 1px 7px; margin-left: 8px; }
+.ledger tfoot td { padding-top: 18px; padding-bottom: 18px; border-top: 2px solid var(--ink); font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 1.05rem; }
+.ledger tfoot td.amt { font-family: "Fraunces", serif; font-size: 1.3rem; color: var(--seal); }
+.budget-note { margin-top: 16px; font-size: 0.82rem; color: var(--ink-soft); display: flex; gap: 8px; align-items: flex-start; }
 .budget-note span.k { color: var(--seal); font-weight: 700; }
+
+/* ===================== 峴港 vs 帛琉 比較 ===================== */
+.compare-intro { font-size: 0.95rem; color: var(--ink-soft); margin-bottom: 24px; max-width: 60ch; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.compare-card { position: relative; border: 1px solid var(--line); border-radius: 18px; padding: 26px 24px; background: var(--paper-soft); }
+.compare-card.pick { border: 2px solid var(--sage); box-shadow: var(--shadow); }
+.compare-card .rec-badge {
+  position: absolute; top: -12px; left: 24px;
+  background: var(--sage); color: #fff; font-size: 0.68rem; letter-spacing: 0.14em;
+  padding: 4px 12px; border-radius: 999px; font-weight: 500;
+}
+.compare-card .dest { font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 1.3rem; margin-bottom: 2px; }
+.compare-card .sub { font-size: 0.8rem; color: var(--ink-soft); margin-bottom: 16px; }
+.compare-card .big-num { font-family: "Fraunces", serif; font-weight: 600; font-size: 2rem; color: var(--ink); line-height: 1; }
+.compare-card .big-num small { font-size: 0.42em; color: var(--ink-soft); font-weight: 600; margin-left: 4px; }
+.compare-card .two-num { font-size: 0.8rem; color: var(--ink-soft); margin-top: 4px; margin-bottom: 16px; }
+.compare-card ul { list-style: none; }
+.compare-card ul li { position: relative; padding-left: 18px; font-size: 0.86rem; margin-bottom: 7px; color: var(--ink); }
+.compare-card ul li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); }
+.compare-card.alt ul li::before { background: var(--sea); }
+.compare-card .foot-note { margin-top: 12px; font-size: 0.76rem; color: var(--seal); }
+
+.gap-callout {
+  background: var(--ink); color: var(--paper); border-radius: 14px;
+  padding: 18px 22px; margin-bottom: 22px; display: flex; flex-wrap: wrap;
+  align-items: baseline; gap: 8px 14px;
+}
+.gap-callout .big { font-family: "Fraunces", serif; font-weight: 600; font-size: 1.5rem; color: #D9BC86; }
+.gap-callout .txt { font-size: 0.9rem; color: rgba(243,239,231,0.85); }
+
+/* 三欄比較表（沿用帳本樣式） */
+.compare-table td.c-name { font-size: 0.9rem; }
+.compare-table td.c-amt { text-align: right; font-family: "Fraunces", serif; font-weight: 600; white-space: nowrap; font-size: 0.9rem; }
+.compare-table th.c-amt { text-align: right; }
+.compare-table .col-pick { color: var(--ink); }
+.compare-table .col-alt { color: var(--ink-soft); }
+.compare-table tfoot td { font-family: "Noto Serif TC", serif; font-weight: 700; }
+.compare-table tfoot td.c-amt.col-pick { font-family: "Fraunces", serif; color: var(--seal); font-size: 1.05rem; }
+.compare-table tfoot td.c-amt.col-alt { font-family: "Fraunces", serif; font-size: 1.05rem; }
 
 /* ===================== 出發前須知 ===================== */
 .notes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-.note-item {
-  border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px;
-  background: var(--paper-soft);
-}
-.note-item h4 {
-  font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 1rem; margin-bottom: 6px;
-}
+.note-item { border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; background: var(--paper-soft); }
+.note-item h4 { font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
 .note-item p { font-size: 0.85rem; color: var(--ink-soft); }
 
-/* ===================== 審批欄（簽名頁，全頁的記憶點） ===================== */
-.approval {
-  margin: 40px 0 70px;
-  background: var(--ink);
-  color: var(--paper);
-  border-radius: 22px;
-  padding: 46px 36px;
-  position: relative;
-  overflow: hidden;
-}
+/* ===================== 審批欄 ===================== */
+.approval { margin: 40px 0 70px; background: var(--ink); color: var(--paper); border-radius: 22px; padding: 46px 36px; position: relative; overflow: hidden; }
 .approval .eyebrow { color: rgba(233,229,221,0.6); }
-.approval h2 {
-  font-family: "Noto Serif TC", serif; font-weight: 700;
-  font-size: clamp(1.5rem, 4.5vw, 2rem); margin: 10px 0 8px; color: var(--paper);
-}
-.approval p.lead { color: rgba(233,229,221,0.78); font-size: 0.95rem; max-width: 44ch; }
-
-.approval .check-row {
-  display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px;
-}
-.approval .check {
-  display: flex; align-items: center; gap: 10px;
-  border: 1px solid rgba(233,229,221,0.3);
-  border-radius: 12px; padding: 14px 20px;
-  font-family: "Noto Serif TC", serif; font-weight: 500; font-size: 1.02rem;
-}
-.approval .check .box {
-  width: 20px; height: 20px; border: 2px solid rgba(233,229,221,0.55); border-radius: 5px;
-}
+.approval h2 { font-family: "Noto Serif TC", serif; font-weight: 700; font-size: clamp(1.5rem, 4.5vw, 2rem); margin: 10px 0 8px; color: var(--paper); }
+.approval p.lead { color: rgba(233,229,221,0.78); font-size: 0.95rem; max-width: 46ch; }
+.approval .check-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+.approval .check { display: flex; align-items: center; gap: 10px; border: 1px solid rgba(233,229,221,0.3); border-radius: 12px; padding: 14px 20px; font-family: "Noto Serif TC", serif; font-weight: 500; font-size: 1.02rem; }
+.approval .check .box { width: 20px; height: 20px; border: 2px solid rgba(233,229,221,0.55); border-radius: 5px; }
 .approval .check.pass { border-color: var(--sage); }
 .approval .check.pass .box { border-color: var(--sage); }
-
-/* 圓形印章 —— 全頁唯一最高彩重點，刻意傾斜 */
 .seal {
-  position: absolute;
-  right: 26px; bottom: 26px;
-  width: 116px; height: 116px;
-  border: 3px solid var(--seal);
-  border-radius: 50%;
-  color: var(--seal);
+  position: absolute; right: 26px; bottom: 26px; width: 116px; height: 116px;
+  border: 3px solid var(--seal); border-radius: 50%; color: var(--seal);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center;
-  transform: rotate(-12deg);
-  background: rgba(174,100,80,0.07);
+  text-align: center; transform: rotate(-12deg); background: rgba(174,100,80,0.07);
 }
 .seal .big { font-family: "Noto Serif TC", serif; font-weight: 900; font-size: 1.5rem; letter-spacing: 0.08em; line-height: 1.15; }
 .seal .small { font-size: 0.62rem; letter-spacing: 0.24em; margin-top: 4px; opacity: 0.85; }
 
 /* ===================== 頁尾 ===================== */
-.foot {
-  text-align: center;
-  padding: 30px 0 60px;
-  font-size: 0.78rem;
-  color: var(--ink-soft);
-  line-height: 1.7;
-}
+.foot { text-align: center; padding: 30px 0 60px; font-size: 0.78rem; color: var(--ink-soft); line-height: 1.7; }
 .foot .sign { font-family: "Noto Serif TC", serif; font-weight: 500; color: var(--ink); }
 
-/* ===================== 響應式（手機） ===================== */
+/* ===================== 響應式 ===================== */
 @media (max-width: 620px) {
   .value-grid { grid-template-columns: 1fr; }
   .notes-grid { grid-template-columns: 1fr; }
+  .compare-grid { grid-template-columns: 1fr; }
   .headline-cost { flex-direction: column; align-items: flex-start; }
   .headline-cost .cost-side { text-align: left; }
-  .ledger th, .ledger td { padding: 12px 16px; }
+  .ledger th, .ledger td { padding: 12px 14px; }
   .seal { position: static; margin: 28px auto 0; transform: rotate(-8deg); }
   .approval { text-align: left; }
   .feature { grid-template-columns: 1fr; }
@@ -565,7 +316,7 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
 
 <div class="wrap">
 
-  <!-- ============ HERO 封面 ============ -->
+  <!-- ============ HERO ============ -->
   <header class="hero">
     <div class="journey-band reveal"></div>
 
@@ -578,7 +329,6 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
     <h1 class="reveal">海<span class="amp">&amp;</span>燈</h1>
     <p class="subtitle reveal">峴港私人海灘 ・ 會安古城燈火　四天三夜</p>
 
-    <!-- 三聯照：海 ・ 城 ・ 宴 -->
     <div class="hero-triptych reveal">
       <figure class="photo ratio-tri pg-sea">
         <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZPwkoBVtb8SIkqm72LVEBAgXcUQIe9Uxy_zLyBUcaSmKkeFQcl414unvgqhXOqi7oxmjYTEjNJVJvxdUelwmDir16zDKTAfkrM8IM7602KH_vWdh61Jt7cqGoBqaPcbxf39WlcylGVWfGuy7r0=s4800-w800-h600" alt="峴港海灘" loading="lazy" referrerpolicy="no-referrer" onerror="this.classList.add('img-failed')" />
@@ -589,7 +339,7 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
         <figcaption class="cap">城</figcaption>
       </figure>
       <figure class="photo ratio-tri pg-seal">
-        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZNsaGC3kHUj_5VNaDKne3wVFwI2xpd9wt_8k-L2hJZ74inHutbFGJDA_GErEjKTVTHztBMUj23DkgzQdPM1o6fEHaVw5ZV2e-DeaxNirJLG6TfhR-YK2NF7vhxezhTOhWq8iElumX2ntAfrypWvmWyWNg=s4800-w800-h600" alt="Nén 米其林綠星料理" loading="lazy" referrerpolicy="no-referrer" onerror="this.classList.add('img-failed')" />
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZMMf-PHnESrA-joxX1HpQPmxgOBvU0R5IbxdiBndgTcmpILtDTM2v_MWN2gXbS9lHOqEgNy92hLQ2CuZ2sG9UL6sU3nD8aGVJo5Lolq_jV2vojkHNkpomGeztWZ8eZhtbc36jrBUkr1am93_Q=s4800-w800-h600" alt="Mango Mango 河景餐廳" loading="lazy" referrerpolicy="no-referrer" onerror="this.classList.add('img-failed')" />
         <figcaption class="cap">宴</figcaption>
       </figure>
     </div>
@@ -616,17 +366,18 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
     <div class="headline-cost reveal">
       <div class="cost-main">
         <div class="cap">兩人全包預算（含已付機票）</div>
-        <div class="figure">NT$ 56,700<small>± 3,000</small></div>
+        <div class="figure">NT$ 63,700<small>± 3,000</small></div>
       </div>
       <div class="cost-side">
-        每人約 <b>NT$ 28,000</b><br>
+        每人約 <b>NT$ 32,000</b><br>
         含 5 星私人海灘渡假村 3 晚<br>
-        <b>每日免費 SPA</b> ＋ 米其林綠星生日大餐
+        <b>每日免費 SPA</b> ＋ 河景生日晚餐<br>
+        比帛琉方案每人省約 <b>NT$ 17,000</b>
       </div>
     </div>
   </header>
 
-  <!-- ============ 為什麼這趟划算 ============ -->
+  <!-- ============ 為什麼划算 ============ -->
   <section class="block">
     <div class="head reveal">
       <span class="eyebrow">Why it's worth it</span>
@@ -665,7 +416,7 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
       <div class="value-card reveal">
         <span class="tag t-lantern">機票已鎖</span>
         <h3>機票已開票</h3>
-        <p>來回含稅 NT$14,048（兩人）已確定，不受後續漲價影響，預算最大一塊已封頂。</p>
+        <p>每人 NT$14,048、兩人 28,096（含稅）已確定，不受後續漲價影響，預算最大一塊已封頂。</p>
       </div>
     </div>
   </section>
@@ -682,9 +433,7 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
       <article class="day reveal">
         <div class="dot">1</div>
         <div class="day-head">
-          <span class="date">3 / 13</span>
-          <span class="dow">星期六</span>
-          <span class="badge">抵達・海邊放鬆</span>
+          <span class="date">3 / 13</span><span class="dow">星期六</span><span class="badge">抵達・海邊放鬆</span>
         </div>
         <div class="theme">落地直奔私人海灘，第一杯夕陽調酒開場。</div>
         <div class="day-photo">
@@ -694,7 +443,7 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
           </figure>
         </div>
         <ul>
-          <li><span class="t">09:10</span>抵達峴港機場，包車 20 分到 Fusion，先寄行李</li>
+          <li><span class="t">09:10</span>抵達峴港機場，Grab 20 分到 Fusion，先寄行李</li>
           <li><span class="t">午前</span>海灘＋泳池放空，渡假村午餐</li>
           <li><span class="t">下午</span>第一次免費 SPA；15:00 正式入住</li>
           <li><span class="t">17:00</span>海灘酒吧買一送一調酒看夕陽 → 渡假村晚餐</li>
@@ -704,9 +453,7 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
       <article class="day reveal">
         <div class="dot">2</div>
         <div class="day-head">
-          <span class="date">3 / 14</span>
-          <span class="dow">星期日</span>
-          <span class="badge">會安古城・重頭戲</span>
+          <span class="date">3 / 14</span><span class="dow">星期日</span><span class="badge">會安古城・重頭戲</span>
         </div>
         <div class="theme">上午海邊，傍晚進城，看滿城燈籠與河上水燈。</div>
         <div class="day-photo">
@@ -717,7 +464,7 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
         </div>
         <ul>
           <li><span class="t">上午</span>晨瑜珈 / 海灘 / SPA</li>
-          <li><span class="t">16:00</span>出發會安，避開正午高溫</li>
+          <li><span class="t">16:00</span>Grab 出發會安，避開正午高溫</li>
           <li><span class="t">黃昏</span>日本廊橋、福建會館、古城老街散步</li>
           <li><span class="t">入夜</span>燈籠亮起＋秋盆河放水燈，河畔晚餐（夜景超好拍）</li>
         </ul>
@@ -726,11 +473,9 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
       <article class="day birthday reveal">
         <div class="dot">3</div>
         <div class="day-head">
-          <span class="date">3 / 15</span>
-          <span class="dow">星期一</span>
-          <span class="badge">🎂 Eason 生日</span>
+          <span class="date">3 / 15</span><span class="dow">星期一</span><span class="badge">🎂 Eason 生日</span>
         </div>
-        <div class="theme">慵懶的海邊一天，壓軸是米其林綠星生日大餐。</div>
+        <div class="theme">慵懶的海邊一天，壓軸是會安河景生日晚餐。</div>
         <div class="day-photo">
           <figure class="photo ratio-wide pg-sage">
             <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZMCl8M09YWPuifetgT-icNl16eQ5BljdiFOWUYCCc3Z_op20QS3GNOsqEsNKp052qVa_rUNpT2CSg5PkgGe-CuU8S_Zq78l5ky_boEg-e09DnUjvxciuIZi-1IhCe3qBTRS2_3XsIDGatwbDsQ=s4800-w800-h600" alt="五行山天然石灰岩洞窟" loading="lazy" referrerpolicy="no-referrer" onerror="this.classList.add('img-failed')" />
@@ -740,16 +485,14 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
         <ul>
           <li><span class="t">上午</span>海灘＋最後幾次 SPA，徹底放鬆</li>
           <li><span class="t">選配</span>An Bang 海灘，或步行可達的五行山（天然洞窟＋俯瞰海岸，非人造）</li>
-          <li><span class="t">晚上</span>Nén 米其林綠星生日大餐（市區精緻餐廳，詳見下方）</li>
+          <li><span class="t">晚上</span>Mango Mango 河景生日晚餐（正對秋盆河、燈籠船，詳見下方）</li>
         </ul>
       </article>
 
       <article class="day reveal">
         <div class="dot">4</div>
         <div class="day-head">
-          <span class="date">3 / 16</span>
-          <span class="dow">星期二</span>
-          <span class="badge">最後海邊・返程</span>
+          <span class="date">3 / 16</span><span class="dow">星期二</span><span class="badge">最後海邊・返程</span>
         </div>
         <div class="theme">把最後一個上午留給海，傍晚的班機回家。</div>
         <div class="day-photo">
@@ -760,7 +503,7 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
         </div>
         <ul>
           <li><span class="t">上午</span>海灘時光，可詢問延後退房</li>
-          <li><span class="t">14:30</span>午餐後出發機場（約 20 分）</li>
+          <li><span class="t">14:30</span>午餐後 Grab 出發機場（約 20 分）</li>
           <li><span class="t">17:35</span>峴港起飛 → 21:20 抵達台北</li>
         </ul>
       </article>
@@ -768,7 +511,7 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
     </div>
   </section>
 
-  <!-- ============ 生日晚餐壓軸（Nén） ============ -->
+  <!-- ============ 生日晚餐壓軸（Mango Mango） ============ -->
   <section class="block">
     <div class="head reveal">
       <span class="eyebrow">The birthday dinner</span>
@@ -777,36 +520,36 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
 
     <div class="feature reveal">
       <div class="feature-photo">
-        <figure class="photo ratio-feature pg-seal">
-          <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZMlpWMFIh6Z0b8iEj1FG27wFTR9BCmFBOZYk845vEOIYaxZimtaNJzNusFJrjV8UY2aqmZLdYHz6O45sq1FjQ4RqlBrGsy3BwPgSyP4i2jISSl52R9vAH6I3lsYtChlKCTcXXB73pXda_jEKvQ=s4800-w800-h600" alt="Nén Danang 米其林綠星餐廳" loading="lazy" referrerpolicy="no-referrer" onerror="this.classList.add('img-failed')" />
-          <figcaption class="cap">Nén Danang<small>故事菜單 Sto:ry Menu</small></figcaption>
+        <figure class="photo ratio-feature pg-lantern">
+          <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZMMf-PHnESrA-joxX1HpQPmxgOBvU0R5IbxdiBndgTcmpILtDTM2v_MWN2gXbS9lHOqEgNy92hLQ2CuZ2sG9UL6sU3nD8aGVJo5Lolq_jV2vojkHNkpomGeztWZ8eZhtbc36jrBUkr1am93_Q=s4800-w800-h600" alt="Mango Mango 會安河景餐廳" loading="lazy" referrerpolicy="no-referrer" onerror="this.classList.add('img-failed')" />
+          <figcaption class="cap">Mango Mango<small>會安・秋盆河畔</small></figcaption>
         </figure>
       </div>
       <div class="feature-body">
-        <span class="star"><span class="dot-g"></span>MICHELIN 綠星 ・ 當代越南料理</span>
-        <h3>Nén Danang</h3>
-        <p class="zh-sub">越南首家米其林綠星，99% 在地食材、自家農場直送的「故事菜單」。</p>
+        <span class="star"><span class="dot-g"></span>會安河畔 ・ 河景與燈籠</span>
+        <h3>Mango Mango</h3>
+        <p class="zh-sub">二樓正對秋盆河，燈籠船從眼前划過的浪漫河景餐廳，越式創作料理＋調酒。</p>
 
         <div class="feature-rows">
           <div class="frow">
-            <span class="k">套餐價</span>
-            <span class="v"><b>1,500,000–3,500,000</b> 越南盾／人<br>（約 NT$ 1,850–4,300，另 8% 服務費）</span>
+            <span class="k">兩人預估</span>
+            <span class="v"><b>約 NT$ 1,500–2,000</b><br>（含調酒與甜點）</span>
           </div>
           <div class="frow">
-            <span class="k">兩人預估</span>
-            <span class="v"><b>約 NT$ 6,000–8,000</b></span>
+            <span class="k">生日彩蛋</span>
+            <span class="v">店家常主動免費<br>準備生日蛋糕</span>
           </div>
           <div class="frow">
             <span class="k">位置</span>
-            <span class="v">峴港市區 Ngũ Hành Sơn<br>離 Fusion 約 15–20 分</span>
+            <span class="v">An Hội 夜市區<br>古城步行可達</span>
           </div>
           <div class="frow">
             <span class="k">訂位</span>
-            <span class="v">需預訂・押金 50 萬越南盾／人<br>晚餐 17:30 起</span>
+            <span class="v">建議預訂二樓河景位<br>營業 08:00–23:00</span>
           </div>
         </div>
 
-        <p class="why">為什麼選這裡：不在海邊、氛圍安靜精緻，每道菜附手繪卡片說明，米其林等級卻只要法餐 La Maison 1888 的零頭，CP 值與儀式感兼具。</p>
+        <p class="why">為什麼選這裡：不在海邊、河景正對燈籠倒影，慶生氛圍佳；比米其林餐廳省下約 4–5 千，把儀式感留下、把預算還給發發。</p>
       </div>
     </div>
   </section>
@@ -821,15 +564,12 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
     <div class="ledger reveal">
       <table>
         <thead>
-          <tr>
-            <th>項目</th>
-            <th class="amt">兩人費用 (NT$)</th>
-          </tr>
+          <tr><th>項目</th><th class="amt">兩人費用 (NT$)</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td>來回機票<span class="note">已開票・含稅，金額鎖定</span></td>
-            <td class="amt">14,048</td>
+            <td>來回機票 ×2<span class="note">每人 14,048・已開票含稅・金額鎖定</span></td>
+            <td class="amt">28,096</td>
           </tr>
           <tr>
             <td>越南電子簽證 ×2<span class="note">官網自辦 USD 25／人</span></td>
@@ -840,12 +580,8 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
             <td class="amt">20,000</td>
           </tr>
           <tr>
-            <td>機場接送（來回）</td>
-            <td class="amt">1,500</td>
-          </tr>
-          <tr>
-            <td>會安往返交通（2 趟）</td>
-            <td class="amt">2,000</td>
+            <td>當地交通<span class="note">Grab・機場接送＋會安往返</span></td>
+            <td class="amt">2,500</td>
           </tr>
           <tr>
             <td>會安古城門票 ×2＋放水燈</td>
@@ -856,18 +592,18 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
             <td class="amt">150</td>
           </tr>
           <tr>
-            <td>餐食（含 Nén 米其林綠星生日大餐）<span class="note">早餐已含於房價</span></td>
-            <td class="amt">12,000</td>
+            <td>餐食（含 Mango Mango 河景生日晚餐）<span class="note">早餐已含於房價</span></td>
+            <td class="amt">7,000</td>
           </tr>
           <tr>
             <td>eSIM ×2＋小費・雜支 buffer</td>
-            <td class="amt">4,500</td>
+            <td class="amt">3,500</td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
-            <td>合計（每人約 NT$ 28,000）</td>
-            <td class="amt">約 56,700</td>
+            <td>合計（每人約 NT$ 32,000）</td>
+            <td class="amt">約 63,700</td>
           </tr>
         </tfoot>
       </table>
@@ -876,6 +612,84 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
     <div class="budget-note reveal">
       <span class="k">＊</span>
       <span>另於入住時刷押金 200 萬越南盾（約 NT$ 2,460），退房時全額退還，非實際支出。實際金額依 2027 年匯率與房型浮動，故總額抓 ± NT$ 3,000 緩衝。</span>
+    </div>
+  </section>
+
+  <!-- ============ 峴港 vs 帛琉 比較 ============ -->
+  <section class="block">
+    <div class="head reveal">
+      <span class="eyebrow">Da Nang vs Palau</span>
+      <h2 class="section-title">峴港 vs 帛琉・財務比較</h2>
+    </div>
+
+    <p class="compare-intro reveal">發發加碼想比較的帛琉也查了。結論很清楚：帛琉是「升級版」而非「省錢版」——機票、出海團、海洋許可都貴，即使精簡也比峴港高一截。同樣三月中、兩人。</p>
+
+    <div class="compare-grid">
+      <div class="compare-card pick reveal">
+        <span class="rec-badge">推薦</span>
+        <div class="dest">峴港 × 會安</div>
+        <div class="sub">4 天 3 夜 ・ 海灘＋古城＋放鬆</div>
+        <div class="big-num">NT$ 32,000<small>/人</small></div>
+        <div class="two-num">兩人約 NT$ 63,700</div>
+        <ul>
+          <li>機票已開票・鎖定低價</li>
+          <li>私人海灘＋每日免費 SPA</li>
+          <li>會安河景生日晚餐</li>
+          <li>一間飯店住到底，零換房</li>
+        </ul>
+      </div>
+
+      <div class="compare-card alt reveal">
+        <div class="dest">帛琉</div>
+        <div class="sub">5 天 4 夜 ・ 世界級跳島浮潛</div>
+        <div class="big-num">NT$ 49,000<small>/人</small></div>
+        <div class="two-num">兩人約 NT$ 98,000</div>
+        <ul>
+          <li>華航唯一直飛（約 3.5 小時）</li>
+          <li>岩石群島＋牛奶湖泥浴</li>
+          <li>德國水道等世界級浮潛點</li>
+          <li>出海團＋海洋許可佔比高</li>
+        </ul>
+        <div class="foot-note">＊水母湖金水母近年劇減，CP 值下降，建議略過</div>
+      </div>
+    </div>
+
+    <div class="gap-callout reveal">
+      <span class="big">+ NT$ 17,000／人</span>
+      <span class="txt">帛琉每人多花約 53%，主要來自機票、出海團與海洋許可；即使砍到精簡版仍約 NT$ 80,000／兩人。</span>
+    </div>
+
+    <div class="ledger reveal">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th class="c-name">項目（兩人）</th>
+            <th class="c-amt col-pick">峴港</th>
+            <th class="c-amt col-alt">帛琉</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="c-name">機票 ×2</td><td class="c-amt col-pick">28,096</td><td class="c-amt col-alt">~38,000</td></tr>
+          <tr><td class="c-name">住宿</td><td class="c-amt col-pick">20,000</td><td class="c-amt col-alt">~15,400</td></tr>
+          <tr><td class="c-name">出海團／門票</td><td class="c-amt col-pick">~1,050</td><td class="c-amt col-alt">~22,400</td></tr>
+          <tr><td class="c-name">餐食</td><td class="c-amt col-pick">~7,000</td><td class="c-amt col-alt">~9,600</td></tr>
+          <tr><td class="c-name">當地交通</td><td class="c-amt col-pick">~2,500</td><td class="c-amt col-alt">~2,000</td></tr>
+          <tr><td class="c-name">簽證／環境費</td><td class="c-amt col-pick">~1,600</td><td class="c-amt col-alt">~6,400</td></tr>
+          <tr><td class="c-name">eSIM＋雜支</td><td class="c-amt col-pick">~3,500</td><td class="c-amt col-alt">~4,200</td></tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td class="c-name">合計（兩人）</td>
+            <td class="c-amt col-pick">~63,700</td>
+            <td class="c-amt col-alt">~98,000</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="budget-note reveal">
+      <span class="k">＊</span>
+      <span>帛琉全數為行情估算（華航直飛、mid-range 住宿、2 天跳島團）；峴港機票已鎖定，其餘同為估算。帛琉住宿看似較低，但不含 SPA 與早餐，與 Fusion 非同級比較。</span>
     </div>
   </section>
 
@@ -896,29 +710,27 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
       </div>
       <div class="note-item reveal">
         <h4>當地交通</h4>
-        <p>裝 Grab App 叫車最方便。古城小店、放水燈、小費用得到現金，建議換少量越南盾。</p>
+        <p>裝 Grab App 叫車最方便省錢（本行程交通即以 Grab 估算）。古城小店、放水燈、小費用得到現金，建議換少量越南盾。</p>
       </div>
       <div class="note-item reveal">
         <h4>生日晚餐訂位</h4>
-        <p>Nén 需提前線上訂位並付每人 50 萬越南盾押金。生日當天記得備註慶生，餐廳常為壽星準備驚喜。</p>
+        <p>Mango Mango 建議提前訂二樓河景位，生日當天記得備註慶生，店家常主動準備蛋糕。</p>
       </div>
     </div>
   </section>
 
-  <!-- ============ 審批欄（簽名頁） ============ -->
+  <!-- ============ 審批欄 ============ -->
   <section class="approval reveal">
     <span class="eyebrow">For approval</span>
     <h2>請財務大臣裁示</h2>
-    <p class="lead">機票已鎖定、SPA 已內含、人造門票全省，連生日大餐都挑了米其林綠星裡 CP 值最高的一家。懇請核准放行。</p>
+    <p class="lead">機票已鎖定、SPA 已內含、人造門票全省，生日大餐改走會安河景省下 4–5 千，整趟比帛琉每人便宜約 NT$ 17,000。CP 值已拉到最高，懇請核准放行。</p>
 
     <div class="check-row">
       <div class="check pass">
-        <span class="box"></span>
-        <span>核准通過，立刻訂房</span>
+        <span class="box"></span><span>核准通過，立刻訂房</span>
       </div>
       <div class="check">
-        <span class="box"></span>
-        <span>原則同意，細節再議</span>
+        <span class="box"></span><span>原則同意，細節再議</span>
       </div>
     </div>
 
@@ -938,7 +750,7 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
 </div>
 
 <script>
-/* 進場動畫：以 IntersectionObserver 觸發 reveal，含降級與 reduced-motion 處理 */
+/* 進場動畫：IntersectionObserver 觸發 reveal，含降級與 reduced-motion 處理 */
 (function () {
   "use strict";
 
@@ -947,7 +759,6 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
     ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
     : false;
 
-  // 若使用者偏好減少動態，或瀏覽器不支援 IntersectionObserver，直接全部顯示
   if (prefersReduced || !("IntersectionObserver" in window)) {
     revealItems.forEach(function (el) { el.classList.add("is-visible"); });
     return;
@@ -965,7 +776,7 @@ section.block .head .eyebrow { display: block; margin-bottom: 10px; }
 
     revealItems.forEach(function (el) { observer.observe(el); });
   } catch (error) {
-    // 任何例外狀況都退回「全部顯示」，確保內容不會被動畫卡住而看不到
+    // 任何例外都退回全部顯示，確保內容不被動畫卡住
     console.error("Reveal animation failed, showing all content:", error);
     revealItems.forEach(function (el) { el.classList.add("is-visible"); });
   }
