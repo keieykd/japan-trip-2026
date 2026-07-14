@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <!-- 確保在行動裝置上有良好的縮放與閱讀體驗 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2027 峇里島海洋雙拼極致渡假計畫</title>
+    <style>
+        /* 定義莫蘭迪色系主題變數 */
+        :root {
+            --primary-bg: #f4f1eb;
+            --container-bg: #ffffff;
+            --text-main: #2c2927;
+            --text-muted: #6e6864;
+            --accent-green: #55625b;
+            --accent-light-green: #7c8c82;
+            --accent-brown: #a87c5e;
+            --border-color: #e3ded6;
+        }
+
+        /* 基礎樣式重置與設定 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', -apple-system, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .main-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--container-bg);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        /* 頂部標題區塊 */
+        .hero-header {
+            background-color: var(--accent-green);
+            color: #ffffff;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .hero-header h1 {
+            font-size: 24pt;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .hero-header p {
+            color: #d1dad6;
+            font-size: 11pt;
+        }
+
+        /* 內容區塊共用設定 */
+        .content-section {
+            padding: 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 16pt;
+            font-weight: bold;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 24px;
+            background-color: var(--accent-light-green);
+            margin-right: 12px;
+            border-radius: 4px;
+        }
+
+        /* SVG 向量地圖視覺化區塊 */
+        .map-wrapper {
+            background-color: #eef1f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .map-instruction {
+            font-size: 9pt;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        /* 行程卡片網格佈局 */
+        .itinerary-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .day-card {
+            background-color: #faf9f6;
+            border-left: 4px solid var(--accent-light-green);
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .day-title {
+            font-size: 13pt;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .day-badge {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 9pt;
+            font-weight: bold;
+        }
+
+        .timeline-item {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-light-green);
+            border-radius: 50%;
+        }
+
+        .timeline-time {
+            font-weight: bold;
+            color: var(--accent-brown);
+            margin-right: 10px;
+            font-size: 10pt;
+        }
+
+        .timeline-desc {
+            font-size: 10.5pt;
+            display: inline;
+        }
+
+        /* 預算表格樣式 */
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .budget-table th, .budget-table td {
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+            font-size: 10.5pt;
+        }
+
+        .budget-table th {
+            background-color: var(--accent-green);
+            color: white;
+            font-weight: 500;
+        }
+
+        .budget-table tr:nth-child(even) {
+            background-color: #fcfbf9;
+        }
+
+        .budget-total {
+            font-weight: bold;
+            background-color: #eae5dc !important;
+            color: var(--text-main);
+        }
+
+        .amount-cell {
+            text-align: right !important;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* RWD 響應式設定 */
+        @media (min-width: 768px) {
+            .itinerary-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <!-- 頁首區塊 -->
+        <header class="hero-header">
+            <h1>2027 峇里島海洋雙拼極致渡假計畫</h1>
+            <p>旅行成員：Eason & 發發 | 日期：2027/05/22 - 2027/05/29 | 航班：中華航空 CI 0771 / CI 0772</p>
+        </header>
+
+        <!-- 地圖視覺化區塊 -->
+        <section class="content-section">
+            <h2 class="section-title">地理動線示意圖 (Route Map)</h2>
+            <div class="map-wrapper">
+                <!-- 
+                    SVG 地圖實作說明：
+                    1. 使用 viewBox 確保 SVG 能隨容器自動縮放 (Responsive)。
+                    2. 幾何圖形抽象化峇里島主島與附屬島嶼，以確保視覺簡潔。
+                    3. 利用 stroke-dasharray 實作虛線，呈現交通移動軌跡。
+                -->
+                <svg viewBox="0 0 800 500" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+                    
+                    <!-- 峇里島本島輪廓 -->
+                    <path d="M 150 250 Q 250 150 450 180 T 700 200 Q 750 250 680 300 Q 550 350 450 400 Q 350 400 280 350 Q 150 350 100 300 Z" fill="#dce3de" stroke="#a3b1a9" stroke-width="2"/>
+                    <!-- 南部半島 (烏魯瓦圖區) -->
+                    <path d="M 270 380 Q 320 480 280 500 Q 250 500 230 450 Z" fill="#dce3de" stroke="#a3b1a9" stroke-width="2"/>
+                    <!-- 佩尼達島 (Nusa Penida) -->
+                    <path d="M 500 400 Q 550 380 600 420 Q 620 480 550 480 Q 480 470 480 430 Z" fill="#dce3de" stroke="#a3b1a9" stroke-width="2"/>
+
+                    <!-- 軌跡線段：水明漾 -> 佩尼達島 (快艇) -->
+                    <path d="M 260 360 Q 380 400 520 430" fill="none" stroke="#a87c5e" stroke-width="2" stroke-dasharray="6,6"/>
+                    <!-- 軌跡線段：佩尼達島 -> 東北角阿買 (長途拉車) -->
+                    <path d="M 520 430 Q 580 350 640 230" fill="none" stroke="#55625b" stroke-width="2" stroke-dasharray="6,6"/>
+                    <!-- 軌跡線段：東北角阿買 -> 烏布 (山路移防) -->
+                    <path d="M 640 230 Q 500 280 400 300" fill="none" stroke="#55625b" stroke-width="2" stroke-dasharray="6,6"/>
+                    <!-- 軌跡線段：烏布 -> 德哥拉朗梯田 (短程) -->
+                    <path d="M 400 300 L 410 260" fill="none" stroke="#55625b" stroke-width="2" stroke-dasharray="4,4"/>
+                    <!-- 軌跡線段：烏布 -> 南部水明漾/機場 (回程) -->
+                    <path d="M 400 300 Q 320 320 260 360" fill="none" stroke="#55625b" stroke-width="2" stroke-dasharray="6,6"/>
+
+                    <!-- 關鍵地理標記與文字 -->
+                    <g fill="#2c2927" font-family="sans-serif" font-size="12" font-weight="bold">
+                        <!-- DPS 機場 -->
+                        <circle cx="250" cy="390" r="6" fill="#a87c5e"/>
+                        <text x="210" y="410">DPS 機場</text>
+                        
+                        <!-- 水明漾 (Seminyak) -->
+                        <circle cx="260" cy="360" r="7" fill="#55625b"/>
+                        <text x="180" y="355">水明漾 (Day 1, 2, 7)</text>
+
+                        <!-- 烏魯瓦圖 (Uluwatu) -->
+                        <circle cx="260" cy="480" r="6" fill="#7c8c82"/>
+                        <text x="190" y="495">烏魯瓦圖斷崖</text>
+
+                        <!-- 曼塔角 (Manta Point, 佩尼達島) -->
+                        <circle cx="520" cy="430" r="8" fill="#a87c5e"/>
+                        <text x="540" y="440">Manta Point (Day 3)</text>
+                        
+                        <!-- 圖蘭奔/阿買 (Tulamben / Amed) -->
+                        <circle cx="640" cy="230" r="7" fill="#55625b"/>
+                        <text x="660" y="235">東北角沉船海龜 (Day 3 宿)</text>
+
+                        <!-- 烏布 (Ubud) -->
+                        <circle cx="400" cy="300" r="8" fill="#55625b"/>
+                        <text x="320" y="315">烏布 Villa (Day 4, 5, 6)</text>
+
+                        <!-- 德哥拉朗梯田 -->
+                        <circle cx="410" cy="260" r="5" fill="#7c8c82"/>
+                        <text x="420" y="265">德哥拉朗梯田</text>
+                    </g>
+                </svg>
+                <div class="map-instruction">示意圖說明：綠色節點為陸地景點與住宿核心，褐色節點為機場與外海潛點。虛線代表包車與快艇之順暢環線軌跡。</div>
+            </div>
+        </section>
+
+        <!-- 每日行程詳細區塊 -->
+        <section class="content-section">
+            <h2 class="section-title">詳細行程表 (8 Days Itinerary)</h2>
+            <div class="itinerary-grid">
+                
+                <!-- Day 1 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-badge">Day 1 | 05/22</span>
+                        <span class="day-title">抵達與南洋日落</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">09:10 - 14:35</span>
+                        <span class="timeline-desc">搭乘 CI 0771 航班抵達峇里島 DPS 機場。</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">16:00</span>
+                        <span class="timeline-desc">專車接送至 Lloyd's Inn Bali 辦理入住。</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">19:30</span>
+                        <span class="timeline-desc">Boy'N'Cow 享用頂級乾式熟成牛排晚餐。</span>
+                    </div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-badge">Day 2 | 05/23</span>
+                        <span class="day-title">斷崖火舞與微醺</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">10:00</span>
+                        <span class="timeline-desc">水明漾街區慢遊，Sisterfields Cafe 早午餐。</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">15:30 - 19:00</span>
+                        <span class="timeline-desc">包車前往烏魯瓦圖捕捉懸崖海景，18:00 觀賞 Kecak 傳統火舞。</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">20:00</span>
+                        <span class="timeline-desc">El Kabron Cliff Club 懸崖海鮮餐酒館。</span>
+                    </div>
+                </div>
+
+                <!-- Day 3 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-badge">Day 3 | 05/24</span>
+                        <span class="day-title">追擊魔鬼魟與東海岸公路</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">06:30</span>
+                        <span class="timeline-desc">退房前往沙努爾港口，搭乘快艇出海。</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">09:00 - 13:00</span>
+                        <span class="timeline-desc">Manta Point 與巨大魔鬼魟魚浮潛共游。</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">15:00 - 17:30</span>
+                        <span class="timeline-desc">啟動跨夜包車，後座補眠，沿東海岸線北上至阿買 (Amed) 海景民宿入住。</span>
+                    </div>
+                </div>
+
+                <!-- Day 4 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-badge">Day 4 | 05/25</span>
+                        <span class="day-title">海龜沉船與頂級 Villa</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">07:30</span>
+                        <span class="timeline-desc">清晨岸潛，零暈船捕捉海龜與二戰沉船同框美景。</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">12:00</span>
+                        <span class="timeline-desc">包車移防烏布，午餐享用 Warung Kayana 烤豬肋排。</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">14:30</span>
+                        <span class="timeline-desc">進駐 Arkamara Jungle Resort 獨棟私人泳池 Villa，開啟奢華放空。</span>
+                    </div>
+                </div>
+
+                <!-- Day 5 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-badge">Day 5 | 05/26</span>
+                        <span class="day-title">中秋神聖全休日</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">全天</span>
+                        <span class="timeline-desc">零拉車行程，將時間完全留給彼此與 Villa。</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">10:00 & 14:00</span>
+                        <span class="timeline-desc">池畔漂浮早午餐，下午預約 2 小時頂級精油 SPA。</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">18:30</span>
+                        <span class="timeline-desc">私人露台冰鎮啤酒，無光害山谷賞月。</span>
+                    </div>
+                </div>
+
+                <!-- Day 6 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-badge">Day 6 | 05/27</span>
+                        <span class="day-title">梯田光影與山林文藝</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">08:30 - 11:30</span>
+                        <span class="timeline-desc">前往德哥拉朗梯田，運用 18-50mm 焦段拍攝高壓縮感絕美人像。</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">14:00</span>
+                        <span class="timeline-desc">聖泉寺淨身文化體驗，後返回烏布傳統市場漫步。</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">18:00</span>
+                        <span class="timeline-desc">隱密稻田景觀蔬食餐廳晚餐。</span>
+                    </div>
+                </div>
+
+                <!-- Day 7 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-badge">Day 7 | 05/28</span>
+                        <span class="day-title">移防南部與頂級沙灘俱樂部</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">10:30</span>
+                        <span class="timeline-desc">退房包車南下返回蒼古/水明漾區。</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">12:30 - 19:30</span>
+                        <span class="timeline-desc">前往 Finns 或 Potato Head Beach Club，租用 Daybed 耍廢看夕陽。</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">20:00</span>
+                        <span class="timeline-desc">返回 Lloyd's Inn Bali 住宿。</span>
+                    </div>
+                </div>
+
+                <!-- Day 8 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-badge">Day 8 | 05/29</span>
+                        <span class="day-title">賦歸與收心</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">10:00</span>
+                        <span class="timeline-desc">市區最後土產與伴手禮採買。</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">12:00</span>
+                        <span class="timeline-desc">專車前往機場。</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-time">15:55 - 21:20</span>
+                        <span class="timeline-desc">搭乘 CI 0772 班機返抵桃園機場，完美收心迎接月底挑戰。</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 財務預算區塊 -->
+        <section class="content-section" style="border-bottom: none;">
+            <h2 class="section-title">財務預算總表 (Budget Summary)</h2>
+            <table class="budget-table">
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">項目類別</th>
+                        <th style="width: 55%;">費用細目與規劃說明</th>
+                        <th style="width: 25%;">雙人金額 (TWD)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>機票與規費</b></td>
+                        <td>華航來回機票 (CI0771/CI0772)、落地簽證、觀光稅</td>
+                        <td class="amount-cell">32,354</td>
+                    </tr>
+                    <tr>
+                        <td><b>三段住宿</b></td>
+                        <td>水明漾設計旅店 (3晚) + 東北角海景房 (1晚) + 烏布泳池 Villa (3晚)</td>
+                        <td class="amount-cell">31,700</td>
+                    </tr>
+                    <tr>
+                        <td><b>交通與出海</b></td>
+                        <td>常規/跨夜包車 (含司機食宿)、Grab、Manta 出海浮潛套裝</td>
+                        <td class="amount-cell">10,400</td>
+                    </tr>
+                    <tr>
+                        <td><b>餐飲與體驗</b></td>
+                        <td>頂級牛排、各餐飲調酒、火舞門票、梯田規費、頂級 SPA</td>
+                        <td class="amount-cell">25,000</td>
+                    </tr>
+                    <tr>
+                        <td><b>保險與雜支</b></td>
+                        <td>旅平險、eSIM 網卡、常規小費、備用金</td>
+                        <td class="amount-cell">4,900</td>
+                    </tr>
+                    <tr class="budget-total">
+                        <td colspan="2" style="text-align: right;">兩人總支出預算（平均單人 52,177 元）</td>
+                        <td class="amount-cell">104,354</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+</body>
+</html>
