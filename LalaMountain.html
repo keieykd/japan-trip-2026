@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拉拉山避暑採桃一日遊</title>
+    <!-- 引入 Google Fonts 提升排版質感 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 基礎設定與莫蘭迪色系變數 */
+        :root {
+            --bg-color: #E6E8E3;         /* 淺灰綠背景 */
+            --primary-color: #798E87;    /* 莫蘭迪綠 */
+            --secondary-color: #B2A59F;  /* 莫蘭迪奶茶色 */
+            --accent-color: #E2A7A2;     /* 莫蘭迪粉 (水蜜桃元素) */
+            --text-dark: #3A403E;        /* 深灰綠文字 */
+            --text-light: #5C6663;       /* 次要文字 */
+            --white: #F9F9F9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 限制最大寬度，電腦版置中，手機版滿版 */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--white);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            min-height: 100vh;
+        }
+
+        /* 頂部橫幅 */
+        .header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 6px solid var(--secondary-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header p {
+            font-size: 15px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 頂部裝飾小插圖 */
+        .header-svg {
+            position: absolute;
+            opacity: 0.2;
+            width: 120px;
+            height: 120px;
+            top: -20px;
+            right: -20px;
+            transform: rotate(15deg);
+        }
+
+        /* 總覽區塊 */
+        .overview {
+            padding: 25px;
+            background-color: #F0EFEA;
+            margin: 20px;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .overview h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .overview ul {
+            list-style: none;
+        }
+
+        .overview li {
+            margin-bottom: 8px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .overview li svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            fill: var(--primary-color);
+        }
+
+        /* 時間軸設計 */
+        .timeline {
+            padding: 20px;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        /* 時間軸中線 */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 79px;
+            top: 40px;
+            bottom: -40px;
+            width: 2px;
+            background-color: #D3D8D6;
+            z-index: 1;
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .time-box {
+            flex: 0 0 80px;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 16px;
+            padding-top: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .content-box {
+            flex: 1;
+            background-color: var(--white);
+            border: 1px solid #EAEAEA;
+            border-radius: 12px;
+            padding: 20px;
+            margin-left: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .content-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+
+        /* 內容區塊插圖 */
+        .icon-svg {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+        }
+
+        .content-box h3 {
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            padding-right: 50px; /* 避免文字與插圖重疊 */
+        }
+
+        .content-box p {
+            font-size: 15px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .content-box ul {
+            padding-left: 20px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .content-box li {
+            margin-bottom: 6px;
+        }
+
+        /* Google Maps 按鈕連結 */
+        .map-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-top: 15px;
+            margin-right: 10px;
+            transition: background-color 0.2s;
+        }
+
+        .map-link:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .map-link svg {
+            width: 14px;
+            height: 14px;
+            margin-right: 6px;
+            fill: currentColor;
+        }
+
+        /* RWD 響應式設計 (手機版) */
+        @media (max-width: 600px) {
+            .timeline-item {
+                flex-direction: column;
+            }
+            .time-box {
+                flex: none;
+                margin-bottom: 10px;
+                padding-top: 0;
+            }
+            .timeline-item::after {
+                left: 20px;
+                top: 30px;
+                bottom: -20px;
+            }
+            .content-box {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 頂部區塊 -->
+    <div class="header">
+        <!-- 樹木裝飾插圖 -->
+        <svg class="header-svg" viewBox="0 0 100 100">
+            <path fill="#FFFFFF" d="M50,10 L80,50 L60,50 L85,90 L15,90 L40,50 L20,50 Z"></path>
+        </svg>
+        <h1>拉拉山避暑採桃一日遊</h1>
+        <p>享受 20°C 天然冷氣房的週末放鬆企劃</p>
+    </div>
+
+    <!-- 總覽區塊 -->
+    <div class="overview">
+        <h2>行程總覽</h2>
+        <ul>
+            <li>
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                交通：中和出發自駕 (國道三號 ➔ 北橫公路)
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                出發前任務：確認糯米的一日份糧食與充足水源
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                溫馨提醒：山區氣溫偏低，務必準備薄外套與輕便雨具
+            </li>
+        </ul>
+    </div>
+
+    <div class="timeline">
+        
+        <!-- 行程一 -->
+        <div class="timeline-item">
+            <div class="time-box">06:00</div>
+            <div class="content-box">
+                <!-- 汽車插圖 -->
+                <svg class="icon-svg" viewBox="0 0 100 100">
+                    <path fill="var(--primary-color)" d="M20,65 L80,65 L85,45 L70,30 L30,30 L15,45 Z" rx="5" ry="5"/>
+                    <rect x="35" y="35" width="30" height="15" fill="#FFF" rx="3" ry="3"/>
+                    <circle cx="30" cy="65" r="12" fill="var(--text-dark)"/>
+                    <circle cx="70" cy="65" r="12" fill="var(--text-dark)"/>
+                    <circle cx="30" cy="65" r="5" fill="#FFF"/>
+                    <circle cx="70" cy="65" r="5" fill="#FFF"/>
+                </svg>
+                <h3>晨間啟航</h3>
+                <p>為了擁有最佳的避暑品質，我們早點出發！</p>
+                <ul>
+                    <li>避開週末國道南下車潮，行車更順暢。</li>
+                    <li>準備好糯米的食物和水後即可安心出門。</li>
+                    <li>下坡路段較長，記得互相提醒使用低速檔行駛。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 行程二 -->
+        <div class="timeline-item">
+            <div class="time-box">08:00</div>
+            <div class="content-box">
+                <!-- 樹木森林插圖 -->
+                <svg class="icon-svg" viewBox="0 0 100 100">
+                    <rect x="45" y="50" width="10" height="40" fill="#9A7B66" rx="2"/>
+                    <circle cx="50" cy="45" r="35" fill="var(--primary-color)"/>
+                    <circle cx="30" cy="60" r="20" fill="var(--primary-color)"/>
+                    <circle cx="70" cy="60" r="20" fill="var(--primary-color)"/>
+                </svg>
+                <h3>拉拉山巨木區步道</h3>
+                <p>海拔約 1600 公尺，早晨空氣最清新。</p>
+                <ul>
+                    <li>步道極度平緩，在參天巨木的遮蔭下，走起來像散步一樣輕鬆涼爽。</li>
+                    <li>這時段人潮較少，非常適合悠閒地享受森林浴，吸收滿滿芬多精。</li>
+                </ul>
+                <a href="https://www.google.com/maps/search/?api=1&query=拉拉山巨木區&query_place_id=ChIJDZUg8NITaDQR7O8DS7SbXn4" target="_blank" class="map-link">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    導航至巨木區
+                </a>
+            </div>
+        </div>
+
+        <!-- 行程三 -->
+        <div class="timeline-item">
+            <div class="time-box">11:00</div>
+            <div class="content-box">
+                <!-- 水蜜桃插圖 -->
+                <svg class="icon-svg" viewBox="0 0 100 100">
+                    <!-- 葉子 -->
+                    <path fill="var(--primary-color)" d="M50,35 C40,20 20,25 35,40 Z"/>
+                    <path fill="#526E65" d="M50,35 C60,20 80,25 65,40 Z"/>
+                    <!-- 桃子本體 -->
+                    <path fill="var(--accent-color)" d="M50,90 C15,90 10,50 25,35 C35,25 45,30 50,35 C55,30 65,25 75,35 C90,50 85,90 50,90 Z"/>
+                    <path fill="#D6928D" d="M50,35 C45,50 48,70 50,85 C52,70 55,50 50,35 Z" opacity="0.3"/>
+                </svg>
+                <h3>重頭戲！水蜜桃大採購</h3>
+                <p>結束輕鬆的森林浴後，前往上巴陵部落街上尋寶。</p>
+                <ul>
+                    <li>沿路會有許多果農攤位，可以親自挑選最大顆、甜度最高的當季新鮮水蜜桃。</li>
+                    <li>這時節正是晚生種水蜜桃最好吃的時候！</li>
+                </ul>
+                <a href="https://www.google.com/maps/search/?api=1&query=上巴陵&query_place_id=ChIJTVvEdiwTaDQRxIHzrXFy6ek" target="_blank" class="map-link">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    導航至上巴陵商圈
+                </a>
+            </div>
+        </div>
+
+        <!-- 行程四 -->
+        <div class="timeline-item">
+            <div class="time-box">12:30</div>
+            <div class="content-box">
+                <!-- 餐廳餐具插圖 -->
+                <svg class="icon-svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" fill="#F0EFEA"/>
+                    <circle cx="50" cy="50" r="30" fill="var(--white)"/>
+                    <path fill="var(--secondary-color)" d="M35,30 L35,60 C35,65 38,70 45,70 L45,80 L55,80 L55,70 C62,70 65,65 65,60 L65,30 L60,30 L60,50 L55,50 L55,30 L45,30 L45,50 L40,50 L40,30 Z"/>
+                </svg>
+                <h3>享用高山風味午餐</h3>
+                <p>採買完畢，就在上巴陵挑選一間餐廳補充能量，依照當天胃口自由選擇：</p>
+                <ul>
+                    <li>環境舒適熱炒：拉拉人嘉美食庄</li>
+                    <li>在地野菜風味：阿真的店山產美食</li>
+                    <li>樸實簡單家常：山源小吃店</li>
+                </ul>
+                <!-- 餐廳地標連結 -->
+                <div style="display: flex; flex-wrap: wrap;">
+                    <a href="https://www.google.com/maps/search/?api=1&query=拉拉人嘉美食庄&query_place_id=ChIJk1ErGdZsaDQRNPpuM9RlFvs" target="_blank" class="map-link">
+                        📍 拉拉人嘉美食庄
+                    </a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=拉拉山小吃–阿真的店&query_place_id=ChIJzx7SdCoTaDQR2guvBfbF5BE" target="_blank" class="map-link">
+                        📍 阿真的店
+                    </a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=山源小吃店&query_place_id=ChIJV24NERZtaDQRR6BM7UMrj3s" target="_blank" class="map-link">
+                        📍 山源小吃店
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 行程五 -->
+        <div class="timeline-item">
+            <div class="time-box">14:00</div>
+            <div class="content-box">
+                <!-- 太陽與雲朵插圖 (天氣/下山) -->
+                <svg class="icon-svg" viewBox="0 0 100 100">
+                    <circle cx="70" cy="35" r="15" fill="#E8C37C"/>
+                    <path fill="#C7D0CB" d="M35,65 C25,65 20,55 25,45 C30,35 45,30 55,40 C65,35 80,45 75,55 C80,65 65,75 55,65 C50,75 40,75 35,65 Z"/>
+                </svg>
+                <h3>安全下山與順遊</h3>
+                <p>高山午後易起濃霧或陣雨，早點下山最安全。</p>
+                <ul>
+                    <li>下山途中會經過角板山商圈，可以在此稍作休息、吃個冰。</li>
+                    <li>趕在傍晚大塞車前回到溫暖的家，晚上還能一起悠閒地吃晚餐。</li>
+                </ul>
+                <a href="https://www.google.com/maps/search/?api=1&query=角板山形象商圈&query_place_id=ChIJ__rq8yoXaDQRdl_eKz-pxuQ" target="_blank" class="map-link">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    導航至角板山商圈
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
