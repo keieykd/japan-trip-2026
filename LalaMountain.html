@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>拉拉山避暑採桃一日遊</title>
+    <title>烏來內洞 負離子避暑半日遊</title>
     <!-- 引入 Google Fonts 提升排版質感 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,13 +11,13 @@
     <style>
         /* 基礎設定與莫蘭迪色系變數 */
         :root {
-            --bg-color: #E6E8E3;         /* 淺灰綠背景 */
-            --primary-color: #798E87;    /* 莫蘭迪綠 */
-            --secondary-color: #B2A59F;  /* 莫蘭迪奶茶色 */
-            --accent-color: #E2A7A2;     /* 莫蘭迪粉 (水蜜桃元素) */
-            --text-dark: #3A403E;        /* 深灰綠文字 */
-            --text-light: #5C6663;       /* 次要文字 */
-            --white: #F9F9F9;
+            --bg-color: #E8EDE7;         /* 莫蘭迪薄荷灰背景 */
+            --primary-color: #6B8E82;    /* 莫蘭迪森林綠 */
+            --secondary-color: #9BB4AB;  /* 莫蘭迪淺水綠 */
+            --accent-color: #E0C1B3;     /* 莫蘭迪暖沙色 */
+            --text-dark: #35423D;        /* 深灰綠文字 */
+            --text-light: #5A6B65;       /* 次要文字 */
+            --white: #FCFCFC;
         }
 
         * {
@@ -49,7 +49,7 @@
             color: var(--white);
             padding: 40px 20px;
             text-align: center;
-            border-bottom: 6px solid var(--secondary-color);
+            border-bottom: 6px solid var(--accent-color);
             position: relative;
             overflow: hidden;
         }
@@ -70,21 +70,21 @@
             z-index: 2;
         }
 
-        /* 頂部裝飾小插圖 */
+        /* 頂部裝飾小插圖 (葉子) */
         .header-svg {
             position: absolute;
-            opacity: 0.2;
-            width: 120px;
-            height: 120px;
-            top: -20px;
+            opacity: 0.15;
+            width: 140px;
+            height: 140px;
+            top: -30px;
             right: -20px;
-            transform: rotate(15deg);
+            transform: rotate(-15deg);
         }
 
         /* 總覽區塊 */
         .overview {
             padding: 25px;
-            background-color: #F0EFEA;
+            background-color: #F4F6F4;
             margin: 20px;
             border-radius: 12px;
             border-left: 5px solid var(--primary-color);
@@ -112,6 +112,7 @@
             height: 18px;
             margin-right: 10px;
             fill: var(--primary-color);
+            flex-shrink: 0;
         }
 
         /* 時間軸設計 */
@@ -133,7 +134,7 @@
             top: 40px;
             bottom: -40px;
             width: 2px;
-            background-color: #D3D8D6;
+            background-color: #D3DBD8;
             z-index: 1;
         }
 
@@ -154,7 +155,7 @@
         .content-box {
             flex: 1;
             background-color: var(--white);
-            border: 1px solid #EAEAEA;
+            border: 1px solid #EEF0EF;
             border-radius: 12px;
             padding: 20px;
             margin-left: 20px;
@@ -181,7 +182,7 @@
             font-size: 18px;
             color: var(--text-dark);
             margin-bottom: 12px;
-            padding-right: 50px; /* 避免文字與插圖重疊 */
+            padding-right: 50px;
         }
 
         .content-box p {
@@ -254,29 +255,32 @@
 <div class="container">
     <!-- 頂部區塊 -->
     <div class="header">
-        <!-- 樹木裝飾插圖 -->
+        <!-- 葉子裝飾插圖 -->
         <svg class="header-svg" viewBox="0 0 100 100">
-            <path fill="#FFFFFF" d="M50,10 L80,50 L60,50 L85,90 L15,90 L40,50 L20,50 Z"></path>
+            <path fill="#FFFFFF" d="M50,10 C20,10 10,40 10,60 C10,80 30,90 50,90 C70,90 90,80 90,60 C90,40 80,10 50,10 Z M50,85 C35,85 18,75 18,55 C18,38 35,18 50,18 C65,18 82,38 82,55 C82,75 65,85 50,85 Z"></path>
+            <path fill="#FFFFFF" d="M48,20 L52,20 L52,80 L48,80 Z"></path>
+            <path fill="#FFFFFF" d="M50,50 L75,35 L77,39 L50,54 Z"></path>
+            <path fill="#FFFFFF" d="M50,65 L25,50 L27,46 L50,61 Z"></path>
         </svg>
-        <h1>拉拉山避暑採桃一日遊</h1>
-        <p>享受 20°C 天然冷氣房的週末放鬆企劃</p>
+        <h1>烏來內洞 負離子瀑布避暑遊</h1>
+        <p>2026.07.18 近郊放鬆企劃 (發發專屬審核版)</p>
     </div>
 
     <!-- 總覽區塊 -->
     <div class="overview">
-        <h2>行程總覽</h2>
+        <h2>行程總覽與重點</h2>
         <ul>
             <li>
                 <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                交通：中和出發自駕 (國道三號 ➔ 北橫公路)
+                交通方式：自駕，從南勢角出發，經新店接新烏路，車程僅約 45 分鐘。
             </li>
             <li>
                 <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-                出發前任務：確認糯米的一日份糧食與充足水源
+                出發前任務：務必確認糯米的一日份糧食與充足水源。
             </li>
             <li>
                 <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-                溫馨提醒：山區氣溫偏低，務必準備薄外套與輕便雨具
+                溫馨提醒：步道水氣豐沛，建議穿著防滑且好走的休閒鞋款。
             </li>
         </ul>
     </div>
@@ -285,7 +289,7 @@
         
         <!-- 行程一 -->
         <div class="timeline-item">
-            <div class="time-box">06:00</div>
+            <div class="time-box">08:00</div>
             <div class="content-box">
                 <!-- 汽車插圖 -->
                 <svg class="icon-svg" viewBox="0 0 100 100">
@@ -293,119 +297,105 @@
                     <rect x="35" y="35" width="30" height="15" fill="#FFF" rx="3" ry="3"/>
                     <circle cx="30" cy="65" r="12" fill="var(--text-dark)"/>
                     <circle cx="70" cy="65" r="12" fill="var(--text-dark)"/>
-                    <circle cx="30" cy="65" r="5" fill="#FFF"/>
-                    <circle cx="70" cy="65" r="5" fill="#FFF"/>
+                    <circle cx="30" cy="65" r="4" fill="#FFF"/>
+                    <circle cx="70" cy="65" r="4" fill="#FFF"/>
                 </svg>
                 <h3>晨間啟航</h3>
-                <p>為了擁有最佳的避暑品質，我們早點出發！</p>
+                <p>輕鬆睡飽再出發，不用長途跋涉！</p>
                 <ul>
-                    <li>避開週末國道南下車潮，行車更順暢。</li>
-                    <li>準備好糯米的食物和水後即可安心出門。</li>
-                    <li>下坡路段較長，記得互相提醒使用低速檔行駛。</li>
+                    <li>安頓好糯米後，直接從南勢角出發。</li>
+                    <li>這時間走新烏路車流相對少，一路順暢抵達烏來。</li>
                 </ul>
             </div>
         </div>
 
         <!-- 行程二 -->
         <div class="timeline-item">
-            <div class="time-box">08:00</div>
+            <div class="time-box">09:00</div>
             <div class="content-box">
-                <!-- 樹木森林插圖 -->
+                <!-- 瀑布與樹木插圖 -->
                 <svg class="icon-svg" viewBox="0 0 100 100">
-                    <rect x="45" y="50" width="10" height="40" fill="#9A7B66" rx="2"/>
-                    <circle cx="50" cy="45" r="35" fill="var(--primary-color)"/>
-                    <circle cx="30" cy="60" r="20" fill="var(--primary-color)"/>
-                    <circle cx="70" cy="60" r="20" fill="var(--primary-color)"/>
+                    <!-- 樹木 -->
+                    <rect x="25" y="50" width="8" height="30" fill="#8B7355" rx="2"/>
+                    <circle cx="29" cy="40" r="22" fill="var(--primary-color)"/>
+                    <rect x="70" y="60" width="6" height="20" fill="#8B7355" rx="2"/>
+                    <circle cx="73" cy="55" r="15" fill="var(--secondary-color)"/>
+                    <!-- 瀑布水流 -->
+                    <path fill="#AEE2E8" d="M45,30 L58,30 L55,80 L42,80 Z"/>
+                    <path fill="#FFFFFF" d="M48,30 L52,30 L50,80 L46,80 Z" opacity="0.6"/>
+                    <!-- 底部水潭 -->
+                    <ellipse cx="50" cy="82" rx="25" ry="8" fill="#86C6CF"/>
                 </svg>
-                <h3>拉拉山巨木區步道</h3>
-                <p>海拔約 1600 公尺，早晨空氣最清新。</p>
+                <h3>內洞國家森林遊樂區</h3>
+                <p>享受天然屏障與溪谷帶來的極致涼爽。</p>
                 <ul>
-                    <li>步道極度平緩，在參天巨木的遮蔭下，走起來像散步一樣輕鬆涼爽。</li>
-                    <li>這時段人潮較少，非常適合悠閒地享受森林浴，吸收滿滿芬多精。</li>
+                    <li>沿著南勢溪漫步，全程皆為平緩好走的無障礙或碎石步道。</li>
+                    <li>抵達「內洞瀑布」觀瀑台，感受豐沛水氣與滿滿負離子帶來的物理降溫效果。</li>
+                    <li>茂密的天然闊葉林完美阻擋陽光，是非常優質的避暑勝地。</li>
                 </ul>
-                <a href="https://www.google.com/maps/search/?api=1&query=拉拉山巨木區&query_place_id=ChIJDZUg8NITaDQR7O8DS7SbXn4" target="_blank" class="map-link">
+                <a href="https://www.google.com/maps/place/內洞國家森林遊樂區" target="_blank" class="map-link">
                     <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    導航至巨木區
+                    導航至內洞森林遊樂區
                 </a>
             </div>
         </div>
 
         <!-- 行程三 -->
         <div class="timeline-item">
-            <div class="time-box">11:00</div>
+            <div class="time-box">12:00</div>
             <div class="content-box">
-                <!-- 水蜜桃插圖 -->
+                <!-- 食物餐具插圖 -->
                 <svg class="icon-svg" viewBox="0 0 100 100">
-                    <!-- 葉子 -->
-                    <path fill="var(--primary-color)" d="M50,35 C40,20 20,25 35,40 Z"/>
-                    <path fill="#526E65" d="M50,35 C60,20 80,25 65,40 Z"/>
-                    <!-- 桃子本體 -->
-                    <path fill="var(--accent-color)" d="M50,90 C15,90 10,50 25,35 C35,25 45,30 50,35 C55,30 65,25 75,35 C90,50 85,90 50,90 Z"/>
-                    <path fill="#D6928D" d="M50,35 C45,50 48,70 50,85 C52,70 55,50 50,35 Z" opacity="0.3"/>
-                </svg>
-                <h3>重頭戲！水蜜桃大採購</h3>
-                <p>結束輕鬆的森林浴後，前往上巴陵部落街上尋寶。</p>
-                <ul>
-                    <li>沿路會有許多果農攤位，可以親自挑選最大顆、甜度最高的當季新鮮水蜜桃。</li>
-                    <li>這時節正是晚生種水蜜桃最好吃的時候！</li>
-                </ul>
-                <a href="https://www.google.com/maps/search/?api=1&query=上巴陵&query_place_id=ChIJTVvEdiwTaDQRxIHzrXFy6ek" target="_blank" class="map-link">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    導航至上巴陵商圈
-                </a>
-            </div>
-        </div>
-
-        <!-- 行程四 -->
-        <div class="timeline-item">
-            <div class="time-box">12:30</div>
-            <div class="content-box">
-                <!-- 餐廳餐具插圖 -->
-                <svg class="icon-svg" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="40" fill="#F0EFEA"/>
+                    <circle cx="50" cy="50" r="40" fill="#F4EAE6"/>
                     <circle cx="50" cy="50" r="30" fill="var(--white)"/>
-                    <path fill="var(--secondary-color)" d="M35,30 L35,60 C35,65 38,70 45,70 L45,80 L55,80 L55,70 C62,70 65,65 65,60 L65,30 L60,30 L60,50 L55,50 L55,30 L45,30 L45,50 L40,50 L40,30 Z"/>
+                    <!-- 碗與筷子 -->
+                    <path fill="var(--accent-color)" d="M30,55 C30,70 40,75 50,75 C60,75 70,70 70,55 Z"/>
+                    <path fill="#A39189" d="M25,45 L80,35" stroke="#A39189" stroke-width="3" stroke-linecap="round"/>
+                    <path fill="#A39189" d="M25,50 L80,40" stroke="#A39189" stroke-width="3" stroke-linecap="round"/>
                 </svg>
-                <h3>享用高山風味午餐</h3>
-                <p>採買完畢，就在上巴陵挑選一間餐廳補充能量，依照當天胃口自由選擇：</p>
+                <h3>烏來老街 尋味午餐</h3>
+                <p>吸收完芬多精後，回到老街商圈大啖特色美食。</p>
                 <ul>
-                    <li>環境舒適熱炒：拉拉人嘉美食庄</li>
-                    <li>在地野菜風味：阿真的店山產美食</li>
-                    <li>樸實簡單家常：山源小吃店</li>
+                    <li>推薦品嚐道地的原住民風味料理，如竹筒飯、馬告香腸或炒山蘇。</li>
+                    <li>兩間高評價餐廳供當下自由挑選：</li>
                 </ul>
-                <!-- 餐廳地標連結 -->
                 <div style="display: flex; flex-wrap: wrap;">
-                    <a href="https://www.google.com/maps/search/?api=1&query=拉拉人嘉美食庄&query_place_id=ChIJk1ErGdZsaDQRNPpuM9RlFvs" target="_blank" class="map-link">
-                        📍 拉拉人嘉美食庄
+                    <a href="https://www.google.com/maps/place/泰雅婆婆美食店" target="_blank" class="map-link">
+                        📍 泰雅婆婆美食店
                     </a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=拉拉山小吃–阿真的店&query_place_id=ChIJzx7SdCoTaDQR2guvBfbF5BE" target="_blank" class="map-link">
-                        📍 阿真的店
+                    <a href="https://www.google.com/maps/place/雅各原住民山豬肉香腸" target="_blank" class="map-link">
+                        📍 雅各山豬肉香腸
                     </a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=山源小吃店&query_place_id=ChIJV24NERZtaDQRR6BM7UMrj3s" target="_blank" class="map-link">
-                        📍 山源小吃店
+                    <a href="https://www.google.com/maps/place/烏來老街" target="_blank" class="map-link">
+                        📍 烏來老街 (整體商圈)
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- 行程五 -->
+        <!-- 行程四 -->
         <div class="timeline-item">
             <div class="time-box">14:00</div>
             <div class="content-box">
-                <!-- 太陽與雲朵插圖 (天氣/下山) -->
+                <!-- 冰棒插圖 -->
                 <svg class="icon-svg" viewBox="0 0 100 100">
-                    <circle cx="70" cy="35" r="15" fill="#E8C37C"/>
-                    <path fill="#C7D0CB" d="M35,65 C25,65 20,55 25,45 C30,35 45,30 55,40 C65,35 80,45 75,55 C80,65 65,75 55,65 C50,75 40,75 35,65 Z"/>
+                    <!-- 冰棒棍 -->
+                    <rect x="44" y="60" width="12" height="30" fill="#D2B48C" rx="4"/>
+                    <!-- 冰棒本體 -->
+                    <path fill="var(--secondary-color)" d="M35,20 C35,10 65,10 65,20 L65,70 C65,75 35,75 35,70 Z"/>
+                    <!-- 冰棒反光 -->
+                    <path fill="#FFFFFF" d="M40,25 C40,15 50,15 50,25 L50,60 C50,65 40,65 40,60 Z" opacity="0.3"/>
                 </svg>
-                <h3>安全下山與順遊</h3>
-                <p>高山午後易起濃霧或陣雨，早點下山最安全。</p>
+                <h3>桂山冰棒與輕鬆返家</h3>
+                <p>用透心涼的古早味冰棒為避暑之旅畫下句點。</p>
                 <ul>
-                    <li>下山途中會經過角板山商圈，可以在此稍作休息、吃個冰。</li>
-                    <li>趕在傍晚大塞車前回到溫暖的家，晚上還能一起悠閒地吃晚餐。</li>
+                    <li>下山途中順路前往新店「桂山發電廠冰品部」。</li>
+                    <li>物美價廉的台電冰棒，推薦花生、清冰或芋頭口味。</li>
+                    <li>趕在午後山區可能的陣雨前，輕鬆愜意地駛回南勢角。</li>
                 </ul>
-                <a href="https://www.google.com/maps/search/?api=1&query=角板山形象商圈&query_place_id=ChIJ__rq8yoXaDQRdl_eKz-pxuQ" target="_blank" class="map-link">
+                <a href="https://www.google.com/maps/place/桂山發電廠冰品部" target="_blank" class="map-link">
                     <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    導航至角板山商圈
+                    導航至桂山發電廠冰品部
                 </a>
             </div>
         </div>
